@@ -233,7 +233,7 @@
 % ----- Handle Colors -----
 %% 章节以及页脚图形
 
-\RequirePackage[table]{xcolor}
+\PassOptionsToPackage{table}{xcolor}
 \ifdefstring{\ELEGANT@color}{green}{
   \definecolor{structurecolor}{RGB}{0,120,2}%
   \definecolor{main}{RGB}{0,120,2}%
@@ -637,8 +637,8 @@
 
 \ifdefstring{\ELEGANT@lang}{es}{
   \RequirePackage[spanish]{babel}
-  %\RequirePackage[utf8]{inputenc}
-  \usepackage[latin1]{inputenc}
+  \RequirePackage[utf8]{inputenc}
+  %\usepackage[utf8,latin1]{inputenc}
   \usepackage[T1]{fontenc}
   \setlength\parindent{2em}
   \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
@@ -836,14 +836,14 @@
   \DeclareTColorBox[auto counter,number within=chapter]{proposition}{ o t\label g }{
     common,propstyle,
     IfValueTF={#1}{title={\propositionname~\thetcbcounter\ (#1)}}{title=\propositionname~\thetcbcounter},
-    IfBooleanTF={#2}{label=#3}{}}}{\relax}
+    IfBooleanTF={#2}{label=#3}{}{\relax}}
 
     \DeclareTColorBox[auto counter,number within=chapter]{example}{ o t\label g }{
     common,propstyle,
     colframe=structurecolor!75!black,colback=structurecolor!5!white,colbacktitle=structurecolor!80!black,
     IfValueTF={#1}{title={\examplename~\thetcbcounter\ #1}}{title=\examplename~\thetcbcounter},
-    IfBooleanTF={#2}{label=#3}{}}}{\relax}
-
+    IfBooleanTF={#2}{label=#3}{}{\relax}}
+}
 
 \ifdefstring{\ELEGANT@mode}{simple}{
   \let\openbox\relax
@@ -1081,10 +1081,10 @@
 
 
 \usepackage{tikz}
-%\usetikzlibrary{arrows,automata}
 \usetikzlibrary{automata, arrows.meta, positioning}
-\tikzset{%-&gt;,  % makes the edges directed
-&gt;=stealth', % makes the arrow heads bold stealth
+\tikzset{-&gt;,  % makes the edges directed
+%&gt;,
+>=stealth', % makes the arrow heads bold stealth
 node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
 every state/.style={thick}, % sets the properties for each ’state’ node
 initial text=$\ Init\ $, % sets the text that appears on the start arrow
