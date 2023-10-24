@@ -1082,13 +1082,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{automata, arrows.meta, positioning}
-\tikzset{-&gt;,  % makes the edges directed
-%&gt;,
->=stealth', % makes the arrow heads bold stealth
-node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
-every state/.style={thick}, % sets the properties for each ’state’ node
-initial text=$\ Init\ $, % sets the text that appears on the start arrow
-}
+
 \usepackage{tikz-timing}
    
 
