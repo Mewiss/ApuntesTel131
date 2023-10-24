@@ -1,0 +1,1662 @@
+
+\documentclass[11pt,fancy,lang=es]{elegantbook}
+
+\title{Apuntes Tel131 - Electrónica Digital}
+\subtitle{Marie González-Inostroza}
+\date{agosto, 2023}
+\version{0.1.0}
+
+%\author{Ethan Deng \& Liam Huang}
+\institute{Universidad Técnica Federico Santa María}
+
+
+
+
+\cover{portada.png}
+
+
+\definecolor{customcolor}{RGB}{35, 100, 102}%
+\definecolor{morado}{RGB}{189,13,207}
+\colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+
+%\input{00InformacionGeneral}
+%\input{01ConceptosPrevios}
+
+%\input{02AnalisisCircuitos}
+
+
+
+
+\chapter{Circuitos no lineales}
+
+\section{Definiciones}
+
+\subsection{Circuito lineal}
+Un circuito lineal posee una relación lineal entre la señal de entrada y la de salida, por lo que posee la propiedad de superposición. Esto significa que para dos señales de entrada, se cumple que la salida es la suma de las respuestas de cada una por separado. Por ejemplo, si la respuesta para A es Y y la respuesta para B es X, al aplicar ambas señales de entrada simultáneamente (A + B), la salida será igual a la suma de las respuestas individuales (X + Y). 
+
+Los componentes electrónicos lineales típicos con la resistencia, inductancia y capacitancia. Para estos, sus relaciones de voltaje-corriente son funciones lineales, como la ley de Ohm.
+
+\subsection{Circuito No-Lineal}
+Un circuito no lineal, por su parte, posee componentes que no siguen la propiedad de superposición. Esto significa que al aplicar dos señales de entrada simultáneamente, la salida no es simplemente la suma de las respuestas individuales. Ejemplos de componentes no lineales incluyen diodos y transistores. De hecho, la mayoría de los semiconductores se comportan de forma no lineal.
+
+Para los circuitos no-lineales siguen siendo válidas las leyes de Kirchoff, pero no el principio de superposición. Por lo tanto, debemos utilizar algunas técnicas particulares para su análisis.
+
+
+\subsection{Semiconductores}
+
+Los semiconductores son materiales que pueden comportarse como conductores o aislantes, dependiendo de factores como la temperatura, el campo eléctrico, la presión y las características químicas del elemento. Los semiconductores más comunes son el Silicio (Si) y el Germanio (Ge).
+
+Los semiconductores intrínsecos permiten que los electrones se muevan y generen un equilibrio dinámico de espacios vacíos que son ocupados. Además, se pueden dopar con impurezas para crear dos tipos de semiconductores:
+
+\begin{enumerate}
+    \item Semiconductor tipo N: Se logra añadiendo átomos pentavalentes, lo que proporciona electrones adicionales y convierte al semiconductor en un conductor de electricidad.
+    \item Semiconductor tipo P: Se obtiene al añadir átomos trivalentes, creando huecos que actúan como portadores de carga y permiten la conductividad.
+\end{enumerate}
+
+La unión de un semiconductor tipo N con uno tipo P crea un diodo.
+
+\subsubsection{Unión NP: Diodo}
+
+Cuando se unen semiconductores tipo N y tipo P, los electrones libres del semiconductor N se desplazan hacia los huecos del semiconductor P, generando enlaces covalentes. Esto resulta en una zona P con carga negativa y una zona N con carga positiva cerca de la unión, lo que crea un campo eléctrico que se opone al flujo de electrones.
+
+
+
+
+La unión de los semiconductores N y P se conoce como diodo.
+
+
+\section{El diodo y su análisis}
+%Diodos definición y método analítico
+
+Un diodo es un componente semiconductor utilizado para controlar el flujo de corriente eléctrica. Generalmente consta de dos terminales etiquetados como ánodo y cátodo, siendo el cátodo el marcado.\\\\
+Estructuralmente, un diodo se compone de dos regiones químicas llamadas "PN," que suelen ser dopadas con elementos como silicio o germanio. La región P (ánodo) contiene una cantidad reducida de electrones, mientras que la región N (cátodo) posee un exceso de electrones. Para que el diodo conduzca corriente, es necesario aplicar una tensión que supere su umbral de polarización y esté conectado en el circuito. El diodo opera en dos modos: polarización directa, que permite el flujo de corriente, y polarización inversa, que lo impide.\\
+
+Existen diversos tipos de diodos, como los rectificadores, Zener, Schottky, así como otros como detectores de baja señal, varactores, emisores de luz, láseres, estabilizadores, diodos túnel, diodos PIN, diodos backward, fotodiodos, entre otros. Cada tipo de diodo tiene aplicaciones específicas en electrónica y circuitos.
+
+\subsection{Figuras electrónicas:}
+\begin{enumerate}
+    \item Diodo Rectificador.
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8,american]
+        \draw (0,0) to[full diode] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    \item Diodo Zener.
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) to[full ZZener diode] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    \item Diodo Túnel o Esaki.
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) to[full tunnel diode] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    \item Diodo Schottky.
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) to[full Schottky diode] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    \item Diodo Vericap.
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) to[full varcap] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    \item Foto Diodo.
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) to[full photodiode] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    \item Diodo Led.
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) to[full led] (3,0);
+        \end{tikzpicture}
+    \end{center}
+    
+\end{enumerate}
+
+\section{Métodos de análisis de circuitos no lineales}
+\subsection{Método Analítico del diodo}
+El método analítico consiste en el análisis directamente algebraico utilizando las ecuaciones de los componentes.
+
+
+
+Teniendo en cuenta la premisa del circuito básico con un diodo rectificador el cuál es el siguiente:
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[american]
+        \draw
+        (-5.0,-3.0) to[V,label=V,invert] (-5.0,0)
+        (-5.0,0.0) to[diode, label=D] (0,0)
+        (0.0,0.0) to[R, label= R] (0.0,-3.0)
+        (-5.0,-3.0) to[short] (0.0,-3.0);
+    \end{tikzpicture}
+    \caption{Diodo en serie con una resistencia}
+\end{figure}
+
+Para el uso de éste método, utilizaremos la siguiente ecuación, que relaciona $I_{d}$ con $V_d$:
+\begin{equation}
+    I_D=I_O \cdot (e^\frac{V_d}{V_t}-1)
+\end{equation}
+Para este caso, la corriente que pasa por el circuito tambien es la que pasa por el diodo, por lo tanto se cumple que:
+\begin{equation}
+I_D=\frac{V_{in}-V_D}{R}
+\end{equation}
+\begin{figure}[h]
+    \centering
+   Reemplazando en (1):
+\end{figure}
+
+\begin{equation}
+    \frac{V_{in}-V_d}{R}=I_O \cdot (e^\frac{V_d}{V_t}-1)
+\end{equation}
+Si despejamos esta ecuación con el fin de encontrar a que equivale $V_d$, para ello usaremos la ecuación sacada del libro.\cite{Libro_Unidad2}:
+\begin{equation}
+    V_D=I_O\cdot R + V_{in} - V_t \cdot ln(\frac{e^\frac{I_o\cdot R+V_{in}}{V_t}\cdot I_O \cdot R}{V_t})
+\end{equation}
+\newpage
+Esta ecuación puede ser reemplazada en (2) para conocer el valor de la corriente que pasa por el diodo, entonces pareciera que siempre que se quiera obtener el valor de Id se puede usar esa fórmula, pero no, existen dos casos:
+
+\begin{enumerate}
+    \item Diodo directo: Cuando el voltaje de entrada es mayor o igual al valor del voltaje del diodo, este se comportará de forma directa, es decir, permitirá el paso de la corriente a costa de una pequeña caída de voltaje.
+    \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[american]
+        \draw
+        (-5.0,-3.0) to[V,label=V,invert] (-5.0,0)
+        (-5.0,0.0) to[battery1, label=$V_d$] (0,0)
+        (0.0,0.0) to[R, label= R] (0.0,-3.0)
+        (-5.0,-3.0) to[short] (0.0,-3.0);
+    \end{tikzpicture}
+    \caption{Diodo de forma directa}
+    \end{figure}
+    
+    \item Diodo inverso: En este caso, el voltaje de entrada no alcanza el valor de voltaje del diodo, por lo que este se abre (para que se entienda) y no permite el paso de corriente, es decir, actúa como un circuito abierto, en dicho caso, la fórmula presentada anteriormente no podría ser utilizada.
+    
+    \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[american]
+        \draw
+        (-5.0,-3.0) to[V,label=V,invert] (-5.0,0)
+        (-5.0,0.0) to[short, nos] (0,0)
+        (0.0,0.0) to[R, label= R] (0.0,-3.0)
+        (-5.0,-3.0) to[short] (0.0,-3.0);
+    \end{tikzpicture}
+    \caption{Diodo de forma inversa}
+\end{figure}
+    
+    
+    
+\end{enumerate}
+
+
+%%%%%%%%%%%%%% fin Alex A - Daniel B - Mauricio C %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\subsection{Método gráfico aplicado a diodo}
+Para el análisis con el método gráfico utilizaremos el siguiente circuito:
+
+\begin{circuitikz}[american]
+\draw
+    (5,3) to (0,3) to [V, l=$V_s$, invert] (0,7) 
+    (0,7) to [ R, l={$R$}] (5,7)
+    (5,3) to [diode, v=$D1$, invert](5,7);
+\end{circuitikz}
+
+El objetivo de este método es graficar las corrientes de las componentes con respecto al voltaje del diodo, obteniendo así el voltaje del diodo y la corriente del circuito.\\
+
+Con las respectivas ecuaciones para cada componente:
+\begin{equation*}
+    i_D = I_s(e^{{\frac{V_d}{V_T}}}-1)
+\end{equation*}
+
+\begin{equation*}
+    i_R = \frac{V_R}{R}
+\end{equation*}
+Donde $V_T = 0.25mV$ a temperatura ambiente $ T = 290K $ y $ I_s = 10^{-16}$ el cual es una corriente para diodos de circuitos integrados.\\
+
+Esta ultima se puede reescribir de la siguiente forma:
+Con\begin{equation*}
+    V_R = V_s - V_d
+\end{equation*}
+
+Por lo que:
+\begin{equation*}
+    i_R = \frac{V_s - V_d}{R} = \frac{V_s}{R}- \frac{V_d}{R}
+\end{equation*}
+
+Para poder graficar utilizaremos $V_s = 5V$ y $R= 1k\Omega$.\\
+
+Utilizando estos valores tenemos:
+\begin{equation*}
+    i_R = \frac{5}{1000}- \frac{V_d}{1000}
+\end{equation*}
+
+\newpage
+Graficando las corrientes:
+
+\iffalse
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=130mm]{image/metodoGrafico.png}
+    \caption{Gráfico $I$ vs $V_d$}
+    \label{fig:my_label}
+\end{figure}
+\fi
+
+La recta verde es la corriente del diodo y la roja la de la resistencia.\\
+Ahora para encontrar los valores de corriente y voltaje solo tenemos que ver la intersección de las 2 rectas.\\
+
+Por lo que mirando el gráfico y su intersección tenemos que el $V_d$ es de 1,15V y la corriente en el circuito es de 4mA.\\
+
+Este método es rápido y fácil de aplicar ya que solo hay que graficar las rectas de los componentes y obtener su intersección, por otra parte también puede ser impreciso ya que el análisis de esta intersección puede tener errores por parte de la persona que lo observa.
+
+\subsection{Método de circuitos equivalentes aplicado a diodo}
+%Pablo Etcheberry - Juan Mamani - Sebastian Richiardi%
+El trabajo del método de circuitos equivalentes aplicado a diodos consiste en reemplazar el diodo en el circuito por su circuito equivalente en función de su zona de operación, para el diodo en ON, una fuente de 0,7[V] suponiendo que estamos trabajando con un diodo de Silicio en ON y para el diodo en OFF un circuito abierto. Para aplicar el método utilizaremos el siguiente circuito: \\
+
+\begin{center}
+\begin{circuitikz}[american]
+\draw
+    (5,3) to (0,3) to [V, l=$10$, invert] (0,7) 
+    (0,7) to [diode, v=$D1$] (5,7)
+    (5,3) to [ R, l={$1K\Omega$}](5,7);
+\end{circuitikz}
+\end{center}
+
+Del cual a simple vista podemos notar que (ecuacion 2):
+
+\begin{equation*}
+    I_D = \frac{V_{in} - V_D}{R} = \frac{10-V_D}{1} [mA]
+\end{equation*}
+
+Y sabiendo que el comportamiento de un diodo es (ecuacion 1):
+
+\begin{equation*}
+    I_D = I_0(e^{{\frac{V_d}{V_T}}}-1)
+\end{equation*}
+
+Dividiremos el circuito en 2 casos, estos casos representaran las situaciones del circuito dependiendo de si esta en ON o OFF:\\\\
+
+Caso 1): Diodo en ON\\
+En este caso se reemplaza por una fuente de 0,7 [V]:\\
+\begin{figure}[h!]
+    \centering
+    \begin{circuitikz}[american]
+    \draw
+        (5,3) to (0,3) to [V, l=$10$, invert] (0,7) 
+        (0,7) to [V, l=$0.7V$ ] (5,7)
+        (5,3) to [ R, l={$1K\Omega$}](5,7);
+    \end{circuitikz}
+    \caption{Caso 1: Diodo en estado ON}
+\end{figure}
+
+Como se reemplaza por una fuente de 0.7 [V] podemos acotar lo siguiente:
+
+\begin{equation*}
+    V_R = V_{in} - V_D = 10-0,7 = 9,3 [V]
+\end{equation*}
+
+Y por tanto:
+
+\begin{equation*}
+    I_R = \frac{V_R}{R} = \frac{9,3}{1} = 9,3 [mA]
+\end{equation*}
+\\
+
+Caso 2): Diodo en OFF\\
+En este caso se reemplaza por un circuito abierto:\\
+\begin{figure}[h!]
+    \centering
+    \begin{circuitikz}[american]
+    \draw
+        (5,3) to (0,3) to [V, l=$10$, invert] (0,7) 
+        (0,7) to [nos] (5,7)
+        (5,3) to [ R, l={$1K\Omega$}](5,7);
+    \end{circuitikz}
+    \caption{Caso 2: Diodo en estado Off}
+\end{figure}
+
+
+ Para el caso 2, se tiene que $V_D$ nos da un valor de 10V. Si observamos la ecuación 1, y aplicado bajo esta polarización, el circuito tendria que estar en zona directa, lo que implica que su equivalencia para el diodo debiese ser una fuente de 0.7V, que se contradice con el circuito equivalente propuesto. Por lo tanto, para el circuito original, el caso 2 no es una representación.
+
+
+%End circuitos equivalentes en diodos%
+%Pablo Etcheberry - Juan Mamani - Sebastian Richiardi%
+
+
+\subsection{Análisis circuito con diodo más Resistencia}
+En esta sección analizaremos el siguiente circuito con 2 diodos y 2 resistencias, el objetivo es encontrar la corriente {$I_1$}, {$I_2$} y {$I_{D_2}$}. El análisis de este circuito será ejemplificado con valores numéricos para facilitar el entendimiento del problema
+\\\\
+\begin{center}
+\begin{circuitikz}
+    \draw 
+    (0,1) to [V, l={$20V$}, invert](0,4) 
+   	(2,4) to [R, l={$3,3k\Omega$}, i={$i_{1}$}](5,4)
+   	(2.5,4) to (2.5,3)
+    (2.5,3) to[D, l=$D2$,i={$i_{D_2}$}] ++(0,-1.5)
+    (0,4) to[D, l=$D1$] ++(2,0)
+    (2.5,2) to (2.5,1)
+    (2.5,1) to [R, l={$5,6k\Omega$}, i={$i_{2}$}](0,1)
+    (5,4) to (5,1)
+    (2.5,1) to (5,1);
+    \ctikzset{diodes/scale=0.6}
+\end{circuitikz}
+\end{center}
+
+Se realizará un análisis por método de mallas, por lo tanto, es necesario definir la dirección de las corrientes. 
+Es sabido que los diodos son conductores de corriente en un sólo sentido (de ánodo a cátodo), por lo tanto, la definición de la corriente se hará basandonos en este principio.
+Además, los diodos de este circuito son de silicio, por lo tanto, su voltaje es de aproximadamente 0.7 [V]
+
+
+%%Aquí va la figura del circuito con las corrientes dibujadas
+
+Partimos haciendo un análisis en la malla 2, definiendo así la siguiente ecuación:
+\\\\
+\begin{equation}
+\tcboxmath[colback=red!5!white,colframe=red!40!white]
+{I_1 + I_{D_2} = I_2}
+\end{equation}
+
+Es necesario definir la dirección de la corriente para la malla 1, como se muestra en la siguiente figura:
+
+\begin{center}
+\begin{circuitikz}
+    \draw 
+    (0,1) to [V, l={$20V$}, invert](0,4)
+    (2,4) to (2.5,4)
+   	(2.5,4) to (2.5,3)
+    (2.5,3) to[D, l=$D2$,i={$i_{D_2}$}] ++(0,-1.5)
+    (0,4) to[D, l=$D1$] ++(2,0)
+    (2.5,2) to (2.5,1)
+    (2.5,1) to [R, l={$5,6k\Omega$}, i={$i_{2}$}](0,1);
+    \draw[very thick, red, <-]  (1.6,2.1) arc (-60:240:0.61);
+	\draw (1.3,2.6) node {$I$};
+    \ctikzset{diodes/scale=0.6}
+\end{circuitikz}
+\end{center}
+
+Luego, usando leyes de voltaje de Kirchhoff tenemos:
+
+\begin{equation}
+    -20 + 0,7 + 0,7 + 5,6 \cdot 10^{3}I_2 = 0
+\end{equation}
+
+Despejando y resolviendo la ecuación, obtenemos un valor para la corriente {$I_2$}
+
+\begin{equation}
+    I_2 = \frac{20 - 1,4}{5,6 \cdot 10^{3}}
+\end{equation}
+
+Finalmente, el valor de {$I_2$}:
+
+\begin{equation}
+I_2 = 3,32 \cdot 10^{3} [A]  
+\end{equation}
+
+o bien,
+
+\begin{equation}
+\tcboxmath[colback=blue!5!white,colframe=blue!40!white]
+{I_2 = 3,32 [mA]}   
+\end{equation}
+\\\\
+%%Aquí va otra figura del circuito con una sola corriente 
+
+Continúando con el análisis, es necesario definir la corriente en el circuito, sin considerar el diodo que se encuentra entre la malla 1 y 2, tal como se muestra en la siguiente figura:
+
+\begin{center}
+\begin{circuitikz}
+    \draw 
+    (0,1) to [V, l={$20V$}, invert](0,4) 
+   	(2,4) to [R, l={$3,3k\Omega$}, i={$i_{1}$}](5,4)
+    (0,4) to[D, l=$D1$] ++(2,0)
+    (2.5,1) to [R, l={$5,6k\Omega$}, i={$i_{2}$}](0,1)
+    (5,4) to (5,1)
+    (2.5,1) to (5,1);
+    \draw[very thick, red, <-]  (2.7,2.1) arc (-60:240:0.61);
+	\draw (2.4,2.6) node {$I$};
+    \ctikzset{diodes/scale=0.6}
+\end{circuitikz}
+\end{center}
+
+
+Por leyes de voltaje de Kirchhoff:
+
+\begin{equation}
+    -20 + 0,7 + 3,3 \cdot 10^{3}I_1 + (5,6 \cdot 10^{3})(3,32 \cdot 10^{-3}) = 0
+\end{equation}
+
+Despejando la ecuación, obtenemos un valor para {$I_1$}
+
+\begin{equation}
+    I_1 = \frac{20 - 0,7 - 5,6(3,32)}{3,3 \cdot 10^{-3}}
+\end{equation}
+
+Entonces, 
+
+\begin{equation}
+    I_1 = 214,5 \cdot 10^{-6} [A]
+\end{equation}
+
+o bien,
+
+\begin{equation}
+\tcboxmath[colback=blue!5!white,colframe=blue!40!white]
+{I_1 = 214,5 [\mu A]}
+\end{equation}
+
+Si volvemos a la ecuación (1), despejando y reemplazando los valores obtenidos en (5) y (9), encontramos la corriente ${I_{D_2}}$
+
+\begin{equation}
+    I_{D_2} = I_2 - I_1
+\end{equation}
+
+\begin{equation}
+    I_{D_2} = 3,32 \cdot 10^{-3} - 214,5 \cdot 10^{-6} 
+\end{equation}
+
+Finalmente, el valor de la corriente {$I_{D_2}$} será:
+
+\begin{equation}
+    I_{D_2} = 3,11 \cdot 10^{-3}
+\end{equation}
+
+o bien,
+
+\begin{equation}
+\tcboxmath[colback=blue!5!white,colframe=blue!40!white]
+{I_{D_2} = 3,11 [mA]}
+\end{equation}
+\end{document}
+\subsection{Disciplina estática}
+
+La disciplina estática es una metodología para definir parámetros para los valores de voltaje tanto de componentes de entrada como de salida. Para el uso de compuertas lógicas, es importante el uso de la disciplina estática,  puesto que los componentes usados para la medición y creación de circuitos no son ideales, se deben definir rangos de permitividad para que los valores de las compuertas lógicas puedan tener un valor lógico aceptable. Se deben tener en cuenta 4 rangos: 2 de entrada y 2 de salida:
+
+\begin{itemize}
+    \item VIH : Voltaje alto de entrada, correspondiente al valor lógico 1
+    \item VIL : Voltaje bajo de entrada, correspondiente al valor lógico 0
+    \item VOH: Voltaje alto de entrada, correspondiente al valor lógico 1
+    \item VOL: Voltaje bajo de entrada, correspondiente al valor lógico 0
+\end{itemize}
+
+Estos valores se estiman a partir de los valores del voltaje de la fuente Vcc y el voltaje de Polarización Directa Vf. Además, se debe cumplir las siguientes relaciones:
+
+\begin{itemize}
+    \item VOL < VIL
+    \item VIH < VOH
+\end{itemize}
+
+ El uso de estos rangos nos permiten principalmente evitar 2 factores : valores en la zona prohibida, estos valores viven entre los rangos de entrada alta y baja ([VIH;VIL]), y rangos de salida baja y alta ([VOH;VOL]), estos voltajes no representan ningún valor lógico del cual se pueda obtener en la salida; el segundo factor es evitar lo mayor posible el ruido que se pueda generar en el gráfico de voltaje, haciendo que este rango aumente, para así tener un canal mas limpio a la hora de especificar valores lógicos.
+ 
+A continuación se va a mostrar el siguiente ejemplo. En que el voltaje de corriente continua $V_{cc}$ es 5 [V]. Los parámetros de voltajes están definidas con los siguientes valores:
+
+\begin{itemize}
+    \item $V_{OH}$ = 4 [V]
+    \item $V_{IH}$ = 3.5 [V]
+    \item $V_{IL}$ = 1.5 [V]
+    \item $V_{OL}$ = 1 [V]
+\end{itemize}
+
+En el gráfico de voltaje, se observa que cualquier voltaje que esté en el rango de entrada [3.5,4], van a recibir una señal lógica 1, y en el rango de salida [1,1.5], 0. En ambos rangos, los valores lógicos van a tener ruido, siendo que si el voltaje pertenece a la zona prohibida (un rango de [1.5,3.5]), no van a recibir ningún valor. Pero, si el voltaje pertenece a un valor entre 4 [V] y 5 [V], se obtiene una valor lógico 1, pero casi nada de ruido. Lo mismo pasa si el voltaje está en un valor menor que 1 [V] y 0, pero con un valor lógico 0. Lo cual indica que se puede tener valores lógicos más limpios si los voltajes son mayores que VIH y menores que VOL.\cite{Ward}
+
+\newpage
+
+\iffalse
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{image/grafico_nivelesVoltaje.png}
+    \caption{Gráfico de niveles de entrada y salida de voltaje}
+\end{figure}
+
+\fi
+
+\end{document}
+\subsection{Compuertas lógicas}
+
+Son dispositivos que son capaces de realizar operaciones lógicas, pero de una manera simple, es decir, que a partir de dos booleanos o mas (a excepción de NOT, que se vera mas adelante), se devolverá en uno solo, dependiendo de sus propiedades que se les de.
+A simple vista se puede decir simplemente que se envían pulsos de voltajes para cambiar los estados de apagado a encendido, pero específicamente ¿Como sucede todo esto?.Pues la comunicaciones entre cada puerto (pin) de una tarjeta programable se realizan a trabes de compuertas lógicas.(Al final, un microprocesador utilizado en las placas programables no es mas que un chip  compuesto por millones de compuertas lógicas).\cite{Control_Compuertas_logicas} \\
+En primer lugar, las comunicaciones digitales están basadas en sólo dos estados distintos en los que se pueden analizar como apagado y encendido.generalmente se expresa estos 2 estados matemáticamente utilizando un 0 binario para representar el estado apagado y el 1 binario para representar estado encendido. En un circuito real, usualmente se utiliza un voltaje \textit{low} designado como el estado apagado y un voltaje \textit{high} designado como el estado encendido. \\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{image/logic_gate1 Pull-up_Pull_down.png}
+    \caption{Un esquema que explica el estado low - high con y sin la resistencia pull-up}
+\end{figure}
+Teniendo mas presente el tema de las comunicaciones , podemos abarcar el tema primordial; ¿Que es una compuerta lógica?. 
+Las compuertas lógicas son los bloques funcionales de las computadoras mas complejas y que pueden construirse mediante el uso de interruptores, relevadores, bulbos, transistores y diodos.\\
+La tarea que realiza una compuerta lógica se llama \textit{Función lógica} y esta puede implantarse mediante hardware (compuertas lógicas) o a través de dispositivos de programación, como los microcontroladores y las computadoras.\cite{Tokheim} \\
+Ahora bien, existen diversas compuertas logicas de las cuales se explicaran las basicas; \textit{AND, OR, NOT, XOR,  NAND, NOR y XNOR}.\cite{Compuertas_logicas}.
+\newpage
+\begin{itemize}
+    \item AND:
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_AND.png}
+            \caption{Compuerta AND con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta AND cumple la función de la multiplicación lógica ( Conjunción Y), es decir si alguna de sus entradas tiene valor de cero la salida es cero. Otra definición es que la salida de la compuerta AND es igual al menor valor que se presente en sus entradas.
+    \item OR:
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_OR.png}
+            \caption{Compuerta OR con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta OR cumple con la función de la suma lógica (Disyunción O), es decir si alguna de sus entradas esta en uno la salida es uno. Otra definición es que la salida de la compuerta OR es igual al mayor valor que se presente en sus entradas.
+    \item NOT:
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_NOT.png}
+            \caption{Compuerta NOT con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta NOT cumple la función de la negación lógica, en otras palabras la salida es el complemento A1 de la entrada, es decir si la entrada es 0 la salida es 1 y si la entrada es 1 la salida es 0.
+    \item XOR
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_XOR.png}
+            \caption{Compuerta XOR con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta XOR cumple la función de un comparador de igualdad de 2 bits (Disyunción O exclusiva), es decir si sus entradas son iguales la salida es cero y si sus entradas son diferentes la salida toma el valor de uno.
+    \item NAND
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_NAND.png}
+            \caption{Compuerta NAND con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta NAND es la compuerta AND con la salida negada.
+    \item NOR
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_NOR.png}
+            \caption{Compuerta NOR con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta NOR es la compuerta OR con la salida negada.
+    \item XNOR
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width = 0.5\textwidth]{image/Compuerta_XNOR.png}
+            \caption{Compuerta XNOR con respectiva tabla de verdad. }
+        \end{figure}
+        \\
+        La compuerta XNOR es la compuerta XOR con la salida negada.
+\end{itemize}
+
+
+\section{Transistores}
+
+\subsection{El MOSFET}
+
+El MOSFET es un componente que contiene 3 terminales y pertenece a una clase de dispositivos llamados transistores. 
+
+La primera terminal es de control, se denota con la letra $G$, que viene de su nombre $Gate$, es donde se ingresa el voltaje que es capaz de cambiar el estado del transistor. 
+
+La terminal de entrada se denota con la letra $D$, que viene de $Drain$ y la de salida, se denota con $S$, que viene de $Source$.
+
+El MOSFET, cuando está en estado ON, que depende del voltaje de entrada, es capaz de conectar las terminales que permiten el paso de corriente desde $D$ a $S$.
+
+\vspace{5mm}
+
+\begin{center}
+\begin{circuitikz}[american,]
+    \draw (0,0) node[nmos](Q1){};
+    \draw (Q1.S) to (0,-1);
+    \draw (Q1.D) to (0,1);
+    \draw (Q1.G) to (-1.5,0);
+    \node at (-2,0){\big{G}};
+    \node at (0,1.5){\big{D}};
+    \node at (0,-1.5){\big{S}};
+    \draw (0,1) to [short, -, i=$I_{DS}$](0,0.5);
+    \draw (-1.5,0) to [short, -, i=$I_{G}$](-1,0);
+\end{circuitikz}
+\end{center}
+
+\vspace{5mm}
+
+
+Para este elemento existe el Modelo de Switch de MOSFET o Modelo S para abreviarlo, en el que se representa el estado del transistor a través de un switch y no se considera la caída de voltaje que se produce entre $D$ y $S$.
+
+Si la entrada supera el voltaje $threshold \hspace{2mm} V_T$ (que es el voltaje necesario para cambiar de estado), el transistor queda en ON, por lo que se puede simbolizar como un switch cerrado, donde $V_{DS} = 0$
+
+\vspace{5mm}
+
+\begin{center}
+\begin{circuitikz}[american,]
+    \draw (0,3) to[short,o-o] (0,0) to[short,o-o](0,1) to[short,o-o](0,2);
+    \draw (-1.5,1.5) to[short,o-o] (-0.5,1.5);
+    \node at (-2,1.5){\big{G}};
+    \node at (0,3.5){\big{D}};
+    \node at (0,-0.5){\big{S}};
+    \draw (0,2.5) to [short, -, i=$I_{DS}$](0,2.3);
+    \draw (-1,1.5) to [short, -, i=$I_{G}$](-0.8,1.5);
+\end{circuitikz}
+\end{center}
+
+\vspace{5mm}
+
+Si el voltaje no es lo suficientemente grande para superar el $V_T$, este permanece en OFF, por lo que se simboliza como un switch abierto, donde $I_{DS} = 0 $
+
+\vspace{5mm}
+
+\begin{center}
+\begin{circuitikz}[american,]
+    \draw (0,3) to[nos,o-o] (0,0) to[short,o-o](0,1.2);
+    \draw (-1.5,1.5) to[short,o-o] (-0.5,1.5);
+    \node at (-2,1.5){\big{G}};
+    \node at (0,3.5){\big{D}};
+    \node at (0,-0.5){\big{S}};
+    \draw (0,2.5) to [short, -, i=$I_{DS}$](0,2);
+    \draw (-1,1.5) to [short, -, i=$I_{G}$](-0.8,1.5);
+\end{circuitikz}
+\end{center}
+
+\vspace{5mm}
+
+Un modelo más fiel al comportamiento del MOSFET es el Modelo Switch-Resistencia o SR para abreviarlo, en el cual se considera la caída de tensión provocada por el transistor. 
+
+Utilizando el mismo razonamiento sobre el estado del transistor, dependiendo del voltaje de entrada del modelo S, se tiene que si el MOSFET está en ON, en vez de representarse como un switch, este se va a simbolizar como una resistencia $R_{ON}$.
+
+\vspace{5mm}
+
+\begin{center}
+\begin{circuitikz}[american,bigR/.style={R, resistors/scale=0.5}]
+    \draw (0,3) to [bigR,l={$R_{ON}$}](0,0);
+    \draw (0,3) to[short,o-] (0,3) ;
+    \draw (0,0) to[short,-o] (0,0) ;
+    \draw (-1.5,1.5) to[short,o-] (-0.5,1.5);
+    \node at (-2,1.5){\big{G}};
+    \node at (0,3.5){\big{D}};
+    \node at (0,-0.5){\big{S}};
+    \draw (0,2.5) to [short, -, i=$I_{DS}$](0,2.3);
+    \draw (-1,1.5) to [short, -, i=$I_{G}$](-0.8,1.5);
+\end{circuitikz}
+\end{center}
+
+\vspace{5mm}
+
+Si el MOSFET se encuentra en estado OFF, al igual que en el modelo anterior, este se representa como un circuito abierto, donde $I_{DS} = 0$.
+
+\vspace{5mm}
+
+\begin{center}
+\begin{circuitikz}[american,]
+    \draw (0,3) to[short,o-] (0,2) ;
+    \draw (0,1) to[short,-o] (0,0) ;
+    \draw (-1.5,1.5) to[short,o-] (-0.5,1.5);
+    \node at (-2,1.5){\big{G}};
+    \node at (0,3.5){\big{D}};
+    \node at (0,-0.5){\big{S}};
+    \draw (0,2.5) to [short, -, i=$I_{DS}$](0,2.3);
+    \draw (-1,1.5) to [short, -, i=$I_{G}$](-0.8,1.5);
+\end{circuitikz}
+\end{center}
+
+\vspace{5mm}
+
+
+
+Análisis inversor con MOSFET y rangos digitales 
+(circuitos equivalentes, función de transferencia 
+y disciplina estática)
+
+% Gabriel Zapata, Sebastian Ossess, Ignacio Jobse
+\subsubsection{Análisis inversor con MOSFET y rangos digitales}\\
+\begin{center}
+\begin{figure}
+    \label{Vf} 
+    \includegraphics[width=0.5\textwidth]{image/mosfet_circuito.PNG}
+    \caption{Circuito inverso con transistor MOSFET con fuente de voltaje con pulsos de 1 segundo de intervalos de 2 segundos y tensión 5v en Vg y Vcc fijo 5V.}
+    \label{fig:CM}
+\end{figure}
+\end{center}
+\begin{center}
+\begin{figure}
+    \label{Vf} 
+    \includegraphics[width=0.5\textwidth]{image/mosfet_gráfico.PNG}
+    \caption{Gráfico inverso con transistor MOSFET con fuente de voltaje con pulsos de 1 segundo de intervalos de 2 segundos y tensión 5v en Vg y Vcc fijo 5V.}
+    \label{fig:GM}
+\end{figure}
+\end{center}
+\begin{center}
+\textbf{Disciplina Estática}\\
+\end{center}
+{La función de transferencia  de un transistor MOSFET en funcionamiento deja zonas inciertas para los valores binarios. En las cuales, se debe redefinir los valores de tensión para cuando esta  en un  estado u otro. Este proceso se conoce como disciplina estatica, que define los valores VIL Y VIH como umbrales de entrada (voltaje de entrada 0 y voltaje de entrada alto respectivamente). Análogamente se define VOL y VOH como límites  de salida (voltaje de salida 0 y voltaje de salida 1 respectivamente).}
+
+\underline{Ejemplo}\\
+{Supongamos que algunos de los sistemas de disco se adhieren a una disciplina estática con los siguientes umbrales de tensión:}\\
+
+\begin{center}
+{VOH = 4 [V], VOL = 1 [V], VIH = 3,5 [V] y VIL = 1,5 [V].}
+\end{center}\\
+
+{Para operar bajo esta disciplina estática, sabemos que nuestros
+inversores deben operar de la siguiente manera:}\\
+
+\begin{itemize}
+\item Cuando la salida de un 1 lógico, el voltaje de sus salidas
+producen debe ser al menos VOH = 4 [V]. Dado que nuestros inversores producen
+una salida de 5 [V] para un 1 lógico, que se cumpla esta condición.
+\item Cuando se emite un 0 lógico, el voltaje de sus salidas producen
+debe ser no mayor que VOL = 1 [V]. Dado que nuestros inversores producen
+una salida de 0-V para un 0 lógico, que se cumpla esta condición
+fácilmente.
+\item En sus entradas los inversores deben reconocer tensiones superiores
+a VIH = 3,5 [V] como un 1 lógico. Ya que nuestros inversores reconocen
+tensiones superiores a 1 [V] como un 1 lógico, que se cumpla esta
+condición.
+\item Por último, en sus entradas, los inversores deben reconocer
+tensiones de menos de VIL = 1,5 [V] como un 0 lógico si son para
+satisfacer disciplina estática de Disco. Desafortunadamente, nuestros
+inversores pueden reconocer tensiones sólo por debajo de 1 [V] como
+un 0, y por lo tanto no satisfacer esta condición.
+\end{itemize}\\
+
+
+{Por lo tanto, nuestros inversores no se pueden utilizar en los sistemas
+de disco.}
+
+{Cuando se utiliza el modelo de S para el MOSFET, los umbrales de entrada
+y salida de voltaje para el NAND y otros circuitos digitales vienen a ser
+idénticos a los del inversor. Por lo tanto, los resultados de análisis
+estático para estos circuitos son idénticos a aquellos para
+el inversor. Por ejemplo, como el inversor, el circuito NAND satisface una
+disciplina estática con los siguientes umbrales de tensión:
+VOH = 4,5 [V], VOL = 0,5 [V], VIH = 4 [V], y VIL = 0,9 [V]. Del mismo modo, el NAND
+no es capaz de satisfacer la disciplina estática con estos umbrales
+de tensión: VOH = 4 [V], VOL = 1 [V], VIH = 3,5 [V] y VIL = 1,5 [V].}
+\begin{table}[ht]
+\begin{center}
+\caption{Tabla de voltajes para cada diodo}
+\label{table1} 
+\begin{tabular}{ccc} 
+\hline
+{Estado del MOSFET}&{$V_{g}$[V]}  & {$Voltaje_{out}$[V]}\\
+\hline
+Abierta &  0 & 5 \\
+ cerrado &  5 & 0.9 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\newpage
+
+\subsection{BJT: Transistor de unión bipolar}
+\begin{figure}[!h]
+         \centering
+         \resizebox{0.1\textwidth}{!}{
+         \begin{circuitikz}[american]
+        \draw
+         (0,0) node[npn] (bjt) {}
+         
+          (bjt.base) node[anchor=south] {B}
+          (bjt.collector) node[anchor=east] {C}
+          (bjt.emitter) node[anchor=east] {E}
+          ;
+        \end{circuitikz}
+        }
+        \caption{Transisor BJT npn}
+        \label{fig:BJTnpn}
+         \end{figure}
+         
+         \begin{figure}[!h]
+         \centering
+         \resizebox{0.1\textwidth}{!}{
+         \begin{circuitikz}[american]
+        \draw
+         (0,0) node[pnp] (bjt) {}
+         
+          (bjt.base) node[anchor=south] {B}
+          (bjt.collector) node[anchor=east] {C}
+          (bjt.emitter) node[anchor=east] {E}
+          ;
+        \end{circuitikz}
+        }
+        \caption{Transisor BJT pnp}
+        \label{fig:BJTpnp}
+         \end{figure}
+Los BJT (del inglés Bipolar-junction transistor) son semiconductores que cuentan con 3 zonas que constituyen dos uniones de tipo np. Tienen tres terminales: B (base/base), E(emisor/emitter) y C (colector/collector).
+
+El transistor BJT puede ser entendido como la unión de dos diodos, por lo que debemos analizar qué debe cumplirse para saber en qué estado está la conducción de cada parte de este. 
+
+Existen dos tipos principales de estos transistores: npn y pnp. Estos se simbolizan según las figuras \ref{fig:BJTnpn} y \ref{fig:BJTpnp}, donde la flecha indica el flujo de la corriente. Notamos que, en el caso del transistor npn, la corriente fluye desde C a E y en el pnp desde E a C. 
+
+
+         
+Los transistores BJT tienen 3 zonas de operación principales:
+\begin{enumerate}
+    \item Corte (cut-off): No pasa corriente por el transistor. Actúa como interruptor abierto.
+    \item Saturación: Pasa corriente por el transistor. Actúa como interruptor cerrado.
+    \item Activa: La corriente que pasa por el colector es constante y depende de la corriente en la base. Por tanto, actúa como fuente de corriente.
+\end{enumerate}
+
+
+         
+Para transistores de tipo NPN, tendremos que para cada zona:
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+Zona de operación & Condición & Característica         \\\hline
+Corte             &  $V_{BE}<V_{BE_{sat}}\sim0.6V$       &  $I_B=I_C=I_E=0$ \\
+(switch abierto) & &\\\hline
+Saturación        &  $V_{BE}>V_{BE_{sat}}\sim0.6V$   &   $I_C= I_{C_{sat}}$\\
+  (switch cerrado)                &  $V_{CB}<-0.4V$        &   \\
+                  &  $I_B>\frac{I_C}{\beta} \sim \frac{I_{C_{sat}}}{10}$        &   $V_{CE}<V_{CE_{sat}}$\\ 
+                  &          &   \\ \hline
+Activa            &   $V_{BE}>V_{BE_{sat}}\sim0.6V$ & $I_C= constante$\\
+  (fuente de corriente)                &  $V_{CB}>-0.4V$        &  \\
+
+
+\end{tabular}
+\end{table}
+
+\newpage
+Los transistores tipo PNP tienen las mismas características, pero invierten los valores de las condiciones, es decir:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+Zona de operación & Condición & Característica         \\\hline
+Corte             &  $V_{BE}>V_{BE_{sat}}\sim-0.6V$       &  $I_B=I_C=I_E=0$ \\
+(switch abierto) & &\\\hline
+Saturación        &  $V_{BE}<V_{BE_{sat}}\sim-0.6V$   &   $I_C= I_{C_{sat}}$\\
+  (switch cerrado)                &  $V_{CB}>0.4V$        &   \\
+                  &  $I_B>\frac{I_C}{\beta} \sim \frac{I_{C_{sat}}}{10}$        &   $V_{CE}>V_{CE_{sat}}$\\ 
+                  &          &   \\ \hline
+Activa            &    $V_{BE}<V_{BE_{sat}}\sim-0.6V$  & $I_C= constante$\\
+  (fuente de corriente)                &  $V_{CB}<0.4V$        &  \\
+
+
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Análisis de BJT como switch}
+Para lograr el funcionamiento de switch de un BJT, debemos usar el modo de operación de corte para el modo OFF y el modo de saturación para el modo ON en el circuito de la figura  \ref{fig:switchBJT}. Notamos que si $V_{IN}=0V$, el circuito está en corte ya que $V_{BE}=0$. El caso en que conduce (switch en ON) utilizaremos la zona de operación de saturación, en que el voltaje $V_{CE}$ es muy bajo, por lo que se comportará parecido a un switch cerrado. Sin embargo, debemos asegurarnos de estar trabajando en saturación y no en la zona activa.
+
+\begin{figure}[!h]
+         \centering
+         \resizebox{0.4\textwidth}{!}{
+         \begin{circuitikz}[american]
+        \draw
+         (0,0) node[npn] (bjt) {}
+         (bjt.B) to [R,l=$R_{IN}$]++(-2,0) node[anchor=east] {$V_{In}$}
+         (bjt.C)  to [R,l=$R_L$] ++(0,2)  ++(-0.5,0) --  node[anchor=south] {$V_s$} ++(1,0) 
+         (bjt.E)  to   node[ground]{} ++(0,-0.2)
+         
+          (bjt.base) node[anchor=south] {B}
+          (bjt.collector) node[anchor=east] {C}
+          (bjt.emitter) node[anchor=east] {E}
+          ;
+        \end{circuitikz}
+        }
+        \caption{Circuito switch con transistor BJT npn}
+        \label{fig:switchBJT}
+         \end{figure}
+
+
+Para establecer si el transistor se encuentra en saturación, debemos realizar los siguientes pasos:
+
+\begin{enumerate}
+    \item Asumir que se cumple el estado de saturación. Por lo tanto, se cumplen todas las condiciones y características relativas al transistor en análisis.
+    \item Establecer la corriente de saturación $I_{C_{sat}}$ a la que deseamos trabajar. 
+    \item Calcular las corrientes y voltajes del BJT. Si no hay contradicción, estamos en saturación.
+\end{enumerate}
+
+\begin{example}[Determinar si BJT está en zona de saturación]
+
+
+Consideraremos el circuito de la figura \ref{fig:switchBJT}, con $R_L=22\Ohm$,$R_{IN}=50\Ohm$, $V_{In}=5V$, $V_S=12V$. Realizaremos cada uno de los pasos señalados anteriormente con el transistor 2N222A:
+
+\begin{enumerate}
+    \item Asumir que se cumple el estado de saturación\\
+    Entonces, todas las condiciones y características de saturación son ciertas.
+    
+    \item Establecer la corriente de saturación $I_{C_{sat}}$ a la que deseamos trabajar. \\
+    En este caso, usaremos 0.5A.\\
+   
+    Para la corriente de operación definida, encontramos que el máximo valor en saturación $V_{CE_{sat}}$ se encuentra en el datasheet del transistor y es 1.6V. 
+        Por lo tanto, $V_CE<V_{CE_{sat}}=1.6V$ 
+        
+    \item Calcular las corrientes y voltajes.\\
+    Podemos establecer qué ocurre analizando cada parte del BJT
+    \begin{itemize}
+        \item Para el emisor, notamos que $V_E=0V$. Por lo tanto, tendremos que las candiciones de $V_{BE}$ y $V_{CE}$ quedan como:
+        \begin{itemize}
+            \item $V_B>0.6V$
+            \item $V_C=1.6V$
+        \end{itemize}
+        \item Para el colector, se definió la corriente $I_{C_{sat}}=0.5A$. Además, notamos que esta corriente es la misma que pasa por $R_L$, con lo que se debe cumplir que
+        
+        \begin{equation}
+            i_{R_L}=\frac{V_{R_L}}{R_L}=\frac{V_S-V_C}{R_L}=\frac{12V-V_C}{10\Omega}
+        \end{equation}
+        
+        Igualamos a 0.5A y obtenemos que $V_C=1V$. Por lo tanto, se cumple la caractística respecto al voltaje de saturación.
+        
+        \item Para la base, tendremos que la corriente está dada por la corriente de $R_{IN}$, que cumple con:
+        
+        \begin{equation*}
+            i_B=i_{R_{IN}}=\frac{V_{in}-V_B}{R_IN}=\frac{3.3V-V_B}{1k\Omega}
+        \end{equation*}
+        
+        Además, como estamos en saturación, la corriente $i_B$ debe ser mayor a $I_{C_{sat}}/10=0.5A/10=50mA$. Por lo tanto, 
+        
+        \begin{equation*}
+            i_B=\frac{5V-V_B}{50\Omega}>50mA
+        \end{equation*}
+        Podemos asumir que el transistor se encuentra justo en ese punto de operación, con lo que obtenemos que $V_B=2.5V$. Con esto, cumplimos la condición de $V_{BE}>0.6V$.\\
+        Finalmente, sólo nos falta comprobar $V_{CB}<-0.4V$. Reemplazamos y obtenemos: $1V-2.5V=-1.5V<-0.4V$. Por lo que no se encuentra ninguna contradicción y concluimos que estamos en región de saturación.
+        
+    
+    \end{itemize}
+\end{enumerate}
+    
+
+\end{example}
+
+\newpage
+% Inicio José Acosta - Nicolas Vergara - Francisco Cardenas %
+\begin{problemset}
+\item Ejercicios propuestos con \textbf{Diodos}
+{\renewcommand{\problemname}{Ejercicio}
+\renewenvironment{problem}[1][]{
+  \refstepcounter{prob}
+  \vspace{\baselineskip}
+  \par\noindent\textbf{\color{structurecolor}{\problemname} \theprob #1 }\rmfamily}{
+  \par\ignorespacesafterend}
+\renewenvironment{solution}{\par\noindent\textbf{\color{structurecolor}\solutionname} \citshape}{\par}
+
+Considerar $V_D$ (diferencia de tensión en los extremos del diodo) como 0,6 V
+\begin{problem}\label{eq:p1}
+Calcular $V_R$ e $I_R$ para el siguiente circuito,
+    \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=0.8,american]
+            \draw
+	       (1,3) to (0,3) to [V, l={$10 V$}, invert] 
+	       (0,7) to [D, l={$V_D$},](4,7) to (5,7)
+	       (5,3) to [R,l={$5 k\Omega$}](5,7)
+	       (0,3) to (5,3);
+	       \end{tikzpicture}
+	 \end{figure}
+\end{problem}
+\begin{solution}
+	   Puesto que $10V > V_D$, el diodo se considera con una caida de tensión igual a $V_D$. Luego, para calcular $V_R$ se igualan todos los voltajes a cero tal que:
+	   \[-10V+V_D+V_R=0\]
+	   De este modo se tiene que $V_R = 9.4V$.\\
+	   Para obtener $I_R$ se puede utilizar la siguiente formula:
+	   \[ I_R = (10V - V_D)/R \]
+	   Obteniendo que $I_R = 1.88 [mA]$.
+\end{solution}
+\begin{problem}
+    Calcular los valores de corriente y voltaje del siguiente circuito.
+    \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=0.8,american]
+            \draw
+	       (1,3) to (0,3) to [V, l={$10 V$}, invert] 
+	       (0,7) to [D, l={$V_{D_1}$}](2.5,7) to [D, l={$V_{D_2}$}] (5,7)
+	       (5,3) to [R,l={$5 k\Omega$}](5,7)
+	       (0,3) to (5,3);
+	       \end{tikzpicture}
+	 \end{figure}
+\end{problem}
+\begin{solution}
+    Por KVL,
+    \begin{align*}
+        0 &= -10[V] + V_{D_1} + V_{D_2} + V_R\\
+        \intertext{considerando que ambos diodos tiene un voltaje $V_D$,}
+        V_R &= 10[V] - 1.2[V]\\
+        &= 8.8\ [V]
+    \end{align*}
+    Luego, por ley de ohm,
+    \begin{align*}
+        I_R &= \frac{8.8[V]}{5[k\Omega]} = 1.76\ [mA]
+    \end{align*}
+    Cabe destacar que, al momento de colocar diodos en serie cada uno tiene una caida de voltaje y es posible que ,llegados a cierto punto, el voltaje no sea suficiente para que otro diodo conectado conduzca la corriente.
+\end{solution}
+\begin{problem}
+        Dado el siguiente circuito, calcular $V_R$ e $I_R$:
+        \begin{figure}[ht]
+        \centering
+            \begin{tikzpicture}[scale=0.8,american]
+            \draw
+	        (0,3) to (0,3) to [R,l={$7 k\Omega$}](0,8.5)
+        	(1,9) to [D, l={$V_D$},](4,9)
+        	(1,7.5) to [D, l={$V_D$}, invert](4,7.5)
+        	(1,9) to (1,7.5)
+        	(4,9) to (4,7.5)
+        	(4,8.5) to (5,8.5)
+        	(1,8.5) to (0,8.5)
+	        (5,3) to [V, l={$8 V$},](5,8.5)
+	        (0,3) to (5,3);
+	        \end{tikzpicture}
+	   \end{figure}
+\end{problem}
+\begin{solution}
+        Este ejercicio es muy similar al ejercicio \ref{eq:p1}, a diferencia de la presencia de un diodo en en sentido contrario a la corriente (el diodo de abajo). Cuando esto ocurre, se dice que el diodo esta en reverse bias y se considera como un circuito abierto, siempre cuando no se sobrepase el voltaje de ruptura. Por tanto, solo queda el otro diodo en serie al resto del circuito.\\
+        Así, siguiendo el mismo procedimiento que en el ejercicio anterior, para obtener $V_R$ se igualan los voltajes a 0:
+        \[-8V+V_D+V_R=0\]
+        \[V_R=7.4V\]
+        Para obtener $I_R$ se puede utilizar la siguiente formula:
+        \[ I_R = (8V - V_D)/R \]
+        Se tiene que $I_R=1.06[mA]$.
+\end{solution}
+\begin{problem}
+        Calcular $I_1$, $I_2$ e $I_{D2}$
+        \begin{figure}[ht]
+        \centering
+            \begin{tikzpicture}[scale=0.8,american]
+            \draw
+	        (1,3) to (0,3) to [V, l={$5 V$}, invert] 
+        	(0,7) to [D, l={$V_{D1}$},](4,7) to (5,7)
+	        (5,3) to [D, l={$V_{D2}$},invert](5,7)
+	        (0,3) to [R,l={$R_2=5,6 k\Omega$}](5,3)
+	        (5,3) to (10,3)
+	        (5,7) to (10,7)
+	        (10,3) to [R,l={$R_1=3,3 k\Omega$}](10,6) to (10,7);
+	        \end{tikzpicture}
+	   \end{figure}
+\end{problem}
+\begin{solution}
+Notar que el voltaje en cada trazo del circuito es constante, por lo que se cumple lo siguiente,
+
+
+\begin{equation*}
+    {I_1} = \frac{V_{D2}}{R_1} = \frac{0,7V}{3,3K \Omega}= 0,2121 mA
+\end{equation*}
+
+Luego, el voltaje de $R_2$ se puede expresar como la caida de voltaje $V_2 = 5V - V_{D1} - V_{D2} = 3.6V$ (los diodos de Silicio, implican un voltaje de $0.7V$).\\
+Finalmente podemos determinar $I_{D2}$, de la siguiente forma:
+\begin{equation*}
+    {I_{D2}} = {I_2} - {I_1} = \frac{V_2}{R_2} - I_1 = 0,6428 mA - 0,2121 mA = 0,4307 mA. 
+\end{equation*}
+\end{solution}
+\begin{problem}
+    Calcular $I_1$, $I_{D1}$ e $I_{D2}$
+    \begin{figure}[ht]
+        \centering
+            \begin{tikzpicture}[scale=0.8,american]
+            \draw
+	        (1,3) to (0,3) to [V, l={$5 V$}, invert] 
+        	(0,7) to  [R,l={$R_1=0,33 k\Omega$}](4,7) to (5,7)
+	        (5,3) to [D, l={$V_{D1}$},invert](5,7)
+	        (0,3) to (5,3)
+	        (5,3) to (10,3)
+	        (5,7) to (10,7)
+	        (10,4) to [D, l={$V_{D2}$},invert](10,6) to (10,7)
+	        (10,3) to (10,4);
+	        \end{tikzpicture}
+	   \end{figure}
+\end{problem}
+\begin{solution}
+Notar que $D_1$ y $D_2$ son de Silicio, por ende, es su voltaje es de $0,7V$. Luego, se determinar $I_1$ por
+
+\begin{equation*}
+    {I_1} = \frac{V_{R1}}{R} = \frac{10V - 0,7V}{0,33 k \Omega} = 28,18mA.
+\end{equation*}
+
+Finalmente, al estar en paralelo y asumiendo que ambos son idénticos, $I_{D1} = I_{D2}$ obteniendo,
+
+\begin{equation*}
+    {I_{D1}} = {I_{D2}} = \frac{I_1}{2} = \frac{28,18 mA}{2} = 14,09 mA.
+\end{equation*}
+\end{solution}
+}
+% Fin José Acosta - Nicolas Vergara - Francisco Cardenas %
+
+
+%%%%%% INICIO  DIEGO DE LA SOTTA M y GIOVANNI CAMILO G %%%%%%
+\\ \\
+Ejercicios propuestos con MOSFET\\ 
+
+Como bien aprendimos MOSFET significa transistor de efecto de campo metal-óxido semiconductor. En palabras simples es un transistor y este regula las salidas de voltaje a partir de tensiones de entradas. Ante esto veremos ejercicios con MOSFET, es decir, con transistores.\\ \\
+Ejercicio1: \\{Diseñe circuito de la siguiente figura obteniendo Id de 0,8[mA]. Encontrar R y voltaje cd para Vd. Obtenga transistor con Vt = 2[v], MnCox = 40[µA], L = 25[µm] y w = 250[µm] con λ = 0.}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{image/1.png}
+    \caption{Resolución ejercicio propuesto 1 parte 1/2}
+    \label{fig:EjProp1.1}
+\end{figure}
+{Primero asiganmos las variables pertinentes del circuito, para luego comprobar si esto pertenece a un estado de corte, óhmico o de saturación. Al resolver obtenemos que (Vd - Vs) es mayor que (Vg- Vs- Vt) , por lo que, el circuito está en estado de saturación. Al tener este estado podemos ocupar la fórmula de Id. Al reemplazar los valores iniciales obtenemos un resultado de Vgs1=4[v] y Vgs2=0[v], y debido a que solo Vgs1 es mayor a Vt este es el valor del transistor. Luego Vgs=Vg debido a que Vs=0 por estar conectado a tierra teniendo así Vg = 4[v].}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{image/2.png}
+    \caption{Resolución ejercicio propuesto 1 parte 2/2}
+    \label{fig:EjProp1.2}
+\end{figure}
+{Para finalizar el ejercicio ocupamos divisor de voltaje para obtener una fórmula para poder calcular la resistencia, obteniendo un valor de 7,5[kΩ] en la resistencia}\\ \\
+
+Ejercicio2: \\ {Calcular Vgs, Vds y Id, si tenemos R1 = R2 = 6[kΩ], R3 = 3[kΩ], V1 = 12[v], V2 = 3[v], k = 0,7[mA/v²] y Vt = 2,5[v]}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{image/3.png}
+    \caption{Resolución ejercicio propuesto 2 parte 1/2}
+    \label{fig:EjProp2.1}
+\end{figure}
+{En este ejercicio ocuparemos el método de mallas de Kirchhoff para poder resolverlo. Para calcular el voltaje en la resistencia 2(Vr2) usamos un divisor de corriente, luego sacamos el valor de Vgs(3[v]). Al ser Vgs > Vt (3[v] > 2,5[v]) el circuito está en un estado de saturación y ocuparemos la fórmula que se muestra al final de la parte 1/2 para calcular Id.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{image/4.png}
+    \caption{Resolución ejercicio propuesto 2 parte 2/2}
+    \label{fig:EjProp2.2}
+\end{figure}
+{Para Vds usamos la ley de malla de Kirchhoff y aplicamos los resultados obtenidos anteriormente para así obtener un valor de 8,409375[v] en Vds. Luego de haber calculado todo lo pedido faltaría comprobar el estado de saturación. Para esto necesitaremos cumplir con: \\ \\
+(1) Vgs > Vt \\
+(2) Vds > Vgs - Vt\\ \\
+y al comprobar estas dos inecuaciones podemos decir con certeza que el circuito se encuentra en estado de saturación.}
+
+%%%%%% FIN  DIEGO DE LA SOTTA y GIOVANNI CAMILO G %%%%%%
+
+\item Capítulo 1 Electrónica Digital
+\begin{enumerate}
+    \item Ejercicio 1.2
+    \item Ejercicio 1.3 Además, determine los valores de la disciplina estática(VIL, VIH, VOL, VOH) según los límites señalados en el enunciado.
+\end{enumerate}
+
+\item Capítulo 4 Foundations of Analog and Digital Electronic Circuits
+\begin{enumerate}
+    \item Problem 4.2
+    \item Problem 4.6
+\end{enumerate}
+
+
+\item Capítulo 5 Foundations of Analog and Digital Electronic Circuits
+\begin{enumerate}
+    \item Exercise 5.8
+    \item Exercise 5.10
+    \item Exercise 5.8
+    \item Problem 5.2
+    \item Problem 5.12
+    \item Problem 5.13
+\end{enumerate}
+
+\item Capítulo 6 Foundations of Analog and Digital Electronic Circuits
+\begin{enumerate}
+    \item Exercise 6.4
+    \item Exercise 6.6
+    \item Problem 6.2
+    \item Problem 6.3
+    \item Problem 6.8
+\end{enumerate}
+
+
+
+\item Capítulo 2 Electrónica Digital
+\begin{enumerate}
+    \item Ejercicio 2.3.1 (Resuelto)
+    \item Ejercicio 2.1
+    \item Ejercicio 2.2
+    \item Ejercicio 2.5
+\end{enumerate}
+
+
+\end{problemset}
+\appendix
+\input{0AApendices1}
+
+
+\chapter{Partes relevantes de un datasheet}
+
+Una hoja de datos o en ingles datasheet es el manual de instrucciones de componentes electrónicos de un dispositivo. Usan un lenguaje técnico de alto nivel que los puede hacer difíciles de leer para alguien que no esté relacionado con la ingeniería, sin embargo, son el mejor lugar para encontrar los detalles necesarios para diseñar o arreglar cualquier tipo de circuito.
+\\
+El contenido de los datasheets depende estrictamente del tipo de componente, ya que no tendrán las mismas especificaciones un conector simple a diferencia de por ejemplo un procesador.
+
+\subsection{Resumen}
+La primera página de un datasheet será normalmente un resumen general de las funciones del componente y sus características. Puede llegar a mostrar los tipos de encapsulado, una descripción general, las funciones de cada pin o algún diagrama que explique el funcionamiento.
+\begin{figure}[!h]
+\includegraphics[scale=0.6]{image/datasheet1.png}
+\centering
+\caption{Página resumen de transistores modelo TIP}
+\end{figure}
+\subsection{Rango de operación}
+Esta página incluye los márgenes de operación del componente donde se suelen estar los rangos para ocupar el componente de manera segura, e incluso a veces también aparecen las características térmicas y eléctricas. Es importante fijarse en no exceder nunca los voltajes, por ejemplo, el máximo voltaje en inversa de un diodo, ya que podría dañarse. De la misma forma si el voltaje es muy bajo podría no funcionar correctamente el componente. Son destacables los valores MIN, NOM y MAX, que nos pueden dar más información acerca del diseño del dispositivo.
+\begin{figure}[!h]
+\includegraphics[scale=0.7]{image/datasheet2.png}
+\centering
+\caption{Rangos de operaciones y características de transistores modelo TIP}
+\end{figure}
+\subsection{Conexiones}
+Al pasar del esquema electrónico a realizar el circuito físicamente pueden surgir problemas como confundirse con alguna conexión si que no se revisa bien el datasheet. Esta sección muestra el pinout del componente que se repite en componentes similares con un mismo encapsulado. Para circuitos digitales pueden incluir información si es que el pin este activo bajo, por lo que habría que conectarlo a tierra.
+\begin{figure}[!h]
+\includegraphics[scale=0.6]{image/datasheet3.png}
+\centering
+\caption{Conexiones de un circuito integrado BD9A300MUV}
+\end{figure}
+\subsection{Gráficos}
+Podemos saber cómo se comportará el equipo bajo ciertas condiciones que estén operando gracias a los gráficos que detallan las distintas situaciones en la que se usa el componente. Pueden ser gráficos relacionados con el voltaje, capacitancia, características térmicas, entre otras.
+\begin{figure}[!h]
+\includegraphics[scale=0.8]{image/datasheet4.png}
+\centering
+\caption{Gráfico de capacitancia para transistores modelo TIP}
+\end{figure}
+\subsection{Circuitos de ejemplo}
+Esta sección incluye circuitos de ejemplo para distintas formas en las que puede funcionar el componente. Pese a que tengamos un diseño propio, nos pueden ser útiles los circuitos de referencia para encontrar algunos componentes que podamos añadir a nuestra implementación o agregar algo que no hayamos considerado.
+\begin{figure}[!h]
+\includegraphics[scale=0.7]{image/datasheet5.png}
+\centering
+\caption{Esquema de circuito Darlington}
+\end{figure}
+\subsection{Datos mecánicos}
+Aquí podemos encontrar información específica de la forma, dimensión y encapsulado del componente, así como otras consideraciones como el montaje o la disipación de calor. Puede ser útil dependiendo del uso que le demos al componente.
+\begin{figure}[!h]
+\includegraphics[scale=0.9]{image/datasheet6.png}
+\centering
+\caption{Datos mecánicos para transistores modelo TIP}
+\end{figure}
+
+\newpage
+\subsection{Componentes digitales}
+Cuando el componente esta relacionado con circuitos digitales, su datasheet puede incluir información especifica como tablas de verdad y diagramas de tiempo.
+\subsubsection{Tablas de verdad}
+Nos muestra como cambian las salidas en función de las entradas en circuitos lógicos.
+\begin{figure}[!h]
+\includegraphics[scale=0.7]{image/datasheet8.png}
+\centering
+\caption{Tablas de verdad de un registro de desplazamiento SN54HC595}
+\end{figure}
+\subsubsection{Registros}
+Estas secciones incluyen diagramas de registros bit a bit donde se puede saber el nombre de cada uno de los bits del registro para cambiar sus parámetros de ser necesarios median leerlos/read o escribirlos/write.
+\begin{figure}[!h]
+\includegraphics[scale=0.7]{image/datasheet9.png}
+\centering
+\caption{Registros de bits de una FRAM MB85RC16}
+\end{figure}
+\subsubsection{Diagramas de tiempo}
+Los diagramas de tiempo nos ayudan a entender el funcionamiento del circuito digital para alguna etapa especifica de tiempo y sus estados lógicos. Podemos notar que las transiciones no son inmediatas entre estados, lo cual lo hace mas cercano a la realidad.
+
+\begin{figure}[!h]
+\includegraphics[scale=0.8]{image/datasheet10.png}
+\centering
+\caption{Diagramas de tiempo de un registro de desplazamiento SN54HC595 }
+\end{figure}
+
+\chapter{Subcircuitos con ltspice}
+Para comenzar a realizar subcircuitos en el ambiente de desarrollo LTSpice, es importante comprender lo siguiente relacionado a los subcircuitos: 
+\begin{itemize}
+    \item ¿Qué es?
+    \item ¿Como se comportan?
+    \item ¿Como se implementan?
+    
+\end{itemize}
+Para la cual se desarrollarán cada una de estas interrogantes y para finalizar y comprender de mejor manera todo esto, se realizará una implementación de un subcircuito 
+
+\subsection{¿Qué es un subcircuito?}
+
+Un subcircuito como se puede inferir de la palabra, es un circuito pero más pequeño, el cual sirve para la reutilización ¿porque se hace esto? es posible hacer la analogía de un subcircuito con la programación orientada a objetos, debido a que en la programación cuando uno define un objeto, el fin de hacer esto es hacer el código más ``compacto`` y de esa forma no tener que estar constantemente definiendo el objeto dentro del programa. En la electrónica sucederá lo mismo, ya que si tenemos una parte de un circuito el cual sabemos que se repetirá en nuestro circuito, podemos transformarlo en un subcircuito, para así de esta forma, facilitar el trabajo y el entendimiento de un circuito más grande.
+
+\subsection{¿Como se comportan los subcircuitos?}
+La forma en que se comportan los subcircuitos es que estos son implementados de la manera mas ``genérica`` posible, ya que este responderá de manera diferente ante los distintos estímulos que reciba por su/s entradas.
+
+\subsection{¿Como se implementan los subcircuitos?}
+Para poder implementar los subcircuitos dentro de LTSpice debemos:
+\begin{itemize}
+    \item Crear la forma del subcircuito.\\
+    El subcircuito debe poseer una forma, es como crear el ``diseño`` de como se verá el componente, además de que se definirán las posibles entradas y/o salidas que pueda incluir este.
+    \item Implementar la lógica.\\
+    En este apartado, es donde se incluye lo que hará el dispositivo, es decir el como se va a comportar, y que componentes, tendrá dentro de este. También es necesario el crear el circuito que contenga las entradas y/o salidas que se hayan definido previamente en el diseño de esta    
+    
+    \item Implementar el subcircuito en un circuito.\\
+    Para poder hacer uso del subcircuito, es necesario que este se implemente en un circuito, esto debido a que puede que nuestro subcircuito necesite de una entrada por la cual ingrese algún voltaje.
+\end{itemize}
+
+\subsection{Ejemplo de aplicación con un circuito simple}
+Para comprender de mejor manera el concepto de subcircuito, se implementará un circuito sencillo, en este caso implementaremos un potenciómetro un componente el cuál no posee LTSpice, este se compone de 2 resistencias y una salida en medio de estas.
+
+Primero partiremos realizando el diseño de el potenciómetro, el cual en forma, lo haremos similar a una resistencia, pero con una flecha en medio, la cual tendrá la salida del potenciómetro como se puede ver en la siguiente imagen
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{image/potenciometro1.png}
+    \caption{Potenciómetro}
+    \label{fig:my_label}
+\end{figure}
+
+Para poder definir el como funcionará es necesario crear otro archivo
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{image/potenciometro2.png}
+    \caption{Potenciómetro}
+    \label{fig:my_label}
+\end{figure}
+
+Para poder probar este circuito, primero debemos incluir los archivos que se crearon anteriormente como librerías, es decir, seleccionaremos la ruta donde hemos guardado los dos archivos creados anteriormente, para esto hay que dirigirse a la parte superior de LTSpice y seleccionar Tools->Control panel 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{image/paneldecontrol.png}
+    \caption{Panel de control}
+    \label{fig:my_label}
+\end{figure}
+
+Luego de entrar al panel de control, se debe clickear en sym & lib. Search Paths y debemos colocar la dirección donde se encuentran los archivos. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{image/incluirLib.png}
+    \caption{Incluyendo librería}
+    \label{fig:my_label}
+\end{figure}
+
+Una vez hecho esto debemos ir a la sección de componentes y seleccionamos la parte superior derecha, y clickeamos la dirección en donde se encuentra el subcircuito (si no aparece, es necesario reiniciar LTSpice).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{image/AñadirSubCir.png}
+    \caption{Añadiendo el subcircuito}
+    \label{fig:my_label}
+\end{figure}
+
+Ahora haremos uso de este subcircuito, el circuito es el de la siguiente imagen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{image/Pruebasubcir1.png}
+    \caption{Prueba subcircuito}
+    \label{fig:my_label}
+\end{figure}
+
+Y para finalizar probaremos el circuito, el cual muestra los siguientes resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{image/Pruebasubcir2.png}
+    \caption{Prueba subcircuito}
+    \label{fig:my_label}
+\end{figure}
+
+Cabe destacar que se pueden hacer distintas configuraciones de subcircuitos, estos son hechos dependiendo de lo que se necesite. Y es recomendable su uso, debido a que puede reducir de una manera notoria ciertos circuitos.
+
+
+\section*{Agradecimientos}
+Parte de este documento fue realizado con el aporte de Cristóbal Nilo, Matías Soto, Joaquin Abarca, Jose Acosta, Valeska Acuña, Javiera Alvarez, Alex Aravena, Daniel Barriga, Carlos Beytia, Giovanni Camilo, Tomas Campusano, Francisco Cardenas, Gonzalo Caro, Mauricio Carvajal, Jesus Chaffe, Diego De la Sotta, Ricardo Diaz, Cristobal Diaz, Pablo Etcheberry, Antonia Figueroa, Diego Garrido, Ignacio Jobse, Rodrigo Lobos, Eduardo Maldonado, Juan Mamani, Benjamin Mena, Eduardo Novoa, Vicente Olmos, Sebastian Osses, Andres Pino, Leonardo Ponce, Alvaro Pozo, Celeste Ramirez, Sebastian Richiardi, Christian Riquelme, Sergio Rojas, Patricio Salvatierra, Pablo Sanchez, Benjamin Sepulveda, Benjamin Vallejos, Nicolas Vallejos, Juan Vasquez, Nicolas Vergara y Gabriel Zapata.
+
+
+
+\end{document}
+
+
+
+\iffalse
+\section{Teorema de Thevenin}
+El teorema de Thevenin establece que para cualquier circuito lineal podemos encontrar un equivalente en la forma de fuente de voltaje en serie con un resistor desde el punto de vista de la resistencia de carga $R_L$. Este circuito equivalente tendrá la siguiente forma:
+
+\begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(4,4) to (0,4)
+	to [V, l=\huge{$V_{th}$}, invert] (0,7)
+	(0,7) to [R, l=\huge{$R_{th}$}](4,7)
+	(4,4) to [R, l=\huge{$R_L$}](4,7);
+\end{circuitikz}
+\end{center}
+Para lograr encontrar los valores del voltaje de Thevenin $V_{th}$ y $R_{th}$, se debe seguir el siguiente algoritmo:
+
+\begin{enumerate}
+    \item Remover el resistor de carga $R_L$ (hacerlo circuito abierto)
+    \item Calcular el voltaje entre los terminales correspondientes de la carga
+    \item Apagar las fuentes de corriente y voltaje. Es decir, las fuentes de corriente se hacen circuito abierto y las de voltaje se cortocircuito
+    \item Calcular la resistencia equivalente desde el punto de vista de la carga
+\end{enumerate}
+
+
+\begin{example}[Cálculo de circuito equivalente de Thevenin]
+Suponga que queremos obtener el circuito equivalente de Thevenin del siguiente circuito desde la perspectiva de $R_3$, es decir, esta será nuestra carga.
+
+\begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(8,4) to (0,4)
+	to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
+	(0,7) to [R, l=$R_1$](4,7) to [R, l=$R_2$](8,7)
+	(4,4) to [R, l=$R_3$](4,7)
+	(8,4) to (8,7)
+	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+\end{circuitikz}
+\end{center}
+
+Usaremos los pasos detallados anteriormente
+\begin{enumerate}
+    \item Remover el resistor de carga $R_L$ 
+    
+    \begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(8,4) to (0,4)
+	to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
+	(0,7) to [R, l=$R_1$](4,7) to [R, l=$R_2$](8,7)
+	%(4,4) to [R, l=$R_3$](4,7)
+	(4,4) to [short, -o]  (4,5)
+	(4,6) to [short, o-] (4,7)
+	(8,4) to (8,7)
+	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+\end{circuitikz}
+\end{center}
+
+    \item Calcular el voltaje entre los terminales correspondientes de la carga
+    
+    Notamos que este circuito corresponde a un divisor de voltaje y que el voltaje entre los terminales de $R_3$ es equivalente al voltaje en $R_2$.
+    Luego, tendremos
+    \begin{align*}
+        V1=&V_{R_1}+V_{R_2}\\
+        V1-R_1\frac{V1}{R_1+R_2}&=V_{R_2}\\
+        V1(\frac{R_2}{R_1+R_2})&=V_{R_2}
+    \end{align*}
+
+    \item Apagar las fuentes de corriente y voltaje.
+    
+    \begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(8,4) to (0,4)
+	to (0,7)
+	(0,7) to [R, l=$R_1$](4,7) to [R, l=$R_2$](8,7)
+	%(4,4) to [R, l=$R_3$](4,7)
+	(4,4) to [short, -o]  (4,5)
+	(4,6) to [short, o-] (4,7)
+	(8,4) to (8,7)
+	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+\end{circuitikz}
+\end{center}
+
+    \item Calcular la resistencia equivalente desde el punto de vista de la carga
+    
+    En este caso, como las dos resistencias están en paralelo a los terminales de $R_3$, tendremos que 
+    \begin{align*}
+     R_{th}&=R_1//R_2   \\
+     R_{th}&=\frac{1}{R_1}+\frac{1}{R_2}\\
+     R_{th}&=\frac{R_1+R_2}{R_1R_2}
+    \end{align*}
+    
+    
+\end{enumerate}
+\end{example}
+
+
+
+
+
+\section{Teorema de Norton}
+El teorema de Norton, de forma equivalente al de Thevenin, establece que para cualquier circuito lineal podemos encontrar un equivalente en la forma de fuente de corriente en paralelo con un resistor desde el punto de vista de la resistencia de carga $R_L$. Este circuito equivalente tendrá la siguiente forma:
+
+\begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(4,4) to (0,4)
+	to [I, l=\huge{$I_{N}$}] (0,7)
+	to (4,7) 
+	(2,4) to [R, l=\huge{$R_{N}$}](2,7)
+	(4,4) to [R, l=\huge{$R_L$}](4,7);
+\end{circuitikz}
+\end{center}
+Para lograr encontrar la corriente de Norton $I_N$ y la resistencia de Norton $R_{N}$, se debe seguir el siguiente algoritmo:
+
+\begin{enumerate}
+    \item Cortocircuitar la posición del resistor de carga $R_L$
+    \item Calcular la corriente entre los terminales correspondientes de la carga
+    \item Apagar las fuentes de corriente y voltaje y abrir la posición de $R_L$. Es decir, las fuentes de corriente se hacen circuito abierto y las de voltaje se cortocircuito
+    \item Calcular la resistencia equivalente desde el punto de vista de la carga
+\end{enumerate}
+
+
+\begin{example}[Cálculo de circuito equivalente de Norton]
+Suponga que queremos obtener el circuito equivalente de Norton del mismo circuito anterior desde la perspectiva de $R_3$.
+
+
+
+Usaremos los pasos detallados anteriormente
+\begin{enumerate}
+    \item Cortocircuitar la posición del resistor de carga $R_L$
+    \begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(8,4) to (0,4)
+	to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
+	(0,7) to [R, l=$R_1$](4,7) to [R, l=$R_2$](8,7)
+	%(4,4) to [R, l=$R_3$](4,7)
+	(4,4) to [short, -o]  (4,5) to
+	(4,6) to [short, o-] (4,7)
+	(8,4) to (8,7)
+	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+\end{circuitikz}
+\end{center}
+
+
+    \item Calcular la corriente entre los terminales correspondientes de la carga
+    
+    
+    Notamos que la corriente que pasa por $R_3$ es la misma que pasa por $R_1$ y que esta está en paralelo con la fuente, por lo tanto
+    \begin {equation*}
+        I_N=\frac{V_1}{R_1}
+    \end {equation*}
+    
+\item Apagar las fuentes de corriente y voltaje y abrir la posición de $R_L$. 
+    
+      \begin{center}
+\begin{circuitikz}[american]
+\draw
+
+%(8,7) to
+	(8,4) to (0,4)
+	to (0,7)
+	(0,7) to [R, l=$R_1$](4,7) to [R, l=$R_2$](8,7)
+	%(4,4) to [R, l=$R_3$](4,7)
+	(4,4) to [short, -o]  (4,5)
+	(4,6) to [short, o-] (4,7)
+	(8,4) to (8,7)
+	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+\end{circuitikz}
+\end{center}
+
+
+    
+    \item Calcular la resistencia equivalente desde el punto de vista de la carga
+    
+  Al igual que en el caso de Thevenin, tendremos que $ R_{th}&=\frac{R_1+R_2}{R_1R_2}$
+    
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+Notamos que la resistencia de Thevenin es igual a la de Norton y que el voltaje y corriente por $R_L$ es igual para ambos casos
+\end{remark}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%sergio%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%PATRICIO SALVATIERRA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fi
+
+
+
+\item You are walking down the hallway when you run into your lab
+partner walking in the other direction. The two of you first step one way and are
+still in each other’s way. Then you both step the other way and are still in each
+other’s way. Then you both wait a bit, hoping the other person will step aside.
+You can model this situation as a metastable point and apply the same theory that
+has been applied to synchronizers and flip-flops. Suppose you create a
+mathematical model for yourself and your lab partner. You start the unfortunate
+encounter in the metastable state. The probability that you remain in this state
+after t seconds is e
+−
+t
+τ : τ indicates your response rate; today, your brain has been
+
+blurred by lack of sleep and has τ = 20 seconds.
+(a) How long will it be until you have 99\% certainty that you will have resolved
+from metastability (i.e., figured out how to pass one another)?
+(b) You are not only sleepy, but also ravenously hungry. In fact, you will starve
+to death if you don’t get going to the cafeteria within 3 minutes. What is the
+probability that your lab partner will have to drag you to the morgue?
+
+
+
+Your company, Detect-o-rama, would like to design an FSM that
+takes two inputs, A and B, and generates one output, Z. The output in cycle n,
+
+Zn, is either the Boolean AND or OR of the corresponding input An and the pre-
+vious input An1, depending on the other input, Bn:
+
+(a) Sketch the waveform for Z given the inputs shown in Figure 3.67.
+(b) Is this FSM a Moore or a Mealy machine?
+
+(c) Design the FSM. Show your state transition diagram, encoded state transi-
+tion table, next state and output equations, and schematic.
+
+Design an FSM with one input, A, and two outputs, X and Y. X
+should be 1 if A has been 1 for at least three cycles altogether (not necessarily
+consecutively). Y should be 1 if A has been 1 for at least two consecutive cycles.
+Show your state transition diagram, encoded state transition table, next state
+and output equations, and schematic.
+
+Analyze the FSM shown in Figure 3.68. Write the state transition
+and output tables and sketch the state transition diagram. Describe in words
+what the FSM does.
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
