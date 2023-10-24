@@ -125,9 +125,10 @@ Existen diversos tipos de diodos, como los rectificadores, Zener, Schottky, así
 \end{enumerate}
 
 \section{Métodos de análisis de circuitos no lineales}
-\subsection{Método Analítico del diodo}
+\subsection{Método Analítico aplicado al diodo}
+\begin{remark}
 El método analítico consiste en el análisis directamente algebraico utilizando las ecuaciones de los componentes.
-
+\end{remark}
 
 
 Teniendo en cuenta la premisa del circuito básico con un diodo rectificador el cuál es el siguiente:
@@ -136,11 +137,10 @@ Teniendo en cuenta la premisa del circuito básico con un diodo rectificador el 
     \centering
     \begin{tikzpicture}[american]
         \draw
-        (-5.0,-3.0) to[V,label=V,invert] (-5.0,0)
-        (-5.0,0.0) to[diode, label=D] (0,0)
-        (0.0,0.0) to[R, label= R] (0.0,-3.0)
-        (-5.0,-3.0) to[short] (0.0,-3.0);
-    \end{tikzpicture}
+        (5,3) to (0,3) to [V, l=$V$, invert] (0,7) 
+    (0,7) to [ R, l={$R$}] (5,7)
+    (5,7) to [diode, v=$V_D$](5,3);
+    \end{tikzpicture}    \
     \caption{Diodo en serie con una resistencia}
 \end{figure}
 
@@ -148,9 +148,10 @@ Para el uso de éste método, utilizaremos la siguiente ecuación, que relaciona
 \begin{equation}
     I_D=I_O \cdot (e^\frac{V_d}{V_t}-1)
 \end{equation}
-Para este caso, la corriente que pasa por el circuito tambien es la que pasa por el diodo, por lo tanto se cumple que:
+Para este caso, la corriente que pasa por la resistencia es la misma que pasa por el diodo, por lo tanto se cumple que:
+
 \begin{equation}
-I_D=\frac{V_{in}-V_D}{R}
+I_D=\frac{V-V_D}{R}
 \end{equation}
 \begin{figure}[h]
     \centering
@@ -158,65 +159,24 @@ I_D=\frac{V_{in}-V_D}{R}
 \end{figure}
 
 \begin{equation}
-    \frac{V_{in}-V_d}{R}=I_O \cdot (e^\frac{V_d}{V_t}-1)
+    \frac{V-V_D}{R}=I_O \cdot (e^\frac{V_D}{V_t}-1)
 \end{equation}
-Si despejamos esta ecuación con el fin de encontrar a que equivale $V_d$, para ello usaremos la ecuación sacada del libro.\cite{Libro_Unidad2}:
+Despejando, obtendremos:
 \begin{equation}
-    V_D=I_O\cdot R + V_{in} - V_t \cdot ln(\frac{e^\frac{I_o\cdot R+V_{in}}{V_t}\cdot I_O \cdot R}{V_t})
+    V_D=I_O\cdot R + V_{in} - V_t \cdot ln(\frac{e^\frac{I_o\cdot R+V}{V_t}\cdot I_O \cdot R}{V_t})
 \end{equation}
 \newpage
-Esta ecuación puede ser reemplazada en (2) para conocer el valor de la corriente que pasa por el diodo, entonces pareciera que siempre que se quiera obtener el valor de Id se puede usar esa fórmula, pero no, existen dos casos:
-
-\begin{enumerate}
-    \item Diodo directo: Cuando el voltaje de entrada es mayor o igual al valor del voltaje del diodo, este se comportará de forma directa, es decir, permitirá el paso de la corriente a costa de una pequeña caída de voltaje.
-    \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}[american]
-        \draw
-        (-5.0,-3.0) to[V,label=V,invert] (-5.0,0)
-        (-5.0,0.0) to[battery1, label=$V_d$] (0,0)
-        (0.0,0.0) to[R, label= R] (0.0,-3.0)
-        (-5.0,-3.0) to[short] (0.0,-3.0);
-    \end{tikzpicture}
-    \caption{Diodo de forma directa}
-    \end{figure}
-    
-    \item Diodo inverso: En este caso, el voltaje de entrada no alcanza el valor de voltaje del diodo, por lo que este se abre (para que se entienda) y no permite el paso de corriente, es decir, actúa como un circuito abierto, en dicho caso, la fórmula presentada anteriormente no podría ser utilizada.
-    
-    \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}[american]
-        \draw
-        (-5.0,-3.0) to[V,label=V,invert] (-5.0,0)
-        (-5.0,0.0) to[short, nos] (0,0)
-        (0.0,0.0) to[R, label= R] (0.0,-3.0)
-        (-5.0,-3.0) to[short] (0.0,-3.0);
-    \end{tikzpicture}
-    \caption{Diodo de forma inversa}
-\end{figure}
-    
-    
-    
-\end{enumerate}
-
-
-%%%%%%%%%%%%%% fin Alex A - Daniel B - Mauricio C %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Método gráfico aplicado a diodo}
-Para el análisis con el método gráfico utilizaremos el siguiente circuito:
 
-\begin{circuitikz}[american]
-\draw
-    (5,3) to (0,3) to [V, l=$V_s$, invert] (0,7) 
-    (0,7) to [ R, l={$R$}] (5,7)
-    (5,3) to [diode, v=$D1$, invert](5,7);
-\end{circuitikz}
+\begin{remark}
+    El objetivo de este método es graficar las corrientes de las componentes con respecto al voltaje del diodo, obteniendo así el voltaje del diodo y la corriente del circuito.\\
+\end{remark}
 
-El objetivo de este método es graficar las corrientes de las componentes con respecto al voltaje del diodo, obteniendo así el voltaje del diodo y la corriente del circuito.\\
+Ahora, consideraremos las ecuaciones para el diodo y la resistencia del caso anterior:
 
-Con las respectivas ecuaciones para cada componente:
 \begin{equation*}
-    i_D = I_s(e^{{\frac{V_d}{V_T}}}-1)
+    i_D = I_s(e^{{\frac{V_D}{V_T}}}-1)
 \end{equation*}
 
 \begin{equation*}
@@ -224,7 +184,7 @@ Con las respectivas ecuaciones para cada componente:
 \end{equation*}
 Donde $V_T = 0.25mV$ a temperatura ambiente $ T = 290K $ y $ I_s = 10^{-16}$ el cual es una corriente para diodos de circuitos integrados.\\
 
-Esta ultima se puede reescribir de la siguiente forma:
+Esta última se puede reescribir de la siguiente forma:
 Con\begin{equation*}
     V_R = V_s - V_d
 \end{equation*}
@@ -234,7 +194,7 @@ Por lo que:
     i_R = \frac{V_s - V_d}{R} = \frac{V_s}{R}- \frac{V_d}{R}
 \end{equation*}
 
-Para poder graficar utilizaremos $V_s = 5V$ y $R= 1k\Omega$.\\
+Para poder graficar, utilizaremos $V_s = 5V$ y $R= 1k\Omega$.\\
 
 Utilizando estos valores tenemos:
 \begin{equation*}
@@ -261,7 +221,9 @@ Por lo que mirando el gráfico y su intersección tenemos que el $V_d$ es de 1,1
 Este método es rápido y fácil de aplicar ya que solo hay que graficar las rectas de los componentes y obtener su intersección, por otra parte también puede ser impreciso ya que el análisis de esta intersección puede tener errores por parte de la persona que lo observa.
 
 \subsection{Método de circuitos equivalentes aplicado a diodo}
-%Pablo Etcheberry - Juan Mamani - Sebastian Richiardi%
+\begin{remark}
+    Este método consiste en reemplazar 
+\end{remark}
 El trabajo del método de circuitos equivalentes aplicado a diodos consiste en reemplazar el diodo en el circuito por su circuito equivalente en función de su zona de operación, para el diodo en ON, una fuente de 0,7[V] suponiendo que estamos trabajando con un diodo de Silicio en ON y para el diodo en OFF un circuito abierto. Para aplicar el método utilizaremos el siguiente circuito: \\
 
 \begin{center}
