@@ -5,91 +5,91 @@
 %INICIO ALEX ARAVENA %
 
 \section{Partes de un circuito}
-    
-    \begin{itemize}
-        \item \textbf{Nodo:} Un nodo es un punto de conexión entre dos o más componentes electrónicos. 
 
-            \begin{figure}[h]
-        \centering
-        \begin{circuitikz}[american]
-    \draw (0,0) 
-    to[R=$R_1$] (3,0) node[label={[font=\footnotesize]above:A}] {}
-    to[R=$R_2$] (6,0) ;
-    \end{circuitikz}
-        \caption{Ejemplo Nodo: En el punto A se unen las resistencias $R_1$ y $R_2$}
-        \label{fig:ejNodo}
-    \end{figure}
-    \begin{center}
+\begin{itemize}
+\item \textbf{Nodo:} Un nodo es un punto de conexión entre dos o más componentes electrónicos.
 
-    
-        \item \textbf{Rama:} Se forman al juntar dos nodos y los componentes entre ellos.\\\\
-        
-      
-    
-    \begin{figure}[h]
-        \centering
-        
+\begin{figure}[h]
+    \centering
     \begin{circuitikz}[american]
-    \draw (0,0) 
-    to[R=$R_1$] (3,0) node[label={[font=\footnotesize]above:A}] {}
-    to[R=$R_2$] (6,0) node[label={[font=\footnotesize]above:B}] {}
-    to[R=$R_3$] (9,0) ;
+        \draw (0,0)
+        to[R=$R_1$] (3,0) node[label={[font=\footnotesize]above:A}] {}
+        to[R=$R_2$] (6,0) ;
     \end{circuitikz}
-        \caption{Ejemplo Rama: Existe una rama que involucra a los nodos A, B y la resistencia $R_2$.}
-        \label{fig:ejRama}
-    \end{figure}
+    \caption{Ejemplo Nodo: En el punto A se unen las resistencias $R_1$ y $R_2$}
+    \label{fig:ejNodo}
+\end{figure}
+\begin{center}
 
-  
-   \item \textbf{Malla:} Definimos a la malla al conjunto de ramas que forman un camino cerrado, se requiere de mínimo dos ramas conectadas para formar una malla. Una malla es un circuito cerrado. \\
-    
-    Observe el siguiente ejemplo.
-    \begin{center}
-          
+
+\item \textbf{Rama:} Se forman al juntar dos nodos y los componentes entre ellos.
+
+
+
+\begin{figure}[h]
+    \centering
+
     \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_1$, invert] (0,3) node[label={[font=\footnotesize]above:a}] {}
-    to [R=$R_1$] (2,3) node[label={[font=\footnotesize]above:b}] {}
-    to [R=$R_4$] (2,0) 
-    (2,3) to [R=$R_2$] (4,3) node[label={[font=\footnotesize]above:c}] {}
-    to (4,0)
-    (4,3) to [R=$R_3$] (6,3)node[label={[font=\footnotesize]above:d}] {}
-    to [R=$R_5$] (6,0) node[label={[font=\footnotesize]above:e}] {}
-    to (0,0);
+        \draw (0,0)
+        to[R=$R_1$] (3,0) node[label={[font=\footnotesize]above:A}] {}
+        to[R=$R_2$] (6,0) node[label={[font=\footnotesize]above:B}] {}
+        to[R=$R_3$] (9,0) ;
     \end{circuitikz}
-    \end{center}
-    
-    En este ejemplo podemos plantear 3 mallas:
-    \begin{enumerate}
-        \item La de la fuente $V_1$ y las resistencias $R_1$ y $R_4$
-        \item La de las resistencias $R_4$ y $R_2$
-        \item La de las resistencias $R_3$ y $R_6$
-        
-    \end{enumerate}
-    
-    Las mallas no necesariamente deben ser de forma rectangular, por convención las vemos de esta forma, pero estas pueden tener una forma libre, únicamente se designa así por tener un orden y entendimiento simple.\\
-    
-    Pero en el caso que se muestra a continuación:
-    
+    \caption{Ejemplo Rama: Existe una rama que involucra a los nodos A, B y la resistencia $R_2$.}
+    \label{fig:ejRama}
+\end{figure}
 
-    \begin{center}
-          
+
+\item \textbf{Malla:} Definimos a la malla al conjunto de ramas que forman un camino cerrado, se requiere de mínimo dos ramas conectadas para formar una malla. Una malla es un circuito cerrado. \\
+
+Observe el siguiente ejemplo.
+\begin{center}
+
     \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_1$, invert] (0,3) node[label={[font=\footnotesize]above:a}] {}
-    to [R=$R_1$] (2,3) node[label={[font=\footnotesize]above:b}] {}
-    to [R=$R_4$] (2,0) to (0,0)
-    (2,3) to [R=$R_2$] (4,3) node[label={[font=\footnotesize]above:c}] {}
-    
-    ;
+        \draw (0,0) to[vsource, l=$V_1$, invert] (0,3) node[label={[font=\footnotesize]above:a}] {}
+        to [R=$R_1$] (2,3) node[label={[font=\footnotesize]above:b}] {}
+        to [R=$R_4$] (2,0)
+        (2,3) to [R=$R_2$] (4,3) node[label={[font=\footnotesize]above:c}] {}
+        to (4,0)
+        (4,3) to [R=$R_3$] (6,3)node[label={[font=\footnotesize]above:d}] {}
+        to [R=$R_5$] (6,0) node[label={[font=\footnotesize]above:e}] {}
+        to (0,0);
     \end{circuitikz}
-    \end{center}
-    
-    Solo existe 1 malla que se forma en por la fuente y $R_1$ y $R_4$ puesto que la resistencia $R_2$ no lleva a ningún camino cerrado, por lo que deja un circuito abierto.
+\end{center}
 
-    \item \textbf{Lazo:} un lazo también es un conjunto de ramas que forman un camino cerrado, pero las mallas tienen la restricción de no contener ningún lazo dentro de otro. 
+En este ejemplo podemos plantear 3 mallas:
+\begin{enumerate}
+    \item La de la fuente $V_1$ y las resistencias $R_1$ y $R_4$
+    \item La de las resistencias $R_4$ y $R_2$
+    \item La de las resistencias $R_3$ y $R_6$
 
-    \end{itemize}
-    
-    
-    
+\end{enumerate}
+
+Las mallas no necesariamente deben ser de forma rectangular, por convención las vemos de esta forma, pero estas pueden tener una forma libre, únicamente se designa así por tener un orden y entendimiento simple.\\
+
+Pero en el caso que se muestra a continuación:
+
+
+\begin{center}
+
+    \begin{circuitikz}[american]
+        \draw (0,0) to[vsource, l=$V_1$, invert] (0,3) node[label={[font=\footnotesize]above:a}] {}
+        to [R=$R_1$] (2,3) node[label={[font=\footnotesize]above:b}] {}
+        to [R=$R_4$] (2,0) to (0,0)
+        (2,3) to [R=$R_2$] (4,3) node[label={[font=\footnotesize]above:c}] {}
+
+        ;
+    \end{circuitikz}
+\end{center}
+
+Solo existe 1 malla que se forma en por la fuente y $R_1$ y $R_4$ puesto que la resistencia $R_2$ no lleva a ningún camino cerrado, por lo que deja un circuito abierto.
+
+\item \textbf{Lazo:} un lazo también es un conjunto de ramas que forman un camino cerrado, pero las mallas tienen la restricción de no contener ningún lazo dentro de otro.
+
+\end{itemize}
+
+
+
 %%%%%%%FIN ALEX ARAVENA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% INICIO DANIEL BARRIGA %%%%%
@@ -101,217 +101,217 @@
 
 
 \subsection{Ley de Ohm}
-Esta ley relaciona las variables de intensidad de corriente eléctrica, voltaje y resistencia eléctrica explicando así que cuando circula una corriente por un resistor se produce un voltaje a  través de los terminales, según la fórmula:\begin {equation*}
-        V=R*I
-        \label{fig:vir_ohm}
-\end {equation*}
+Esta ley relaciona las variables de intensidad de corriente eléctrica, voltaje y resistencia eléctrica explicando así que cuando circula una corriente por un resistor se produce un voltaje a  través de los terminales, según la fórmula:\begin{equation*}
+V=R*I
+\label{fig:vir_ohm}
+\end{equation*}
 
-        Donde V:Voltaje[V]; I: Intensidad de corriente; R:Resistencia
- 
-    
+Donde V:Voltaje[V]; I: Intensidad de corriente; R:Resistencia
+
+
 
 
 
 
 \begin{example}[Ejemplo ley de Ohm en circuito con una resistencia]
-\begin{center}
+    \begin{center}
 
-\begin{circuitikz}[american] 
-\draw
-        
-	(3,-3) to (0,-3) to [V, l={V},i=$i_{t}$] (0,-6) 
-   	(0,-6) to (3,-6) 
-	(3,-3) to [R,i=$i_R$,l={$R$}] (3,-6) ;
-        
+        \begin{circuitikz}[american]
+            \draw
 
-\end{circuitikz}  
-\end{center}
-
-Basándonos en la figura, al tratarse de un circuito simple con una resistencia, los cálculos posibles son acotados a 3 (Suponiendo que se tiene 2 de los 3 valores necesarios en la ley de Ohm \emph{ V = I * R})\\
-\begin{enumerate}
-    \item Cálculo del Voltaje (Corriente por Resistencia) [V](Volt)
-\begin {equation*}
-    V = I * R
-\end {equation*}
-
-\item Cálculo  de la Corriente que pasa por la Resistencia (Voltaje divido por Resistencia) [A] (Ampere)
-\begin {equation*}
-    I = \frac{V}{R}
-\end {equation*}
+            (3,-3) to (0,-3) to [V, l={V},i=$i_{t}$] (0,-6)
+            (0,-6) to (3,-6)
+            (3,-3) to [R,i=$i_R$,l={$R$}] (3,-6) ;
 
 
-\item Cálculo de la Resistencia (Voltaje divido por Corriente) [\Omega] (Ohm)
-\begin {equation*}
-    R = \frac{V}{I}
-\end {equation*}\\
-Además de la imagen podemos observar el convenio de los signos para la corriente, eso quiere decir que la corriente \emph{Sale} por el polo positivo de la fuente y \emph{Entra} por el polo negativo , lo coincide con el signo que esta tiene (para este caso positiva o con sentido horario)
+        \end{circuitikz}
+    \end{center}
 
-Si asignamos los siguiente valores V= 5 [V] y R = 10[Ω]
-El calculo de la corriente quedaria de la siguiente forma
-\begin {equation*}
-    I = \frac{5}{10} = 0.5 [A]
-\end {equation*}
+    Basándonos en la figura, al tratarse de un circuito simple con una resistencia, los cálculos posibles son acotados a 3 (Suponiendo que se tiene 2 de los 3 valores necesarios en la ley de Ohm \emph{ V = I * R})\\
+    \begin{enumerate}
+        \item Cálculo del Voltaje (Corriente por Resistencia) [V](Volt)
+              \begin{equation*}
+              V = I * R
+              \end{equation*}
 
-\end{enumerate}
+        \item Cálculo  de la Corriente que pasa por la Resistencia (Voltaje divido por Resistencia) [A] (Ampere)
+              \begin{equation*}
+              I = \frac{V}{R}
+              \end{equation*}
+
+
+        \item Cálculo de la Resistencia (Voltaje divido por Corriente) [$\Omega$] (Ohm)
+              \begin{equation*}
+              R = \frac{V}{I}
+              \end{equation*}\\
+              Además de la imagen podemos observar el convenio de los signos para la corriente, eso quiere decir que la corriente \emph{Sale} por el polo positivo de la fuente y \emph{Entra} por el polo negativo , lo coincide con el signo que esta tiene (para este caso positiva o con sentido horario)
+
+              Si asignamos los siguiente valores V= 5 [V] y R = 10[$\Omega$]
+              El calculo de la corriente quedaria de la siguiente forma
+              \begin{equation*}
+              I = \frac{5}{10} = 0.5 [A]
+              \end{equation*}
+
+    \end{enumerate}
 \end{example}
 %%%%FIN TOMAS CAMPUSANO%%%%
 %%%%%% INICIO FRNCISCO CARDENAS %%%%%
 \subsubsection{Equivalencia resistencia en serie y paralelo}
 
- 
+
 La resistencia equivalente es una forma de simplificar un circuito y facilitar el análisis de este. Una resistencia equivalente tendrá la misma caída de voltaje y la misma corriente que las que reemplaza para cierta posición.
 \\
 
 Para \textbf{resistencias en serie}, como las de la figura \ref{fig:rSerie}, la resistencia equivalente es la suma de cada resistencia, es decir, para \textit{n} resistencias en serie,
-\begin {equation*}
-    R_{eq} = R_1 + R_2 + ... + R_n
-\end {equation*}\\
+\begin{equation*}
+R_{eq} = R_1 + R_2 + ... + R_n
+\end{equation*}\\
 
 \begin{figure}[h]
-     \centering
-     \begin{subfigure}{0.35\textwidth}
+    \centering
+    \begin{subfigure}{0.35\textwidth}
         % \centering
-         
-    \resizebox{\textwidth}{!}{%
-    \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)    
-    to[R=$R_1$] (4,3)
-    to[R=$R_2$] (4,0)
-    to (0,0);
-    \end{circuitikz}
-    }%
-         \caption{Resistencias en serie}
-         
-     \end{subfigure}\hspace{1em}
-     \begin{subfigure}{0.35\textwidth}         
-         
-    \resizebox{\textwidth}{!}{%
-    \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
-    to (1.5,3) -- (4,3)
-    to[R=$R_1+R_2$] (4,0) -- (0,0);
-    \end{circuitikz}
-    }%
+
+        \resizebox{\textwidth}{!}{%
+            \begin{circuitikz}[american]
+                \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+                to[R=$R_1$] (4,3)
+                to[R=$R_2$] (4,0)
+                to (0,0);
+            \end{circuitikz}
+        }%
+        \caption{Resistencias en serie}
+
+    \end{subfigure}\hspace{1em}
+    \begin{subfigure}{0.35\textwidth}
+
+        \resizebox{\textwidth}{!}{%
+            \begin{circuitikz}[american]
+                \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+                to (1.5,3) -- (4,3)
+                to[R=$R_1+R_2$] (4,0) -- (0,0);
+            \end{circuitikz}
+        }%
         \
-         \caption{Resistencia equivalente}        
-     \end{subfigure}
-     
-     
-        \caption{Ejemplos de resistencia en serie y su equivalente}
-        
-        \label{fig:rSerie}
+        \caption{Resistencia equivalente}
+    \end{subfigure}
+
+
+    \caption{Ejemplos de resistencia en serie y su equivalente}
+
+    \label{fig:rSerie}
 \end{figure}
 
 \indent Para \textbf{resistencias en paralelo} se trabaja con la conductancia, \textit{G}, donde $G = \frac{1}{R}$. De este modo, la conductancia equivalente es la suma de cada conductancia particular, que se escribe en términos de las resistencias, ya que es el valor con el que se trabaja generalmente. Para \textit{n} resistencias en paralelo,
-\begin {equation*}\label{eq:resispar2}
-    \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}
-\end {equation*}
+\begin{equation*}\label{eq:resispar2}
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}
+\end{equation*}
 \\
 
 \begin{figure}[h]
-     \centering
-     \begin{subfigure}{0.35\textwidth}
+    \centering
+    \begin{subfigure}{0.35\textwidth}
         % \centering
-         
-    \resizebox{\textwidth}{!}{%
-    \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
-    to(1.5,3)
-    to(1.5,2.5)
-    to[R=$R_1$] (1.5,0) -- (0,0)
-    (1.5,3) to  (2,3) -- (4,3)
-    to[R=$R_2$] (4,0)
-    to[short, -*] (1.5,0);
-    \end{circuitikz}    
-    }%
-         \caption{Resistencias en paralelo}
-         
-     \end{subfigure}\hspace{1em}
-     \begin{subfigure}{0.35\textwidth}         
-         
-    \resizebox{\textwidth}{!}{%
-    \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
-    to (1.5,3) -- (4,3)
-    to[R=$R_{eq}$] (4,0) -- (0,0);
-    \end{circuitikz}
-    }%
+
+        \resizebox{\textwidth}{!}{%
+            \begin{circuitikz}[american]
+                \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+                to(1.5,3)
+                to(1.5,2.5)
+                to[R=$R_1$] (1.5,0) -- (0,0)
+                (1.5,3) to  (2,3) -- (4,3)
+                to[R=$R_2$] (4,0)
+                to[short, -*] (1.5,0);
+            \end{circuitikz}
+        }%
+        \caption{Resistencias en paralelo}
+
+    \end{subfigure}\hspace{1em}
+    \begin{subfigure}{0.35\textwidth}
+
+        \resizebox{\textwidth}{!}{%
+            \begin{circuitikz}[american]
+                \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+                to (1.5,3) -- (4,3)
+                to[R=$R_{eq}$] (4,0) -- (0,0);
+            \end{circuitikz}
+        }%
         \
-         \caption{Resistencia equivalente}        
-     \end{subfigure}
-     
-     
-        \caption{Ejemplos de resistencia en paralelo y su equivalente}
-        
-        \label{fig:rParalelo}
+        \caption{Resistencia equivalente}
+    \end{subfigure}
+
+
+    \caption{Ejemplos de resistencia en paralelo y su equivalente}
+
+    \label{fig:rParalelo}
 \end{figure}
 
 
 
-    
+
 En la figura \ref{fig:resiseq}a se puede ver un circuito simple con tres resistores, el cual puede ser simplificado como el circuito de \ref{fig:resiseqc} con un solo resistor. Además, de acuerdo a lo mencionado anteriormente, este resistor tiene una resistencia equivalente a la de los tres resistores del circuito original.
 
 \begin{figure}[h]
-     \centering
-     \begin{subfigure}[b]{0.2\textwidth}
+    \centering
+    \begin{subfigure}[b]{0.2\textwidth}
         % \centering
-         \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
-    to[short, -*, i=$I_0$] (1.5,3)
-    to[short, i>_=$I_1$] (1.5,2.5)
-    to[R=$R_1$] (1.5,0) -- (0,0)
-    (1.5,3) to [short, i=$I_2$] (2,3)
-    to[R=$R_2$] (4,3)
-    to[R=$R_3$] (4,0)
-    to[short, -*] (1.5,0);
-    \end{circuitikz}
-         \caption{}
-         \label{fig:resiseqa}
-     \end{subfigure}
-     
-     
-     \begin{subfigure}[b]{0.2\textwidth}
-         %\centering
-         
-\begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
-    to[short, -*, i=$I_0$] (1.5,3)
-    to[short, i>_=$I_1$] (1.5,2.5)
-    to[R=$R_1$] (1.5,0) -- (0,0)
-    (1.5,3) to [short, i=$I_2$] (2,3) -- (4,3)
-    to[R=$R_{eq^1}$] (4,0)
-    to[short, -*] (1.5,0);
-    \end{circuitikz}
-         \caption{}
-         \label{fig:resiseqb}
-     \end{subfigure}
-     
-     
-     \begin{subfigure}[b]{0.2\textwidth}
-         %\centering
-         
         \begin{circuitikz}[american]
-    \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
-    to[short, i=$I_0$] (1.5,3) -- (4,3)
-    to[R=$R_{eq^2}$] (4,0) -- (0,0);
-    \end{circuitikz}
-         \caption{}
-         \label{fig:resiseqc}
-     \end{subfigure}
-     
-     
-        \caption{Ejemplos de resistencia equivalente}
-        
-        \label{fig:resiseq}
+            \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+            to[short, -*, i=$I_0$] (1.5,3)
+            to[short, i>_=$I_1$] (1.5,2.5)
+            to[R=$R_1$] (1.5,0) -- (0,0)
+            (1.5,3) to [short, i=$I_2$] (2,3)
+            to[R=$R_2$] (4,3)
+            to[R=$R_3$] (4,0)
+            to[short, -*] (1.5,0);
+        \end{circuitikz}
+        \caption{}
+        \label{fig:resiseqa}
+    \end{subfigure}
+
+
+    \begin{subfigure}[b]{0.2\textwidth}
+        %\centering
+
+        \begin{circuitikz}[american]
+            \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+            to[short, -*, i=$I_0$] (1.5,3)
+            to[short, i>_=$I_1$] (1.5,2.5)
+            to[R=$R_1$] (1.5,0) -- (0,0)
+            (1.5,3) to [short, i=$I_2$] (2,3) -- (4,3)
+            to[R=$R_{eq^1}$] (4,0)
+            to[short, -*] (1.5,0);
+        \end{circuitikz}
+        \caption{}
+        \label{fig:resiseqb}
+    \end{subfigure}
+
+
+    \begin{subfigure}[b]{0.2\textwidth}
+        %\centering
+
+        \begin{circuitikz}[american]
+            \draw (0,0) to[vsource, l=$V_0$, invert] (0,3)
+            to[short, i=$I_0$] (1.5,3) -- (4,3)
+            to[R=$R_{eq^2}$] (4,0) -- (0,0);
+        \end{circuitikz}
+        \caption{}
+        \label{fig:resiseqc}
+    \end{subfigure}
+
+
+    \caption{Ejemplos de resistencia equivalente}
+
+    \label{fig:resiseq}
 \end{figure}
 Como $R_2$ y $R_3$ están en paralelo, hacer una resistencia equivalente entre ellas:
-\begin {equation*}
-    R_{eq^1} = R_2 + R_3
-\end {equation*}
+\begin{equation*}
+R_{eq^1} = R_2 + R_3
+\end{equation*}
 Luego, $R_{eq^1}$ queda en paralelo con $R_1$, por lo que podemos formar un segundo equivalente:
-\begin {equation*}\label{eq:resispar}
-    \frac{1}{R_{eq^2}} = \frac{1}{R_1} + \frac{1}{R_{eq^1}}
-\end {equation*}
+\begin{equation*}\label{eq:resispar}
+\frac{1}{R_{eq^2}} = \frac{1}{R_1} + \frac{1}{R_{eq^1}}
+\end{equation*}
 
 \indent Finalmente la resistencia equivalente del circuito \ref{fig:resiseq}c queda expresada por,
 \begin{equation*}
@@ -321,27 +321,27 @@ Luego, $R_{eq^1}$ queda en paralelo con $R_1$, por lo que podemos formar un segu
 
 
 \begin{remark}
-   Para distinguir entre conexiones en serie y en paralelo, se puede tener en cuenta que en conexiones en serie, dos resistencias están unidas por un extremo cada una, mientras que en conexiones en paralelo, ambos extremos de dos resistencias están conectados mutuamente.
+    Para distinguir entre conexiones en serie y en paralelo, se puede tener en cuenta que en conexiones en serie, dos resistencias están unidas por un extremo cada una, mientras que en conexiones en paralelo, ambos extremos de dos resistencias están conectados mutuamente.
 \end{remark}
- 
+
 
 \subsection{Potencia de una Resistencia}
 La potencia eléctrica (\(P\)) en un circuito es una medida de la cantidad de energía transferida por unidad de tiempo. Esta potencia se puede calcular utilizando la ecuación fundamental \(P = I \cdot V\), donde \(I\) representa la corriente en amperios (\(A\)) y \(V\) es el voltaje en voltios (\(V\)). La potencia eléctrica se mide en watts (\(W\)) y representa la cantidad de energía que se transforma o consume en un circuito eléctrico en un intervalo de tiempo determinado. \\
 
 
- La potencia (\(P\)) en una resistencia (\(R\)) se puede calcular usando la ley de Ohm y la ley de Joule:
+La potencia (\(P\)) en una resistencia (\(R\)) se puede calcular usando la ley de Ohm y la ley de Joule:
 
 \begin{equation*}
-P = I^2 \cdot R = \frac{V^2}{R}    
+    P = I^2 \cdot R = \frac{V^2}{R}
 \end{equation*}
 
 
 Donde:
 \begin{align*}
-    P &\text{ es la potencia en watts (W)} \\
-    I &\text{ es la corriente en amperios (A)} \\
-    V &\text{ es el voltaje en voltios (V)} \\
-    R &\text{ es la resistencia en ohmios (\(\Omega\))}
+    P & \text{ es la potencia en watts (W)}              \\
+    I & \text{ es la corriente en amperios (A)}          \\
+    V & \text{ es el voltaje en voltios (V)}             \\
+    R & \text{ es la resistencia en ohmios (\(\Omega\))}
 \end{align*}
 
 \begin{remark}
@@ -358,81 +358,81 @@ Estas leyes, nombradas en honor al físico alemán Gustav Kirchhoff, permiten an
 
 La Ley de Kirchhoff de Voltaje establece que la suma algebraica de las caídas de tensión a lo largo de cualquier trayectoria cerrada en un circuito debe ser igual a cero. En otras palabras, si consideramos todas las caídas de tensión en los componentes a lo largo de un loop cerrado, la suma de estas tensiones debe anularse. Matemáticamente, se expresa como:
 
-\begin {equation*}
-    \sum_{k=1}^{n} V_k = V_1 + V_2 + V_3 + \ldots + V_n = 0
-\end {equation*}
+\begin{equation*}
+\sum_{k=1}^{n} V_k = V_1 + V_2 + V_3 + \ldots + V_n = 0
+\end{equation*}
 
-Donde \(V_k\) representa las caídas de tensión en los componentes individuales de la malla. 
+Donde \(V_k\) representa las caídas de tensión en los componentes individuales de la malla.
 
-          
+
 
 \begin{example}[Ejemplo de aplicación de LKV]
-%%%INICIO JESUS CHAFFE%%%
-Se desea utilizar la ley de voltaje de Kirchhoff para analizar el siguiente circuito:
+    %%%INICIO JESUS CHAFFE%%%
+    Se desea utilizar la ley de voltaje de Kirchhoff para analizar el siguiente circuito:
 
-\centering{
- \begin{circuitikz}[american]
+    \centering{
+        \begin{circuitikz}[american]
 
-      %\draw[help lines] (0,0) grid (6,3);
-       \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
-       to[R=$R_1$, v=$v_{R1}$] (3,3)
-       to (6,3);
-       \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
-       
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
+            to[R=$R_1$, v=$v_{R1}$] (3,3)
+            to (6,3);
+            \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
+
+        \end{circuitikz}
+    }
+
+    Primero tenemos que identificar los loop cerrados del circuito
+
+
+
+
+    \begin{circuitikz}[american voltages]
+        \begin{scope}[local bounding box=circuit]
+            \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
+            to[R=$R_1$, v=$v_{R1}$] (3,3)
+            to (6,3);
+            \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
+            \draw {(1.5,0.5) node {{\color{red}{$i_1$}}} (4.5,0.5) node {{\color{red}{$i_2$}}}};
+            \draw[thick, red, <-, >=triangle 45] (1.8,0.8) arc (-60:240:0.8);
+            \draw[thick, red, <-, >=triangle 45] (4.8,0.8) arc (-60:240:0.8)
+            ;
+        \end{scope}
+        \draw[red,-stealth,rounded corners=1em] ([xshift=-1em]circuit.west) |-
+        ([xshift=1em,yshift=1em]circuit.north east) --
+        node[right,font=\sffamily]{$i_3$}
+        ([xshift=1em]circuit.east);
     \end{circuitikz}
-}
 
-Primero tenemos que identificar los loop cerrados del circuito
+    Aplicando la ley de voltaje de Kirchhoff podemos obtener las ecuaciones de cada loop o circuito cerrado.
+    \\
 
-
-
-
-\begin{circuitikz}[american voltages]
- \begin{scope}[local bounding box=circuit]
-        \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
-       to[R=$R_1$, v=$v_{R1}$] (3,3)
-       to (6,3);
-       \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
-       \draw {(1.5,0.5) node {{\color{red}{$i_1$}}} (4.5,0.5) node {{\color{red}{$i_2$}}}};
-       \draw[thick, red, <-, >=triangle 45] (1.8,0.8) arc (-60:240:0.8);
-	  \draw[thick, red, <-, >=triangle 45] (4.8,0.8) arc (-60:240:0.8)
-        ;
- \end{scope}        
- \draw[red,-stealth,rounded corners=1em] ([xshift=-1em]circuit.west) |-
- ([xshift=1em,yshift=1em]circuit.north east) -- 
- node[right,font=\sffamily]{$i_3$}
- ([xshift=1em]circuit.east);
-\end{circuitikz}
-
-Aplicando la ley de voltaje de Kirchhoff podemos obtener las ecuaciones de cada loop o circuito cerrado. 
-\\
-
-Para el loop de $i_1$ recorremos en el sentido de la corriente. Los componentes suman si van en el mismo sentido de la corriente (de más a menos) o restan si van en el sentido contrario (de menos a más):
-\begin {equation*}
-\notag -V_{1} + V_{R_1} + V_{R_2}  = 0
-\end {equation*}
+    Para el loop de $i_1$ recorremos en el sentido de la corriente. Los componentes suman si van en el mismo sentido de la corriente (de más a menos) o restan si van en el sentido contrario (de menos a más):
+    \begin{equation*}
+    \notag -V_{1} + V_{R_1} + V_{R_2}  = 0
+    \end{equation*}
 
 
-Para el loop de $i_2$ se tiene
-\begin {equation*}
-\notag V_{R_3} - V_{R_2} = 0
-\end {equation*}
+    Para el loop de $i_2$ se tiene
+    \begin{equation*}
+    \notag V_{R_3} - V_{R_2} = 0
+    \end{equation*}
 
-Para el loop de afuera, de $i_3$ tendremos:
+    Para el loop de afuera, de $i_3$ tendremos:
 
-\begin {equation*}
--V_1 + V_{R_1} + V_{R_3} =0
-\end {equation*}
+    \begin{equation*}
+    -V_1 + V_{R_1} + V_{R_3} =0
+    \end{equation*}
 
- Utilizando otras leyes podemos calcular otras variables del circuito.
+    Utilizando otras leyes podemos calcular otras variables del circuito.
 
- \begin{remark}
-     La definición del sentido de las corrientes y de la polaridad de las resistencias es arbitrario al iniciar el análisis. 
- \end{remark}
+    \begin{remark}
+        La definición del sentido de las corrientes y de la polaridad de las resistencias es arbitrario al iniciar el análisis.
+    \end{remark}
 \end{example}
 
 \newpage
@@ -440,159 +440,159 @@ Para el loop de afuera, de $i_3$ tendremos:
 \subsubsection{Ley de Kirchoff de corriente (LKC)}
 Esta ley establece que en cualquier nodo, la suma de las corrientes que \textbf{entran} es igual a la suma de las corrientes que \textbf{salen}. De forma equivalente, la suma de todas las corrientes que pasan por el nodo es igual a \textbf{cero}.
 \begin{example}[Ejemplo de aplicación de LKC]
-%%%INICIO JESUS CHAFFE%%%
-Se desea utilizar la ley de corriente de Kirchhoff para analizar el siguiente circuito:
+    %%%INICIO JESUS CHAFFE%%%
+    Se desea utilizar la ley de corriente de Kirchhoff para analizar el siguiente circuito:
 
-\centering{
- \begin{circuitikz}[american]
+    \centering{
+        \begin{circuitikz}[american]
 
-      %\draw[help lines] (0,0) grid (6,3);
-       \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
-       to[R=$R_1$] (3,3)
-       to (6,3);
-       \draw (6,3) to[R=$R_3$] (6,0);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,3) to[R=$R_2$] (3,0);
-       
-    \end{circuitikz}
-}
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
+            to[R=$R_1$] (3,3)
+            to (6,3);
+            \draw (6,3) to[R=$R_3$] (6,0);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,3) to[R=$R_2$] (3,0);
 
-Primero tenemos que identificar los nodos del circuito
+        \end{circuitikz}
+    }
+
+    Primero tenemos que identificar los nodos del circuito
 
 
-\centering{
-\begin{circuitikz}[american]
+    \centering{
+        \begin{circuitikz}[american]
 
-      %\draw[help lines] (0,0) grid (6,3);
-       \draw (0,0) to [V, l={$V_\textrm{1}$}, invert, i_=$i_{V_1}$] (0,3) node[label={[font=\footnotesize]above:Nodo a}] {}
-       to[R=$R_1$,*-*,i=$i_{R_1}$] (3,3) 
-       to (6,3) node[label={[font=\footnotesize]above:Nodo b}] {};
-       \draw (6,3) to[R=$R_3$,i=$i_{R_3}$] (6,0);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,3) to[R=$R_2$,*-*,i=$i_{R_2}$] (3,0) node[label={[font=\footnotesize]below:Nodo c}] {};
-       
-    \end{circuitikz}}
-    
-En este caso, tenemos 3 nodos: Nodo a, Nodo b y Nodo c. Luego, para cada nodo, debemos analizar qué corrientes entran y cuáles salen.
-\begin{itemize}
-    \item Para el nodo a, la corriente de la fuente entra y la de la resistencia $R_1$ sale:
-    \begin{equation*}
-        i_{V_1}=i_{R_1}
-    \end{equation*}
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to [V, l={$V_\textrm{1}$}, invert, i_=$i_{V_1}$] (0,3) node[label={[font=\footnotesize]above:Nodo a}] {}
+            to[R=$R_1$,*-*,i=$i_{R_1}$] (3,3)
+            to (6,3) node[label={[font=\footnotesize]above:Nodo b}] {};
+            \draw (6,3) to[R=$R_3$,i=$i_{R_3}$] (6,0);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,3) to[R=$R_2$,*-*,i=$i_{R_2}$] (3,0) node[label={[font=\footnotesize]below:Nodo c}] {};
 
-    \item Para el nodo b, la corriente de la resistencia $R_1$ entra y la de la $R_2$ y $R_3$ salen:
-    \begin{equation*}
-        i_{R_1}=i_{R_2}+i_{R_3}
-    \end{equation*}
+        \end{circuitikz}}
 
-    \item Para el nodo c, la corriente de las resistencias $R_2$ y $R_3$entra y la de la fuente sale:
-    \begin{equation*}
-        i_{R_2}+i_{R_3}=i_{V_1}
-    \end{equation*}
-\end{itemize}
+    En este caso, tenemos 3 nodos: Nodo a, Nodo b y Nodo c. Luego, para cada nodo, debemos analizar qué corrientes entran y cuáles salen.
+    \begin{itemize}
+        \item Para el nodo a, la corriente de la fuente entra y la de la resistencia $R_1$ sale:
+              \begin{equation*}
+                  i_{V_1}=i_{R_1}
+              \end{equation*}
+
+        \item Para el nodo b, la corriente de la resistencia $R_1$ entra y la de la $R_2$ y $R_3$ salen:
+              \begin{equation*}
+                  i_{R_1}=i_{R_2}+i_{R_3}
+              \end{equation*}
+
+        \item Para el nodo c, la corriente de las resistencias $R_2$ y $R_3$entra y la de la fuente sale:
+              \begin{equation*}
+                  i_{R_2}+i_{R_3}=i_{V_1}
+              \end{equation*}
+    \end{itemize}
 \end{example}
-      
+
 \iffalse
-\begin{example}[Ejemplo de aplicación de LKC]
-%%%INICIO JESUS CHAFFE%%%
-Se desea utilizar la ley de corriente de Kirchhoff para analizar el siguiente circuito:
+    \begin{example}[Ejemplo de aplicación de LKC]
+        %%%INICIO JESUS CHAFFE%%%
+        Se desea utilizar la ley de corriente de Kirchhoff para analizar el siguiente circuito:
 
-\centering{
- \begin{circuitikz}[american]
+        \centering{
+            \begin{circuitikz}[american]
 
-      %\draw[help lines] (0,0) grid (6,3);
-       \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
-       to[R=$R_1$, v=$v_{R1}$] (3,3)
-       to (6,3);
-       \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
-       
-    \end{circuitikz}
-}
+                %\draw[help lines] (0,0) grid (6,3);
+                \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
+                to[R=$R_1$, v=$v_{R1}$] (3,3)
+                to (6,3);
+                \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
+                \draw (0,0) to[short] (6,0);
+                \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
 
-Primero tenemos que identificar los nodos del circuito: CAMBIO
+            \end{circuitikz}
+        }
 
-\begin{circuitikz}[american]
+        Primero tenemos que identificar los nodos del circuito: CAMBIO
 
-      
-       \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3) 
-       
-       to[R=$R_1$, v=$v_{R1}$,*-*] (3,3)  node[label={[font=\footnotesize]above:$3$}] {}
-       to (6,3);
-       \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
-       \draw (3,6) node[label={above:$b$}] {} ;
-
-    \end{circuitikz}
-
-Aplicando la ley de voltaje de Kirchhoff podemos obtener las ecuaciones de cada loop o circuito cerrado. 
-\\
-
-Para el loop de $i_1$ recorremos en el sentido de la corriente. Los componentes suman si van en el mismo sentido de la corriente (de más a menos) o restan si van en el sentido contrario (de menos a más):
-\begin {equation*}
-\notag -V_{1} + V_{R_1} + V_{R_2}  = 0
-\end {equation*}
+        \begin{circuitikz}[american]
 
 
-Para el loop de $i_2$ se tiene
-\begin {equation*}
-\notag V_{R_3} - V_{R_2} = 0
-\end {equation*}
+            \draw (0,0) to [V, l={$V_\textrm{1}$}, invert] (0,3)
 
-Para el loop de afuera, de $i_3$ tendremos:
+            to[R=$R_1$, v=$v_{R1}$,*-*] (3,3)  node[label={[font=\footnotesize]above:$3$}] {}
+            to (6,3);
+            \draw (6,3) to[R=$R_3$, v=$v_{R3}$] (6,0);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,3) to[R=$R_2$, v=$v_{R2}$] (3,0);
+            \draw (3,6) node[label={above:$b$}] {} ;
 
-\begin {equation*}
--V_1 + V_{R_1} + V_{R_3} =0
-\end {equation*}
+        \end{circuitikz}
 
- Utilizando otras leyes podemos calcular otras variables del circuito.
+        Aplicando la ley de voltaje de Kirchhoff podemos obtener las ecuaciones de cada loop o circuito cerrado.
+        \\
 
-\end{example}
+        Para el loop de $i_1$ recorremos en el sentido de la corriente. Los componentes suman si van en el mismo sentido de la corriente (de más a menos) o restan si van en el sentido contrario (de menos a más):
+        \begin{equation*}
+        \notag -V_{1} + V_{R_1} + V_{R_2}  = 0
+        \end{equation*}
+
+
+        Para el loop de $i_2$ se tiene
+        \begin{equation*}
+        \notag V_{R_3} - V_{R_2} = 0
+        \end{equation*}
+
+        Para el loop de afuera, de $i_3$ tendremos:
+
+        \begin{equation*}
+        -V_1 + V_{R_1} + V_{R_3} =0
+        \end{equation*}
+
+        Utilizando otras leyes podemos calcular otras variables del circuito.
+
+    \end{example}
 \fi
 
 \iffalse
-%%%% INICIO RICARDO DÍAZ%%%%%
-\begin{example}[Ejemplo de aplicación de LKC]
-\begin{center}
-\begin{circuitikz}[american]
-\draw
+    %%%% INICIO RICARDO DÍAZ%%%%%
+    \begin{example}[Ejemplo de aplicación de LKC]
+        \begin{center}
+            \begin{circuitikz}[american]
+                \draw
 
-	(5,3) to (0,3) to [V, l={$V_\textrm{i}$},i=$i_{t}$] (0,6) 
-   	(0,6) to (4,6) 
-	(3,3) node[label={below:$a$}] {} to [R,i=$i_1$,l={$R_1$}] (3,6) node[label={above:$b$}] 
-    (4,6) to(5,6)
-    (5,3) to [R,i=$i_2$,l={$R_2$}] (5,6) ;
+                (5,3) to (0,3) to [V, l={$V_\textrm{i}$},i=$i_{t}$] (0,6)
+                (0,6) to (4,6)
+                (3,3) node[label={below:$a$}] {} to [R,i=$i_1$,l={$R_1$}] (3,6) node[label={above:$b$}]
+                (4,6) to(5,6)
+                (5,3) to [R,i=$i_2$,l={$R_2$}] (5,6) ;
 
-\end{circuitikz}
-\end{center}
-Debido a que se trata de un circuito en paralelo, el voltaje de $V_i$ se mantiene tanto en $R_1$ como en $R_2$, pero la corriente se divide en el nodo $a$, de tal forma que:
+            \end{circuitikz}
+        \end{center}
+        Debido a que se trata de un circuito en paralelo, el voltaje de $V_i$ se mantiene tanto en $R_1$ como en $R_2$, pero la corriente se divide en el nodo $a$, de tal forma que:
 
-\begin {equation*}
-i_{t} = i_1+ i_2 
-\end {equation*}
+        \begin{equation*}
+        i_{t} = i_1+ i_2
+        \end{equation*}
 
-Aplicando LKC, siendo: \[
-\sum i=0
-\]Se llega a:
-\begin {equation*}
-i_1+ i_2-i_{t}=0 
-\end {equation*}
+        Aplicando LKC, siendo: \[
+            \sum i=0
+        \]Se llega a:
+        \begin{equation*}
+        i_1+ i_2-i_{t}=0
+        \end{equation*}
 
-Ya que la ley de Kirchoff de corriente plantea que la corriente de salida es la misma que la de llegada, siendo el nodo $a$ donde se segmenta y en el nodo $b$ se vuelven a unir.
-Aplicando la ley de Ohm, la ecuación queda:
+        Ya que la ley de Kirchoff de corriente plantea que la corriente de salida es la misma que la de llegada, siendo el nodo $a$ donde se segmenta y en el nodo $b$ se vuelven a unir.
+        Aplicando la ley de Ohm, la ecuación queda:
 
-\begin {equation*}
-\frac{V_{1}}{R_1}+\frac{V_{2}}{R_2}-\frac {V_{i}} {R_t}=0
-\end {equation*}
-Siendo:
-\begin {equation*}
-R_t= \frac{R_1*R_2}{R_1+R_2}
-\end {equation*}
+        \begin{equation*}
+        \frac{V_{1}}{R_1}+\frac{V_{2}}{R_2}-\frac {V_{i}} {R_t}=0
+        \end{equation*}
+        Siendo:
+        \begin{equation*}
+        R_t= \frac{R_1*R_2}{R_1+R_2}
+        \end{equation*}
 
 
-\end{example}
+    \end{example}
 \fi
 \begin{remark}
     En este curso utilizamos la convención de que la polaridad va en el sentido de la corriente de + a - y que los componentes que suman son los que van en el mismo sentido de corriente. Existe la convención contraria, en que las fuentes suman y las resistencias restan.
@@ -607,85 +607,85 @@ R_t= \frac{R_1*R_2}{R_1+R_2}
 
 
 \begin{flushleft}
-{Dada una configuración de $n$ fuentes de voltaje conectadas en serie, se define una fuente de voltaje equivalente como:}\\
+    {Dada una configuración de $n$ fuentes de voltaje conectadas en serie, se define una fuente de voltaje equivalente como:}\\
 \end{flushleft}
 
 
 \begin{center}$
-\displaystyle\sum_{i=1}^{n} V_i$
+        \displaystyle\sum_{i=1}^{n} V_i$
 \end{center}
 
 
 \begin{example}[Fuentes de voltaje en serie]
-\begin{circuitikz}[american] 
+    \begin{circuitikz}[american]
         \draw
-    (0,0) node[label={[font=\footnotesize]right:$a$}] {}
-    to[V, l^=\mbox{$V_1$},invert,*-] (0,2) node[label={[font=\footnotesize]right:$b$}] {}
-    to[V, l^=\mbox{$V_2$},invert,*-*] (0,4) node[label={[font=\footnotesize]right:$c$}] {}
-    %to [short,-*] (0,5)
-    
-    ;
-    \end{circuitikz}
-    
-En un circuito se tienen conectadas dos fuentes de voltaje en serie $V_1, V_2$ de valores. El voltaje de las fuentes se suma en cada nodo, por lo que, en el nodo b el voltaje será el voltaje en el nodo a $V_a$ más el de la fuente:
- 
+        (0,0) node[label={[font=\footnotesize]right:$a$}] {}
+        to[V, l^=\mbox{$V_1$},invert,*-] (0,2) node[label={[font=\footnotesize]right:$b$}] {}
+        to[V, l^=\mbox{$V_2$},invert,*-*] (0,4) node[label={[font=\footnotesize]right:$c$}] {}
+        %to [short,-*] (0,5)
 
-\begin{align*}
-V_b&= V_a + V_1 \\
-V_c&= V_b+V_2=V_a+V_1+V_2\\
-\end{align*}
+        ;
+    \end{circuitikz}
+
+    En un circuito se tienen conectadas dos fuentes de voltaje en serie $V_1, V_2$ de valores. El voltaje de las fuentes se suma en cada nodo, por lo que, en el nodo b el voltaje será el voltaje en el nodo a $V_a$ más el de la fuente:
+
+
+    \begin{align*}
+        V_b & = V_a + V_1           \\
+        V_c & = V_b+V_2=V_a+V_1+V_2 \\
+    \end{align*}
 
 \end{example}
 
 
 \begin{example}[Fuentes de voltaje en serie invertidas]
-\begin{circuitikz}[american] 
+    \begin{circuitikz}[american]
         \draw
-    (0,0) node[label={[font=\footnotesize]right:$a$}] {}
-    to[V, l^=\mbox{$V_1$},invert,*-] (0,2) node[label={[font=\footnotesize]right:$b$}] {}
-    to[V, l^=\mbox{$V_2$},*-*] (0,4) node[label={[font=\footnotesize]right:$c$}] {}
-    %to [short,-*] (0,5)
-    
-    ;
-    \end{circuitikz}
-    
-De forma similar al ejemplo anterior,debemos sumar los voltajes, sin embargo, la dirección de las fuentes hace que se resten:
- 
+        (0,0) node[label={[font=\footnotesize]right:$a$}] {}
+        to[V, l^=\mbox{$V_1$},invert,*-] (0,2) node[label={[font=\footnotesize]right:$b$}] {}
+        to[V, l^=\mbox{$V_2$},*-*] (0,4) node[label={[font=\footnotesize]right:$c$}] {}
+        %to [short,-*] (0,5)
 
-\begin{align*}
-V_b&= V_a + V_1 \\
-V_c&= V_b-V_2=V_a+V_1-V_2\\
-\end{align*}
+        ;
+    \end{circuitikz}
+
+    De forma similar al ejemplo anterior,debemos sumar los voltajes, sin embargo, la dirección de las fuentes hace que se resten:
+
+
+    \begin{align*}
+        V_b & = V_a + V_1           \\
+        V_c & = V_b-V_2=V_a+V_1-V_2 \\
+    \end{align*}
 
 \end{example}
 
 \subsubsection{Fuentes de voltaje en paralelo}
 \centering{
-\begin{circuitikz}[american] 
+    \begin{circuitikz}[american]
         \draw
-    (0,0) node[label={[font=\footnotesize]right:$a$}] {}
-    to (0,1) to (1,1) to (1,1.5) to [V, l^=\mbox{$V_1$},invert] (1,2.5) to (1,3) to (0,3);
-    \draw (0,1) to (-1,1) to (-1,1.5)to [V, l^=\mbox{$V_2$},invert] (-1,2.5) to(-1,3) to (0,3)  to (0,4) node[label={[font=\footnotesize]right:$c$}] {}
-    ;
+        (0,0) node[label={[font=\footnotesize]right:$a$}] {}
+        to (0,1) to (1,1) to (1,1.5) to [V, l^=\mbox{$V_1$},invert] (1,2.5) to (1,3) to (0,3);
+        \draw (0,1) to (-1,1) to (-1,1.5)to [V, l^=\mbox{$V_2$},invert] (-1,2.5) to(-1,3) to (0,3)  to (0,4) node[label={[font=\footnotesize]right:$c$}] {}
+        ;
     \end{circuitikz}}
 
 En caso de conectar n fuentes de voltaje en paralelo, podemos distinguir 2 casos:
 
-    \begin{enumerate}
-        \item {\textbf{Mismo voltaje:}}\\
-       {Si las fuentes tienen el mismo valor de tensión, es equivalente a tener una única fuente con mayor capacidad de suministrar corriente.}\\
-   
+\begin{enumerate}
+    \item {\textbf{Mismo voltaje:}}\\
+          {Si las fuentes tienen el mismo valor de tensión, es equivalente a tener una única fuente con mayor capacidad de suministrar corriente.}\\
+
     \item {\textbf{Voltajes distintos:}}\\
-    {Este caso rompe la Ley de Kirchoff de Voltaje, ya que se forma un circuito cerrado y no se cumple que la suma de voltajes sea 0.}
-    \end{enumerate}
- 
+          {Este caso rompe la Ley de Kirchoff de Voltaje, ya que se forma un circuito cerrado y no se cumple que la suma de voltajes sea 0.}
+\end{enumerate}
+
 
 
 %%%%%%%%%%%%%%%%%Fin Rodrigo LOL%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fuentes de Corriente}
 %%%%%%%%%%%%%%%%%Inicio Rodrigo Lobos%%%%%%%%%%%%%%%%%%%
 
-   
+
 Las fuentes de corriente tienen su orientación definida (no así como las resistencias que le podemos dar una orientación para el cálculo de potencial y corriente), estas dan una fuente de corriente fija que pasa a través del circuito.\\
 
 
@@ -694,88 +694,88 @@ Las fuentes de corriente tienen su orientación definida (no así como las resis
 \subsection{Fuentes conectadas en paralelo}
 
 \centering{
-\begin{circuitikz}[american] 
+    \begin{circuitikz}[american]
         \draw
-    (0,0) node[label={[font=\footnotesize]right:$a$}] {}
-    to (0,1) to (1,1) to (1,1.5) to [I, l^=\mbox{$I_1$},invert] (1,2.5) to (1,3) to (0,3);
-    \draw (0,1) to (-1,1) to (-1,1.5)to [I, l^=\mbox{$I_2$},invert] (-1,2.5) to(-1,3) to (0,3)  to (0,4) node[label={[font=\footnotesize]right:$c$}] {}
-    ;
+        (0,0) node[label={[font=\footnotesize]right:$a$}] {}
+        to (0,1) to (1,1) to (1,1.5) to [I, l^=\mbox{$I_1$},invert] (1,2.5) to (1,3) to (0,3);
+        \draw (0,1) to (-1,1) to (-1,1.5)to [I, l^=\mbox{$I_2$},invert] (-1,2.5) to(-1,3) to (0,3)  to (0,4) node[label={[font=\footnotesize]right:$c$}] {}
+        ;
     \end{circuitikz}}
-    
+
 Al contrario del caso anterior, al conectar fuentes de corriente en paralelo sí se cumplen las leyes de Kirchoff. De hecho, lo que pasa es que se suman las corrientes, según LKC.
 
 
 \begin{example}[Fuentes de coriente en paralelo]
-¿Cuánta sería la corriente que pasa por el circuito?
-\begin{center}
-    \begin{circuitikz}[american] 
-        
-        \draw
-    (0,0) to[I, l^=\mbox{$I_1$}] (0,3) -- (2,3)
-      to[I, l^=\mbox{$I_2$}] (2,0) -- (0,0)
-    (2,0) -- (4.5,0)
-      to[I, l^=\mbox{$I_3$}] (4.5,3) -- (2,3)
-    (4.5,3) -- (6.5,3)
-      to[I,l^=\mbox{$I_4$}] (6.5,0) -- (4.5,0)
-     (6.5,0) to [short,-](7,0)
-     (7,0) to [short,-*](7,0)
-     (6.5,3) to [short,-](7,3)
-     (7,3) to [short,-*](7,3)
-    ;
-    \end{circuitikz}
-    \begin{flushleft}
+    ¿Cuánta sería la corriente que pasa por el circuito?
+    \begin{center}
+        \begin{circuitikz}[american]
 
-Tenemos 4 fuentes de corriente conectadas en paralelo, con valores de: $I_1 = 7[mA], I_2 =3[mA],I_3 =1[mA],I_4 =2[mA]$\\
-Tendremos que definir las corrientes que apuntan hacia arriba como positivas, y las que apuntan hacia abajo como negativas:\\
+            \draw
+            (0,0) to[I, l^=\mbox{$I_1$}] (0,3) -- (2,3)
+            to[I, l^=\mbox{$I_2$}] (2,0) -- (0,0)
+            (2,0) -- (4.5,0)
+            to[I, l^=\mbox{$I_3$}] (4.5,3) -- (2,3)
+            (4.5,3) -- (6.5,3)
+            to[I,l^=\mbox{$I_4$}] (6.5,0) -- (4.5,0)
+            (6.5,0) to [short,-](7,0)
+            (7,0) to [short,-*](7,0)
+            (6.5,3) to [short,-](7,3)
+            (7,3) to [short,-*](7,3)
+            ;
+        \end{circuitikz}
+        \begin{flushleft}
 
-\begin{center}
-    $I_1 + I_3 - I_2 - I_4 =i_t$\\
-    $7[mA] + 1[mA] - 3[mA] -2 [mA] = 3[mA]$\\
-    $3[mA] = i_t$\\
-\end{center}
-\end{flushleft}
-\end{center}
+            Tenemos 4 fuentes de corriente conectadas en paralelo, con valores de: $I_1 = 7[mA], I_2 =3[mA],I_3 =1[mA],I_4 =2[mA]$\\
+            Tendremos que definir las corrientes que apuntan hacia arriba como positivas, y las que apuntan hacia abajo como negativas:\\
+
+            \begin{center}
+                $I_1 + I_3 - I_2 - I_4 =i_t$\\
+                $7[mA] + 1[mA] - 3[mA] -2 [mA] = 3[mA]$\\
+                $3[mA] = i_t$\\
+            \end{center}
+        \end{flushleft}
+    \end{center}
 \end{example}
 
 
 
 \subsubsection{Fuentes de corriente en serie}
 
-\begin{circuitikz}[american] 
-        \draw
+\begin{circuitikz}[american]
+    \draw
     (0,0) node[label={[font=\footnotesize]right:$a$}] {}
     to[I, l^=\mbox{$I_1$},invert,*-] (0,2) node[label={[font=\footnotesize]right:$b$}] {}
     to[I, l^=\mbox{$I_2$},invert,*-*] (0,4) node[label={[font=\footnotesize]right:$c$}] {}
     %to [short,-*] (0,5)
-    
+
     ;
-    \end{circuitikz}
-    
+\end{circuitikz}
+
 
 En este caso, debemos considerar cuáles son los valores de las fuentes. Si las fuentes tienen distinto valor, no se cumplirá la ley de Kirchoff de corriente, por lo que no se recomienda esta configuración con fuentes de distinto valor u orientación.
 
 \iffalse
-\begin{example}[Fuentes en serie]
-\begin{center}
-    \begin{circuitikz}[american] 
-        \draw
-    (0,0) to[I, l^=\mbox{$I_1$}] 
-    (0,2) to[I, l^=\mbox{$I_2$}] (2,2) to [short,-*] (2.5,2)
-    (0,0) -- (2,0) (2,0) to [short,-*] (2.5,0)
-    ;
-    \end{circuitikz}
-    \begin{flushleft}
-Tenemos un circuito donde se conecta una fuente de corriente $I1$ con un valor de $5[mA]$ con otra fuente $I_2$ de valor desconocido, sabiendo esto, ¿cuál debiese ser el valor de la fuente $I2$ para que este circuito sea posible?, ¿y si se añade una tercera fuente en serie, cuál debiese ser su valor?qué pasaría si conectamos esta tercera fuente en el sentido contrario a las otras?\\
-Solución:\\
-sabemos que al ser corrientes en serie, y tienen el mismo sentido en la corriente, podremos decir que tienen que ser iguales, y la corriente equivalente obtendrá el mismo valor:\\
-\begin{center}
-    $I_1 = I_2 =I_t$\\
-    $5[mA] = I_2 = I_t$\\
-\end{center}
-Si se añadiese una tercera fuente, tendría que ocurrir lo mismo que en el caso anterior, si se llega a conectar al sentido contrario, podría dañar el circuito.
-\end{flushleft}
-\end{center}
-\end{example}
+    \begin{example}[Fuentes en serie]
+        \begin{center}
+            \begin{circuitikz}[american]
+                \draw
+                (0,0) to[I, l^=\mbox{$I_1$}]
+                (0,2) to[I, l^=\mbox{$I_2$}] (2,2) to [short,-*] (2.5,2)
+                (0,0) -- (2,0) (2,0) to [short,-*] (2.5,0)
+                ;
+            \end{circuitikz}
+            \begin{flushleft}
+                Tenemos un circuito donde se conecta una fuente de corriente $I1$ con un valor de $5[mA]$ con otra fuente $I_2$ de valor desconocido, sabiendo esto, ¿cuál debiese ser el valor de la fuente $I2$ para que este circuito sea posible?, ¿y si se añade una tercera fuente en serie, cuál debiese ser su valor?qué pasaría si conectamos esta tercera fuente en el sentido contrario a las otras?\\
+                Solución:\\
+                sabemos que al ser corrientes en serie, y tienen el mismo sentido en la corriente, podremos decir que tienen que ser iguales, y la corriente equivalente obtendrá el mismo valor:\\
+                \begin{center}
+                    $I_1 = I_2 =I_t$\\
+                    $5[mA] = I_2 = I_t$\\
+                \end{center}
+                Si se añadiese una tercera fuente, tendría que ocurrir lo mismo que en el caso anterior, si se llega a conectar al sentido contrario, podría dañar el circuito.
+            \end{flushleft}
+        \end{center}
+    \end{example}
 \fi
 
 
@@ -787,62 +787,62 @@ Si se añadiese una tercera fuente, tendría que ocurrir lo mismo que en el caso
     \hspace{1.5cm}
     \begin{circuitikz}[american]
         \draw
-            (0,6) to [R,l={$R_1$}] (3,6)
-            (0,6) to [V, l={$V_\textrm{1}$}, i=$i_1$] (0,3) 
-            (5,3) to (0,3) 
-            (2.5,6) to [R,l={$R_2$},i=$i_2$](2.5,3)
-            (2.5,6) node[label={above:$a$}] {} to [R,l={$R_3$}](5,6)
-            (2.5,3) node[label={below:$b$}] {};
-            
+        (0,6) to [R,l={$R_1$}] (3,6)
+        (0,6) to [V, l={$V_\textrm{1}$}, i=$i_1$] (0,3)
+        (5,3) to (0,3)
+        (2.5,6) to [R,l={$R_2$},i=$i_2$](2.5,3)
+        (2.5,6) node[label={above:$a$}] {} to [R,l={$R_3$}](5,6)
+        (2.5,3) node[label={below:$b$}] {};
+
     \end{circuitikz}
     \hspace{2.0cm}
     \begin{circuitikz}[american]
         \draw
-            (0,6) to [R,l={$R_1$}] (3,6)
-            (2.5,6) to [R,l={$R_2$},i=$i_2$](2.5,3)
-            (2.5,6) node[label={above:$Va$}] {} to [R,l={$R_3$}](5,6)
-            (5,6) node[label={above:$Va$}] {}
-            (2,3) to (2.5,3) node[label={below:$Vb$}] {} to (3,3)
-            (3.6,6) node[label={below:$i=0$}] {};
+        (0,6) to [R,l={$R_1$}] (3,6)
+        (2.5,6) to [R,l={$R_2$},i=$i_2$](2.5,3)
+        (2.5,6) node[label={above:$Va$}] {} to [R,l={$R_3$}](5,6)
+        (5,6) node[label={above:$Va$}] {}
+        (2,3) to (2.5,3) node[label={below:$Vb$}] {} to (3,3)
+        (3.6,6) node[label={below:$i=0$}] {};
     \end{circuitikz}
-    
-    
-  
-    Para este caso, se aprecia el nodo $a$ entre tres resistores, donde el $R_3$ es el particular ubicado en un extremo del circuito. ¿Qué implica esta condición?
-    
-        La primera Ley de Kirchhoff señala que las corrientes entrantes y salientes son las mismas. En este escenario, la corriente entrante es por el resistor $R_1$ y sale por $R_2$ y $R_3$; sin embargo, como la tercera resistencia no está conectada a ningún otro nodo, se intuye que la corriente sólo fluye por la resistencia $R_2$.
 
-        Considerando lo anterior, se puede señalar que la corriente que atraviesa $R_3$ es de magnitud 0 ampere y que la diferencia de potencial entre antes y después del componente es 0.
-    
+
+
+    Para este caso, se aprecia el nodo $a$ entre tres resistores, donde el $R_3$ es el particular ubicado en un extremo del circuito. ¿Qué implica esta condición?
+
+    La primera Ley de Kirchhoff señala que las corrientes entrantes y salientes son las mismas. En este escenario, la corriente entrante es por el resistor $R_1$ y sale por $R_2$ y $R_3$; sin embargo, como la tercera resistencia no está conectada a ningún otro nodo, se intuye que la corriente sólo fluye por la resistencia $R_2$.
+
+    Considerando lo anterior, se puede señalar que la corriente que atraviesa $R_3$ es de magnitud 0 ampere y que la diferencia de potencial entre antes y después del componente es 0.
+
 \end{example}
 
 \begin{example}[Componente omitido por cortocircuito]
     \hspace{1.5cm}
     \begin{circuitikz}[american]
         \draw
-            (0,3) to [R,l={$R_1$}](0,6)
-   	    (0,6) to (5,6) 
-            (2.5,6) to [V, l={$V_\textrm{i}$},i=$i_1$] (2.5,3) 
-            (5,6) node[label={above:$a$}]{} to [short,i=$i_1$] (5,3)
-            (5,3) to (0,3) ;
+        (0,3) to [R,l={$R_1$}](0,6)
+        (0,6) to (5,6)
+        (2.5,6) to [V, l={$V_\textrm{i}$},i=$i_1$] (2.5,3)
+        (5,6) node[label={above:$a$}]{} to [short,i=$i_1$] (5,3)
+        (5,3) to (0,3) ;
     \end{circuitikz}
     \hspace{2.0cm}
     \begin{circuitikz}[american]
         \draw
-   	    (2.5,6) to (5,6) 
-            (2.5,6) to [V, l={$V_\textrm{i}$},i=$i_1$] (2.5,3) 
-            (5,6) node[label={above:$a$}]{} to [short,i=$i_1$] (5,3)
-            (5,3) to (2.5,3) ;
+        (2.5,6) to (5,6)
+        (2.5,6) to [V, l={$V_\textrm{i}$},i=$i_1$] (2.5,3)
+        (5,6) node[label={above:$a$}]{} to [short,i=$i_1$] (5,3)
+        (5,3) to (2.5,3) ;
     \end{circuitikz}
-    
-  
-        Para este escenario, hay dos caminos en paralelo a la fuente de voltaje, uno con un resistor y otro sin ningún componente.
 
-        La Segunda Ley de Kirchhoff señala que, en una malla o subcircuito, la suma entre las caídas del voltaje suministrado por las fuentes de poder y el mismo voltaje suministrado es cero. 
-        
-        Considerando lo anterior y que en este caso se intuye que la corriente sólo va por el camino libre de resistencias, nunca hay caídas de voltaje, por lo que esta ley no se cumple en un cortocircuito.
 
-        En la práctica, un cortocircuito es un malfuncionamiento del circuito en el que las resistencias son anuladas total o parcialmente, implicando que la intensidad del circuito en su totalidad es más de la que debiera soportar, llegando a provocar de chispazos a incendios de magnitudes variables.
+    Para este escenario, hay dos caminos en paralelo a la fuente de voltaje, uno con un resistor y otro sin ningún componente.
+
+    La Segunda Ley de Kirchhoff señala que, en una malla o subcircuito, la suma entre las caídas del voltaje suministrado por las fuentes de poder y el mismo voltaje suministrado es cero.
+
+    Considerando lo anterior y que en este caso se intuye que la corriente sólo va por el camino libre de resistencias, nunca hay caídas de voltaje, por lo que esta ley no se cumple en un cortocircuito.
+
+    En la práctica, un cortocircuito es un malfuncionamiento del circuito en el que las resistencias son anuladas total o parcialmente, implicando que la intensidad del circuito en su totalidad es más de la que debiera soportar, llegando a provocar de chispazos a incendios de magnitudes variables.
 \end{example}
 %% Fin Antonia Figueroa %%
 %% Diego Garrido Jofré %%
@@ -869,122 +869,122 @@ El método de nodos nos permite encontrar la corriente y voltaje por cada resist
 \begin{enumerate}
     \item Asignar tierra
     \item Nombrar nodos
-    \item Resolver nodos fáciles 
+    \item Resolver nodos fáciles
     \item LKC + Ohm en nodos faltantes
     \item Resolver voltajes
-	\item Aplicar Ohm para el resto
+    \item Aplicar Ohm para el resto
 \end{enumerate}
 
 
 \begin{example}[Método de Nodos]
-Se busca determinar la corriente y voltaje del siguiente circuito:
-\begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   
-    \end{circuitikz}
+    Se busca determinar la corriente y voltaje del siguiente circuito:
+    \begin{center}
+        \begin{circuitikz}[american]
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to[V=$V_1$,invert] (0,3)
+            to[R=$R_1$] (3,3)
+            to[R=$R_3$] (6,3);
+            \draw (6,0) to[V=$V_2$,invert] (6,3);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,0) to[R=$R_2$] (3,3);
+
+        \end{circuitikz}
     \end{center}
-Para esto, utilizaremos el método de los nodos.
+    Para esto, utilizaremos el método de los nodos.
 
-\begin{enumerate}
-    \item \textbf{Asignar tierra}: Se elige un nodo como referencia de tierra para simplificar el análisis. En este nodo, se asigna un voltaje igual a 0. En este caso, seleccionamos el nodo inferior.
-    
-    \begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   \draw (3,0)to[short] node[ground] {GND} (3,-0.5)
-   ;
-    \end{circuitikz}
-    \end{center}
-    
-    \item \textbf{Nombrar nodos}: Se asignan variables de voltaje a los nodos desconocidos. En este caso, nombramos el voltaje en el nodo superior izquierdo como \(V_{A}\), el nodo superior central como \(V_{B}\) y el nodo superior derecho como \(V_{C}\).
+    \begin{enumerate}
+        \item \textbf{Asignar tierra}: Se elige un nodo como referencia de tierra para simplificar el análisis. En este nodo, se asigna un voltaje igual a 0. En este caso, seleccionamos el nodo inferior.
 
-    \begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3) node[label={above:$V_A$}] {} 
-   to[R=$R_1$] (3,3) node[label={above:$V_B$}] {} 
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V=$V_2$,invert] (6,3) node[label={above:$V_C$}] {} ;
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   \draw (3,0)to[short] node[ground] {GND} (3,-0.5)
-   ;
-    \end{circuitikz}
-    \end{center}
-    
-    \item \textbf{Resolver nodos fáciles}: Si hay nodos con voltajes conocidos (por ejemplo, aquellos conectados a una fuente de voltaje), se pueden resolver directamente. En este caso, tendremos:
-    \begin{align*}
-        V_A=V_1
-        V_C=V_2
-    \end{align*} 
-    
-    \item \textbf{LKC + Ohm en nodos faltantes}: Aplicamos la Ley de Kirchhoff de Corrientes (LKC) en los nodos donde no conocemos el voltaje. Al hacerlo, también aplicamos la Ley de Ohm para representar las corrientes en función de los voltajes desconocidos.
-    En este caso, el único nodo con voltaje desconocido es $V_B$ y partimos aplicando LKC en él:
-    \newcommand{\iarronly}[1]{% name
- \node [currarrow, color=blue, anchor=center,
- rotate=\ctikzgetdirection{#1-Iarrow}] at (#1-Ipos) {};
- }
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to[V=$V_1$,invert] (0,3)
+                      to[R=$R_1$] (3,3)
+                      to[R=$R_3$] (6,3);
+                      \draw (6,0) to[V=$V_2$,invert] (6,3);
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,0) to[R=$R_2$] (3,3);
+                      \draw (3,0)to[short] node[ground] {GND} (3,-0.5)
+                      ;
+                  \end{circuitikz}
+              \end{center}
 
-    \begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3) node[label={above:$V_A=V_1$}] {} 
-   to[R=$R_1$,i=$i_{R_1}$, bipole current append style={color=blue}] (3,3) node[label={above:$V_B$}] {} 
-   to[R=$R_3$,i>^=$i_{R_3}$, bipole current append style={color=blue}] (6,3);
-   \draw (6,0) to[V=$V_2$,invert] (6,3) node[label={above:$V_C=V_2$}] {} ;
-   \draw (0,0) to[short] (6,0);
-   \draw (3,3) to[R=$R_2$,i>^=$i_{R_2}$, bipole current append style={color=blue}] (3,0);
-   \draw (3,0)to[short] node[ground] {} (3,-0.5)
-   ;
-   
-    \end{circuitikz}
-    \end{center}
+        \item \textbf{Nombrar nodos}: Se asignan variables de voltaje a los nodos desconocidos. En este caso, nombramos el voltaje en el nodo superior izquierdo como \(V_{A}\), el nodo superior central como \(V_{B}\) y el nodo superior derecho como \(V_{C}\).
 
-    Por LKC en el nodo B, tendremos
-    \begin{align*}
-        i_{R_1}&=i_{R_2}+i_{R_3}&&\\
-        \frac{V_{R_1}}{R_1}&=\frac{V_{R_2}}{R_2}+\frac{V_{R_3}}{R_3}&& \text{por Ley de Ohm} \\
-         \frac{V_1-V_B}{R_1}&=\frac{V_B}{R_2}+\frac{V_B-V_2}{R_3}&& \text{reemplazamos los voltajes para cada resistencia} \\         
-    \end{align*}
-    
-    \item \textbf{Resolver voltajes}: Resolvemos el sistema de ecuaciones resultante de la LKC y las ecuaciones de Ohm para encontrar los voltajes desconocidos de los nodos.
-    \begin{equation*}
-        V_B=(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3})^{-1}\frac{V_1}{R_1}+\frac{V_2}{R_3}
-    \end{equation*}
-    
-    \item \textbf{Aplicar Ohm para el resto de las corrientes y voltajes}: Utilizamos la Ley de Ohm para calcular las corrientes en los resistores y completar el análisis del circuito.
-    En este caso, tendremos que para $R_1$:
-    \begin{align*}
-        V_{R_1}&=V_A-V_B\\
-        i_{R_1}&=\frac{V_{R_1}}{R_1}
-    \end{align*}
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to[V=$V_1$,invert] (0,3) node[label={above:$V_A$}] {}
+                      to[R=$R_1$] (3,3) node[label={above:$V_B$}] {}
+                      to[R=$R_3$] (6,3);
+                      \draw (6,0) to[V=$V_2$,invert] (6,3) node[label={above:$V_C$}] {} ;
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,0) to[R=$R_2$] (3,3);
+                      \draw (3,0)to[short] node[ground] {GND} (3,-0.5)
+                      ;
+                  \end{circuitikz}
+              \end{center}
 
-    Para $R_2$:
-    \begin{align*}
-        V_{R_2}&=V_B\\
-        i_{R_2}&=\frac{V_{R_2}}{R_2}
-    \end{align*}
-    
-    Para $R_3$:
-    \begin{align*}
-        V_{R_3}&=V_B-V_C\\
-        i_{R_3}&=\frac{V_{R_3}}{R_3}
-    \end{align*}
-    Finalmente, bastaría con reemplazar con los valores ya calculados para tener el valor final.
-\end{enumerate}
+        \item \textbf{Resolver nodos fáciles}: Si hay nodos con voltajes conocidos (por ejemplo, aquellos conectados a una fuente de voltaje), se pueden resolver directamente. En este caso, tendremos:
+              \begin{align*}
+                  V_A=V_1
+                  V_C=V_2
+              \end{align*}
+
+        \item \textbf{LKC + Ohm en nodos faltantes}: Aplicamos la Ley de Kirchhoff de Corrientes (LKC) en los nodos donde no conocemos el voltaje. Al hacerlo, también aplicamos la Ley de Ohm para representar las corrientes en función de los voltajes desconocidos.
+              En este caso, el único nodo con voltaje desconocido es $V_B$ y partimos aplicando LKC en él:
+              \newcommand{\iarronly}[1]{% name
+                  \node [currarrow, color=blue, anchor=center,
+                      rotate=\ctikzgetdirection{#1-Iarrow}] at (#1-Ipos) {};
+              }
+
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to[V=$V_1$,invert] (0,3) node[label={above:$V_A=V_1$}] {}
+                      to[R=$R_1$,i=$i_{R_1}$, bipole current append style={color=blue}] (3,3) node[label={above:$V_B$}] {}
+                      to[R=$R_3$,i>^=$i_{R_3}$, bipole current append style={color=blue}] (6,3);
+                      \draw (6,0) to[V=$V_2$,invert] (6,3) node[label={above:$V_C=V_2$}] {} ;
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,3) to[R=$R_2$,i>^=$i_{R_2}$, bipole current append style={color=blue}] (3,0);
+                      \draw (3,0)to[short] node[ground] {} (3,-0.5)
+                      ;
+
+                  \end{circuitikz}
+              \end{center}
+
+              Por LKC en el nodo B, tendremos
+              \begin{align*}
+                  i_{R_1}             & =i_{R_2}+i_{R_3}                         &  &                                                        \\
+                  \frac{V_{R_1}}{R_1} & =\frac{V_{R_2}}{R_2}+\frac{V_{R_3}}{R_3} &  & \text{por Ley de Ohm}                                  \\
+                  \frac{V_1-V_B}{R_1} & =\frac{V_B}{R_2}+\frac{V_B-V_2}{R_3}     &  & \text{reemplazamos los voltajes para cada resistencia} \\
+              \end{align*}
+
+        \item \textbf{Resolver voltajes}: Resolvemos el sistema de ecuaciones resultante de la LKC y las ecuaciones de Ohm para encontrar los voltajes desconocidos de los nodos.
+              \begin{equation*}
+                  V_B=(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3})^{-1}\frac{V_1}{R_1}+\frac{V_2}{R_3}
+              \end{equation*}
+
+        \item \textbf{Aplicar Ohm para el resto de las corrientes y voltajes}: Utilizamos la Ley de Ohm para calcular las corrientes en los resistores y completar el análisis del circuito.
+              En este caso, tendremos que para $R_1$:
+              \begin{align*}
+                  V_{R_1} & =V_A-V_B             \\
+                  i_{R_1} & =\frac{V_{R_1}}{R_1}
+              \end{align*}
+
+              Para $R_2$:
+              \begin{align*}
+                  V_{R_2} & =V_B                 \\
+                  i_{R_2} & =\frac{V_{R_2}}{R_2}
+              \end{align*}
+
+              Para $R_3$:
+              \begin{align*}
+                  V_{R_3} & =V_B-V_C             \\
+                  i_{R_3} & =\frac{V_{R_3}}{R_3}
+              \end{align*}
+              Finalmente, bastaría con reemplazar con los valores ya calculados para tener el valor final.
+    \end{enumerate}
 
 
 
@@ -998,846 +998,846 @@ El método de mallas nos permite encontrar la corriente y voltaje por cada resis
     \item Asignar corrientes de malla
     \item LKV + Ohm en mallas faltantes
     \item Resolver corrientes
-	\item Aplicar Ohm para el resto
+    \item Aplicar Ohm para el resto
 \end{enumerate}
 
 \begin{example}[Método de Mallas]
-Se busca determinar las corrientes y voltajes del siguiente circuito:
+    Se busca determinar las corrientes y voltajes del siguiente circuito:
 
-\begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V_=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   
-    \end{circuitikz}
+    \begin{center}
+        \begin{circuitikz}[american]
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to[V=$V_1$,invert] (0,3)
+            to[R=$R_1$] (3,3)
+            to[R=$R_3$] (6,3);
+            \draw (6,0) to[V_=$V_2$,invert] (6,3);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,0) to[R=$R_2$] (3,3);
+
+        \end{circuitikz}
     \end{center}
 
-Para resolver este circuito, utilizaremos el método de las mallas.
+    Para resolver este circuito, utilizaremos el método de las mallas.
 
-\begin{enumerate}
-    \item \textbf{Identificar mallas}: Identificamos las mallas del circuito. En este caso, hay dos mallas.
+    \begin{enumerate}
+        \item \textbf{Identificar mallas}: Identificamos las mallas del circuito. En este caso, hay dos mallas.
 
-    \begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V_=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   \draw [thick, <-] (2,1.5) arc(0:270:0.70);
-       \draw (1.4,1.4) node {$i_1$};
-       \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
-       \draw (4.8,1.4) node {$i_2$};
-    \end{circuitikz}
-    \end{center}
-    
-    \item \textbf{Asignar corrientes de malla}: Asignamos variables de corriente a las mallas. Llamaremos \(i_1\) a la corriente de la malla izquierda y \(i_2\) a la corriente de la malla derecha.
-    
-    \item \textbf{LKV + Ohm en mallas faltantes}: Aplicamos la Ley de Kirchhoff de Voltajes (LKV) en las mallas donde no conocemos las corrientes. También aplicamos la Ley de Ohm para representar los voltajes en función de las corrientes de malla.\\
-    \begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V_=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   \draw [thick, <-] (2,1.5) arc(0:270:0.70);
-       \draw (1.4,1.4) node {$i_1$};
-       \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
-       \draw (4.8,1.4) node {$i_2$};
-    \end{circuitikz}
-    \end{center}
-    Para la malla de $i_1$, recorremos en el sentido de las agujas del reloj, ya que la corriente fue definida en ese sentido, con lo que tendremos:
-    \begin{equation*}
-        V_{R_1}+V_{R_2}-V_1=0
-    \end{equation*}
-    Para la malla de $i_2$
-    \begin{equation*}
-        V_{R_3}+V_2-V_{R_3}=0
-    \end{equation*}
-    Reemplazamos con ley de Ohm
-    \begin{align*}
-        i_1R_1+(i_1-i_2)R_2-V_1&=0\\
-        i_2R_3+V_2-(i_1-i_2)R_2&=0
-    \end{align*}
-    Con esto, obtenemos dos ecuaciones con dos incógnitas ($i_1$ e $i_2$).
-    \item \textbf{Resolver corrientes}: Resolvemos el sistema de ecuaciones resultante de la LKV y las ecuaciones de Ohm para encontrar las corrientes de malla \(i_1\) y \(i_2\).
-    \begin{align*}
-        i_1&=\frac{R_2(V_1-V_2)+R_3V1}{R_1(R_2+R3)+R_2R_3}\\       
-    i_2&=\frac{R_2(V_1-V_2)-R_1V_2}{R_1(R_2+R3)+R_2R_3}
-    \end{align*}
-    \item \textbf{Aplicar Ohm para el resto}: Utilizamos la Ley de Ohm para calcular las caídas de voltaje en los resistores y completar el análisis del circuito.
-\end{enumerate}
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to[V=$V_1$,invert] (0,3)
+                      to[R=$R_1$] (3,3)
+                      to[R=$R_3$] (6,3);
+                      \draw (6,0) to[V_=$V_2$,invert] (6,3);
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,0) to[R=$R_2$] (3,3);
+                      \draw [thick, <-] (2,1.5) arc(0:270:0.70);
+                      \draw (1.4,1.4) node {$i_1$};
+                      \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
+                      \draw (4.8,1.4) node {$i_2$};
+                  \end{circuitikz}
+              \end{center}
+
+        \item \textbf{Asignar corrientes de malla}: Asignamos variables de corriente a las mallas. Llamaremos \(i_1\) a la corriente de la malla izquierda y \(i_2\) a la corriente de la malla derecha.
+
+        \item \textbf{LKV + Ohm en mallas faltantes}: Aplicamos la Ley de Kirchhoff de Voltajes (LKV) en las mallas donde no conocemos las corrientes. También aplicamos la Ley de Ohm para representar los voltajes en función de las corrientes de malla.\\
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to[V=$V_1$,invert] (0,3)
+                      to[R=$R_1$] (3,3)
+                      to[R=$R_3$] (6,3);
+                      \draw (6,0) to[V_=$V_2$,invert] (6,3);
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,0) to[R=$R_2$] (3,3);
+                      \draw [thick, <-] (2,1.5) arc(0:270:0.70);
+                      \draw (1.4,1.4) node {$i_1$};
+                      \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
+                      \draw (4.8,1.4) node {$i_2$};
+                  \end{circuitikz}
+              \end{center}
+              Para la malla de $i_1$, recorremos en el sentido de las agujas del reloj, ya que la corriente fue definida en ese sentido, con lo que tendremos:
+              \begin{equation*}
+                  V_{R_1}+V_{R_2}-V_1=0
+              \end{equation*}
+              Para la malla de $i_2$
+              \begin{equation*}
+                  V_{R_3}+V_2-V_{R_3}=0
+              \end{equation*}
+              Reemplazamos con ley de Ohm
+              \begin{align*}
+                  i_1R_1+(i_1-i_2)R_2-V_1 & =0 \\
+                  i_2R_3+V_2-(i_1-i_2)R_2 & =0
+              \end{align*}
+              Con esto, obtenemos dos ecuaciones con dos incógnitas ($i_1$ e $i_2$).
+        \item \textbf{Resolver corrientes}: Resolvemos el sistema de ecuaciones resultante de la LKV y las ecuaciones de Ohm para encontrar las corrientes de malla \(i_1\) y \(i_2\).
+              \begin{align*}
+                  i_1 & =\frac{R_2(V_1-V_2)+R_3V1}{R_1(R_2+R3)+R_2R_3}  \\
+                  i_2 & =\frac{R_2(V_1-V_2)-R_1V_2}{R_1(R_2+R3)+R_2R_3}
+              \end{align*}
+        \item \textbf{Aplicar Ohm para el resto}: Utilizamos la Ley de Ohm para calcular las caídas de voltaje en los resistores y completar el análisis del circuito.
+    \end{enumerate}
 
 
 \end{example}
 
 \iffalse
-\textbf{ \underline{Identifica las mallas: }}En este caso, el circuito llega a tener 2 mallas. Identificaremos 2 corrientes de lazo, denominados $i_1$ e $i_2$, las cuales son variables independientes. Aparte, ambos sentidos de los lazos van en sentido de las manecillas del reloj\\
-\begin{figure}[h!]
-    \begin{circuitikz}[american]
-      %\draw[help lines] (0,0) grid (6,3);
-      \draw (0,0) to[V=$V_A$,invert] (0,3)
-       to[R=$R_1$, v<=$v_{R1}$] (3,3)
-       to[R=$R_3$] (6,3);
-       \draw (6,0) to[V_=$V_B$,invert] (6,3);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,0) to[R=$R_2$] (3,3);
-       \draw [thick, <-] (2,1.5) arc(0:270:0.70);
-       \draw (1.4,1.4) node {$i_1$};
-       \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
-       \draw (4.8,1.4) node {$i_2$};
-    \end{circuitikz}
-  \end{figure}
-Al definir una corriente de malla en cada malla, se tendra suficientes ecuaciones independientes para la resolucion del circuito.\\
-\textbf{ \underline{Escribir la ley de voltaje (LVK) alrededor de cada malla:}}Al momento de escribir las ecuaciones LVK, se marca el esquema con los voltajes (+ y -) de cada elemento del circuito , usando la convención de signos para componentes pasivos.\\
+    \textbf{ \underline{Identifica las mallas: }}En este caso, el circuito llega a tener 2 mallas. Identificaremos 2 corrientes de lazo, denominados $i_1$ e $i_2$, las cuales son variables independientes. Aparte, ambos sentidos de los lazos van en sentido de las manecillas del reloj\\
+    \begin{figure}[h!]
+        \begin{circuitikz}[american]
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to[V=$V_A$,invert] (0,3)
+            to[R=$R_1$, v<=$v_{R1}$] (3,3)
+            to[R=$R_3$] (6,3);
+            \draw (6,0) to[V_=$V_B$,invert] (6,3);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,0) to[R=$R_2$] (3,3);
+            \draw [thick, <-] (2,1.5) arc(0:270:0.70);
+            \draw (1.4,1.4) node {$i_1$};
+            \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
+            \draw (4.8,1.4) node {$i_2$};
+        \end{circuitikz}
+    \end{figure}
+    Al definir una corriente de malla en cada malla, se tendra suficientes ecuaciones independientes para la resolucion del circuito.\\
+    \textbf{ \underline{Escribir la ley de voltaje (LVK) alrededor de cada malla:}}Al momento de escribir las ecuaciones LVK, se marca el esquema con los voltajes (+ y -) de cada elemento del circuito , usando la convención de signos para componentes pasivos.\\
 
-\begin{figure}[h!]
-    \begin{circuitikz}[american]
-      %\draw[help lines] (0,0) grid (6,3);
-      \draw (0,0) to[V=$V_A$, invert] (0,3)
-       to[R=$R_1$, v=$v_{R1}$] (3,3)
-       to[R=$R_3$, v=$v_{R3}$] (6,3);
-       \draw (6,0) to[V_=$V_B$,invert] (6,3);
-       \draw (0,0) to[short] (6,0);
-       \draw (3,0) to[R=$R_2$, v=$v_{R2}$] (3,3);
-       \draw [thick, <-] (2,1.5) arc(0:270:0.70);
-       \draw (1.4,1.4) node {$i_1$};
-       \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
-       \draw (4.8,1.4) node {$i_2$};
-    \end{circuitikz}
-  \end{figure}
-\\
-\textbf{ \underline{Plantear sistema de ecuaciones:}} Escribimos una ecuacion para cada malla usando la ley de voltaje de Kirchoff(Suma de los voltajes alrededor de la malla e igualar dicha suma a cero). Se comienza con la esquina inferior izquierda , recorriendo la malla en el sentido de las agujas de reloj. El signo del voltaje dependera de donde entre a corriente (En este caso negativo).\\
+    \begin{figure}[h!]
+        \begin{circuitikz}[american]
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to[V=$V_A$, invert] (0,3)
+            to[R=$R_1$, v=$v_{R1}$] (3,3)
+            to[R=$R_3$, v=$v_{R3}$] (6,3);
+            \draw (6,0) to[V_=$V_B$,invert] (6,3);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,0) to[R=$R_2$, v=$v_{R2}$] (3,3);
+            \draw [thick, <-] (2,1.5) arc(0:270:0.70);
+            \draw (1.4,1.4) node {$i_1$};
+            \draw [thick, <-] (5.4,1.5) arc(0:270:0.70);
+            \draw (4.8,1.4) node {$i_2$};
+        \end{circuitikz}
+    \end{figure}
+    \\
+    \textbf{ \underline{Plantear sistema de ecuaciones:}} Escribimos una ecuacion para cada malla usando la ley de voltaje de Kirchoff(Suma de los voltajes alrededor de la malla e igualar dicha suma a cero). Se comienza con la esquina inferior izquierda , recorriendo la malla en el sentido de las agujas de reloj. El signo del voltaje dependera de donde entre a corriente (En este caso negativo).\\
 
-\begin {equation*}
+    \begin{equation*}
     -V_A + R_1 * I_1 + (R_1-R_2) * I_1 = 0
-\end {equation*}
-Aplicando la misma mecanica, con la segunda malla se comienza con la esquina inferior derecha, y debido a que la corriente entra por el lado positivo, este mismo determinara el signo del voltaje en la ecuacion. \\
+    \end{equation*}
+    Aplicando la misma mecanica, con la segunda malla se comienza con la esquina inferior derecha, y debido a que la corriente entra por el lado positivo, este mismo determinara el signo del voltaje en la ecuacion. \\
 
-\begin {equation*}
+    \begin{equation*}
     V_B - (R_2 - R_1)*I_2 - R_3*I_2 = 0
-\end {equation*}
-\\
-Ya mediante sistema de ecuaciones de las ecuaciones de las mallas, podemos obtener las corrientes que circulan en cada componente. 
-%%%%%%%%Eduardo Novoa%%%%%%%%%%%
+    \end{equation*}
+    \\
+    Ya mediante sistema de ecuaciones de las ecuaciones de las mallas, podemos obtener las corrientes que circulan en cada componente.
+    %%%%%%%%Eduardo Novoa%%%%%%%%%%%
 
-%Vicente Olmos%
-\begin{example}[Método de nodos con fuente de voltaje]
-\begin{circuitikz}[american]
-\draw
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-	
-	(0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l={\huge$R_3$}](8,7)
-	(4,4) to [R, l=\huge{$R_2$}](4,7) 
-	(8,4) to [R, l=\huge{$R_4$}] (8,7);
+    %Vicente Olmos%
+    \begin{example}[Método de nodos con fuente de voltaje]
+        \begin{circuitikz}[american]
+            \draw
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
 
-\end{circuitikz}
+            (0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l={\huge$R_3$}](8,7)
+            (4,4) to [R, l=\huge{$R_2$}](4,7)
+            (8,4) to [R, l=\huge{$R_4$}] (8,7);
 
-Se identifican los nodos, donde el nodo a tierra es de 0V
+        \end{circuitikz}
 
-
-
-\begin{circuitikz}[american]
-\draw
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-	node[label={above:$a$}] {}
-	(0,7) to [R, l={$R_1$}, *-*,v=$v_{R_1}$](4,7)  node[label={above:$b$}] {} to
-	[R, l={$R_3$}, *-*,v=$v_{R_3}$] (8,7)
-	(4,7) to [R, l={$R_2$}, *-*,v=$v_{R_2}$] (4,4) node[ground] {}
-	(8,7) node[label={above:$c$}] {} to [R, l={$R_4$}, *-*,v=$v_{R_4}$] (8,4)  ;
-
-\end{circuitikz}
-
-Se puede obsevar como $V_a = V_s$ ya que tiene una fuente de voltaje asociada.
-
-Se obtienen las ecuaciones de corriente mediante LCK para el nodo b:
-
-\begin {equation*}
-    I_{R_1}+I_{R_2}+I_{R_3} = 0
-\end {equation*}
-
-Se obtienen las ecuaciones de corriente mediante LCK para el nodo c:
-
-\begin {equation*}
-    -I_{R_3}= I_{R_4}
-\end {equation*}
-
-Se reemplaza por Ley de Ohm.
-
-Nodo b:
-
-\begin {equation*}
-    \frac{V_b - V_s}{R_1}+\frac{V_b}{R_2}+\frac{V_b - V_c}{R_3}=0
-\end {equation*}
-
-Nodo c:
-
-\begin {equation*}
-    -\frac{V_c - V_b}{R_3}=\frac{V_c}{R_4}
-\end {equation*}
-
-Se puede ver como hay un signo menos en la corriente $I_R_3$ ya que hay que observar que las polaridades de la resistencia son distintas, en este caso la corriente esta entrando por el negativo, alterando el signo del nodo c para la corriente $I_R_3$.
-
-Se puede despejar $V_b$ en las 2 ecuaciones:
-
-\begin {equation*}
-    V_b =\frac{\frac{V_s}{R_1}+\frac{V_c}{R_3}}{\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}}
-\end {equation*}
-
-\begin {equation*}
-    V_b=R_3*V_c*(\frac{1}{R_3}+\frac{1}{R_4})
-\end {equation*}
-
-Para continuar con el analisis se asignaran valores numericos para hacer el proceso mas claro:
-
-\hspace{2 cm}$V_s=12 V$\hspace{1 cm}$R_1=4\Omega$\hspace{1 cm}$R_2=2 \Omega$\hspace{1 cm}$R_3=6 \Omega$\hspace{1 cm}$R_4=10 \Omega$
-
-Se reemplazan los valores dados:
-
-\begin {equation*}
-    V_b=\frac{\frac{12}{4}+\frac{V_c}{6}}{\frac{1}{4}+\frac{1}{2}+\frac{1}{6}}
-\end {equation*}
-\begin {equation*}
-    V_b=6*V_c*(\frac{1}{6}+\frac{1}{10})
-\end {equation*}
-
-Calculando se obtiene:
-\begin {equation*}
-    V_b=3,27 +0,18V_c
-\end {equation*}
-\begin {equation*}
-    V_b=1,6V_c
-\end {equation*}
-
-Se igualan las ecuaciones:
-\begin {equation*}
-    3,27+0,18V_c=1,6V_c
-\end {equation*}
-
-Y se obtiene el valor de $V_c=2,3V$
-
-Con este resultado y la ecuacion 3.10 se calcula el valor de $V_b=3,68V$
-
-Con todos los voltajes obtenidos se pueden determinar las corrientes:
-\begin {equation*}
-    I_{R_1}=\frac{V_b-V_s}{R_1}=\frac{3,68-12}{4}=-2,08 A
-\end {equation*}
-\begin {equation*}
-    I_{R_2}=\frac{V_b}{R_2}=\frac{3,68}{2}= 1,84 A
-\end {equation*}
-\begin {equation*}
-    I_{R_3}=\frac{V_b-V_c}{R_3}=\frac{3,68-2,3}{6}=0,23 A
-\end {equation*}
-\begin {equation*}
-    I_{R_4}=\frac{V_c}{10}=\frac{2,3}{10}=0,23 A 
-\end {equation*}
-
-\end{example}
-%Vicente Olmos%
-
-\begin{example}[Método de malla con fuente de voltaje]
-%%%%%%%%Sebastian Osses%%%%%%%%%%%%%%%%%%%%%%Sebastian Osses%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Resolveremos el siguiente circuito con el método de mallas  
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(10,3) to (0,3) to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-   	(0,7) to [R, l=\huge{$R_1$},](3,7) to [R,l=\huge{$R_2$}](6,7)
-	(6,3) to [R,l=\huge{$R_3$}](6,7)
-    (6,7) to (10,7)
-    (10,3) to [R,l=\huge{$R_4$}](10,7);
-
-\end{circuitikz}
-\\Donde:\\
-\hspace{2 cm}$V_s=5 V$\hspace{1 cm}$R_1=8 \Omega$\hspace{1 cm}$R_2= 10 \Omega$\hspace{1 cm}$R_3= 20 \Omega$\hspace{1 cm}$R_4=15 \Omega$
-\\\\
-Comenzaremos la resolución identificando las mallas del circuito:
-\\
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(10,3) to (0,3) to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-   	(0,7) to [R, l=$R_1$,v=$V_{R_1}$](3,7) to [R,l=$R_2$,v=$V_{R_2}$](6,7)
-	(6,7) to [R,l=$R_3$,v=$V_{R_3}$](6,3)
-    (6,7) to (10,7)
-    (10,7) to [R,l=$R_4$,v=$V_{R_4}$](10,3)
-    {(3.1,5) node {\huge{\color{blue}{$i_1$}}} (7.9,5) node {\huge{\color{blue}{$i_2$}}}};
-	\draw[very thick, blue, <-, >=triangle 45] (3.6,4.1) arc (-60:240:1);
-	\draw[very thick, blue, <-, >=triangle 45] (8.4,4.1) arc (-60:240:1);
-  %(0,7) to [R=$R_1$, *-*, v=$v_{R_1}$](4,7) node[label={above:$b$}] {} to [R=$R_3$, *-*, v=$v_{R_3}$](8,7)
-\end{circuitikz}
-\\\\
-Notamos que tenemos 2 mallas: la de $i_1$ y la de $i_2$. Además, se observa que por $R_3$ circulan ambas corrientes y en sentido opuesto, por ende
-\begin {equation*}
-i_{R_3} = i_1- i_2 
-\end {equation*}
-
-Luego, por medio de la LKV obtendremos las ecuaciones de voltaje para cada malla. 
-\\Para la malla de $i_1$ tenemos que en $V_s$ la corriente entre desde el negativo, mientras que por los resistores entra desde el lado positivo (convención de signo para elementos pasivos). Por lo tanto, tenemos:\\
-\begin {equation*}
- -V_s + V_{R_1} + V_{R_2} + V_{R_3} = 0
-\end {equation*}
-Luego
-\begin {equation*}
-\notag V_s=V_{R_1}+V_{R_2}+V_{R_3}
-\end {equation*} \\Para la malla de $i_2$ se tiene que en $R_4$ la corriente fluye desde el lado positivo, mientras que, en $R_3$ se considera la polaridad definida en la malla de $i_1$ en consecuencia, la corriente entra desde el lado negativo. Por lo tanto, se obtiene la siguiente relación:
-
-\begin {equation*}
- -V_{R_3} + V_{R_4} = 0;
-\end {equation*}
-Expresión equivalente a 
-\begin {equation*}
-\notag V_{R_3}=V_{R_4}
-\end {equation*} \\
-Tras expresar las ecuaciones de LKV para cada malla, en ambas, reemplazaremos según la ley de Ohm los voltajes de cada resistor por el producto entre la corriente que circula por cada uno y sus respectivas resistencias. Además, que, para $V_{R_3}$ utilizaremos el valor de $i_{R_3}$ expresado arriba.\\\\
-Malla de $i_1$:
-\begin {equation*}
-\notag V_s=R_1 i_1+R_2 i_1+R_3(i_1-i_2)
-\end {equation*}\\
-Malla de $i_2$: 
-\begin {equation*}
-\notag R_3(i_1-i_2)=R_4 i_2
-\end {equation*}\\Reordenamos esta última y obtenemos la siguiente expresión para $i_2$
-\begin {equation*}
-i_2 = \frac{i_1 R_3}{R_3+R_4}
-\end {equation*}\\Reemplazamos el valor de $i_2$ en la ecuación de la malla de $i_1$ se tiene
-\begin {equation*}
-\notag V_s= R_1 i_1+R_2 i_1+R_3 \left(i_1-\frac{i_1 R_3}{R_3+R_4} \right)
-\end {equation*}\\
-A continuación, reordenamos para obtener el valor algebraico de $i_1$:
-\begin {equation*}
-i_1=\frac{V_s}{R_1+R_2+R_3\left(1-\frac{R_3}{R_3+R_4}\right)}
-\end {equation*}\\\\
- Ahora solo debemos reemplazar los valores de cada elemento del circuito para obtener  el valor de $i_1$ y a partir de este realizar el cálculo de los voltajes:
-
-\begin {equation*}
-\notag i_1=\frac{5}{8+10+20\left(1-\frac{20}{20+15}\right)}
-\end {equation*}Calculando se obtiene:
-\begin {equation*}
-\notag i_1 = 0,188A = 188mA
-\end {equation*}\\Luego, $i_2$ corresponde a:
-\begin {equation*}
-\notag i_2 = \frac{0,188 \cdot 20}{20+15}
-\end {equation*}
-Lo cual equivale a: 
-\begin {equation*}
-\notag i_2 = 0,107 A=107mA
-\end {equation*}
-Puesto que los valores de corriente calculados son positivos, las corrientes $i_1$ e $i_2$ fluyen en el mismo sentido que definimos.\\\\
-Finalmente, tras haber calculado ambas corrientes, se calculan los valores de voltaje para cada resistor:
-\begin {equation*}
-\notag V_{R_1}=0,188\cdot8 = 1,504 V
-\end {equation*}
-\begin {equation*}
-\notag V_{R_2} = 0,188 \cdot10 = 1,880 V
-\end {equation*}
-\begin {equation*}
-\notag V_{R_3} = V_{R_4} = (0,188-0,107) \cdot 20 = 1,620 V
-\end {equation*}
+        Se identifican los nodos, donde el nodo a tierra es de 0V
 
 
-%%%%%%%%Sebastian Osses%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \begin{circuitikz}[american]
+            \draw
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+            node[label={above:$a$}] {}
+            (0,7) to [R, l={$R_1$}, *-*,v=$v_{R_1}$](4,7)  node[label={above:$b$}] {} to
+                [R, l={$R_3$}, *-*,v=$v_{R_3}$] (8,7)
+            (4,7) to [R, l={$R_2$}, *-*,v=$v_{R_2}$] (4,4) node[ground] {}
+            (8,7) node[label={above:$c$}] {} to [R, l={$R_4$}, *-*,v=$v_{R_4}$] (8,4)  ;
+
+        \end{circuitikz}
+
+        Se puede obsevar como $V_a = V_s$ ya que tiene una fuente de voltaje asociada.
+
+        Se obtienen las ecuaciones de corriente mediante LCK para el nodo b:
+
+        \begin{equation*}
+        I_{R_1}+I_{R_2}+I_{R_3} = 0
+        \end{equation*}
+
+        Se obtienen las ecuaciones de corriente mediante LCK para el nodo c:
+
+        \begin{equation*}
+        -I_{R_3}= I_{R_4}
+        \end{equation*}
+
+        Se reemplaza por Ley de Ohm.
+
+        Nodo b:
+
+        \begin{equation*}
+        \frac{V_b - V_s}{R_1}+\frac{V_b}{R_2}+\frac{V_b - V_c}{R_3}=0
+        \end{equation*}
+
+        Nodo c:
+
+        \begin{equation*}
+        -\frac{V_c - V_b}{R_3}=\frac{V_c}{R_4}
+        \end{equation*}
+
+        Se puede ver como hay un signo menos en la corriente $I_R_3$ ya que hay que observar que las polaridades de la resistencia son distintas, en este caso la corriente esta entrando por el negativo, alterando el signo del nodo c para la corriente $I_R_3$.
+
+        Se puede despejar $V_b$ en las 2 ecuaciones:
+
+        \begin{equation*}
+        V_b =\frac{\frac{V_s}{R_1}+\frac{V_c}{R_3}}{\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}}
+        \end{equation*}
+
+        \begin{equation*}
+        V_b=R_3*V_c*(\frac{1}{R_3}+\frac{1}{R_4})
+        \end{equation*}
+
+        Para continuar con el analisis se asignaran valores numericos para hacer el proceso mas claro:
+
+        \hspace{2 cm}$V_s=12 V$\hspace{1 cm}$R_1=4\Omega$\hspace{1 cm}$R_2=2 \Omega$\hspace{1 cm}$R_3=6 \Omega$\hspace{1 cm}$R_4=10 \Omega$
+
+        Se reemplazan los valores dados:
+
+        \begin{equation*}
+        V_b=\frac{\frac{12}{4}+\frac{V_c}{6}}{\frac{1}{4}+\frac{1}{2}+\frac{1}{6}}
+        \end{equation*}
+        \begin{equation*}
+        V_b=6*V_c*(\frac{1}{6}+\frac{1}{10})
+        \end{equation*}
+
+        Calculando se obtiene:
+        \begin{equation*}
+        V_b=3,27 +0,18V_c
+        \end{equation*}
+        \begin{equation*}
+        V_b=1,6V_c
+        \end{equation*}
+
+        Se igualan las ecuaciones:
+        \begin{equation*}
+        3,27+0,18V_c=1,6V_c
+        \end{equation*}
+
+        Y se obtiene el valor de $V_c=2,3V$
+
+        Con este resultado y la ecuacion 3.10 se calcula el valor de $V_b=3,68V$
+
+        Con todos los voltajes obtenidos se pueden determinar las corrientes:
+        \begin{equation*}
+        I_{R_1}=\frac{V_b-V_s}{R_1}=\frac{3,68-12}{4}=-2,08 A
+        \end{equation*}
+        \begin{equation*}
+        I_{R_2}=\frac{V_b}{R_2}=\frac{3,68}{2}= 1,84 A
+        \end{equation*}
+        \begin{equation*}
+        I_{R_3}=\frac{V_b-V_c}{R_3}=\frac{3,68-2,3}{6}=0,23 A
+        \end{equation*}
+        \begin{equation*}
+        I_{R_4}=\frac{V_c}{10}=\frac{2,3}{10}=0,23 A
+        \end{equation*}
+
+    \end{example}
+    %Vicente Olmos%
+
+    \begin{example}[Método de malla con fuente de voltaje]
+        %%%%%%%%Sebastian Osses%%%%%%%%%%%%%%%%%%%%%%Sebastian Osses%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        Resolveremos el siguiente circuito con el método de mallas
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (10,3) to (0,3) to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+            (0,7) to [R, l=\huge{$R_1$},](3,7) to [R,l=\huge{$R_2$}](6,7)
+            (6,3) to [R,l=\huge{$R_3$}](6,7)
+            (6,7) to (10,7)
+            (10,3) to [R,l=\huge{$R_4$}](10,7);
+
+        \end{circuitikz}
+        \\Donde:\\
+        \hspace{2 cm}$V_s=5 V$\hspace{1 cm}$R_1=8 \Omega$\hspace{1 cm}$R_2= 10 \Omega$\hspace{1 cm}$R_3= 20 \Omega$\hspace{1 cm}$R_4=15 \Omega$
+        \\\\
+        Comenzaremos la resolución identificando las mallas del circuito:
+        \\
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (10,3) to (0,3) to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+            (0,7) to [R, l=$R_1$,v=$V_{R_1}$](3,7) to [R,l=$R_2$,v=$V_{R_2}$](6,7)
+            (6,7) to [R,l=$R_3$,v=$V_{R_3}$](6,3)
+            (6,7) to (10,7)
+            (10,7) to [R,l=$R_4$,v=$V_{R_4}$](10,3)
+            {(3.1,5) node {\huge{\color{blue}{$i_1$}}} (7.9,5) node {\huge{\color{blue}{$i_2$}}}};
+            \draw[very thick, blue, <-, >=triangle 45] (3.6,4.1) arc (-60:240:1);
+            \draw[very thick, blue, <-, >=triangle 45] (8.4,4.1) arc (-60:240:1);
+            %(0,7) to [R=$R_1$, *-*, v=$v_{R_1}$](4,7) node[label={above:$b$}] {} to [R=$R_3$, *-*, v=$v_{R_3}$](8,7)
+        \end{circuitikz}
+        \\\\
+        Notamos que tenemos 2 mallas: la de $i_1$ y la de $i_2$. Además, se observa que por $R_3$ circulan ambas corrientes y en sentido opuesto, por ende
+        \begin{equation*}
+        i_{R_3} = i_1- i_2
+        \end{equation*}
+
+        Luego, por medio de la LKV obtendremos las ecuaciones de voltaje para cada malla.
+        \\Para la malla de $i_1$ tenemos que en $V_s$ la corriente entre desde el negativo, mientras que por los resistores entra desde el lado positivo (convención de signo para elementos pasivos). Por lo tanto, tenemos:\\
+        \begin{equation*}
+        -V_s + V_{R_1} + V_{R_2} + V_{R_3} = 0
+        \end{equation*}
+        Luego
+        \begin{equation*}
+        \notag V_s=V_{R_1}+V_{R_2}+V_{R_3}
+        \end{equation*} \\Para la malla de $i_2$ se tiene que en $R_4$ la corriente fluye desde el lado positivo, mientras que, en $R_3$ se considera la polaridad definida en la malla de $i_1$ en consecuencia, la corriente entra desde el lado negativo. Por lo tanto, se obtiene la siguiente relación:
+
+        \begin{equation*}
+        -V_{R_3} + V_{R_4} = 0;
+        \end{equation*}
+        Expresión equivalente a
+        \begin{equation*}
+        \notag V_{R_3}=V_{R_4}
+        \end{equation*} \\
+        Tras expresar las ecuaciones de LKV para cada malla, en ambas, reemplazaremos según la ley de Ohm los voltajes de cada resistor por el producto entre la corriente que circula por cada uno y sus respectivas resistencias. Además, que, para $V_{R_3}$ utilizaremos el valor de $i_{R_3}$ expresado arriba.\\\\
+        Malla de $i_1$:
+        \begin{equation*}
+        \notag V_s=R_1 i_1+R_2 i_1+R_3(i_1-i_2)
+        \end{equation*}\\
+        Malla de $i_2$:
+        \begin{equation*}
+        \notag R_3(i_1-i_2)=R_4 i_2
+        \end{equation*}\\Reordenamos esta última y obtenemos la siguiente expresión para $i_2$
+        \begin{equation*}
+        i_2 = \frac{i_1 R_3}{R_3+R_4}
+        \end{equation*}\\Reemplazamos el valor de $i_2$ en la ecuación de la malla de $i_1$ se tiene
+        \begin{equation*}
+        \notag V_s= R_1 i_1+R_2 i_1+R_3 \left(i_1-\frac{i_1 R_3}{R_3+R_4} \right)
+        \end{equation*}\\
+        A continuación, reordenamos para obtener el valor algebraico de $i_1$:
+        \begin{equation*}
+        i_1=\frac{V_s}{R_1+R_2+R_3\left(1-\frac{R_3}{R_3+R_4}\right)}
+        \end{equation*}\\\\
+        Ahora solo debemos reemplazar los valores de cada elemento del circuito para obtener  el valor de $i_1$ y a partir de este realizar el cálculo de los voltajes:
+
+        \begin{equation*}
+        \notag i_1=\frac{5}{8+10+20\left(1-\frac{20}{20+15}\right)}
+        \end{equation*}Calculando se obtiene:
+        \begin{equation*}
+        \notag i_1 = 0,188A = 188mA
+        \end{equation*}\\Luego, $i_2$ corresponde a:
+        \begin{equation*}
+        \notag i_2 = \frac{0,188 \cdot 20}{20+15}
+        \end{equation*}
+        Lo cual equivale a:
+        \begin{equation*}
+        \notag i_2 = 0,107 A=107mA
+        \end{equation*}
+        Puesto que los valores de corriente calculados son positivos, las corrientes $i_1$ e $i_2$ fluyen en el mismo sentido que definimos.\\\\
+        Finalmente, tras haber calculado ambas corrientes, se calculan los valores de voltaje para cada resistor:
+        \begin{equation*}
+        \notag V_{R_1}=0,188\cdot8 = 1,504 V
+        \end{equation*}
+        \begin{equation*}
+        \notag V_{R_2} = 0,188 \cdot10 = 1,880 V
+        \end{equation*}
+        \begin{equation*}
+        \notag V_{R_3} = V_{R_4} = (0,188-0,107) \cdot 20 = 1,620 V
+        \end{equation*}
 
 
-\end{example}
-
-%%%%%%%%%%%%%% INICIO LEO PONCE %%%%%%%%%%%%%%%%55
-\newpage
-\begin{example}[Método de Mallas con 2 fuentes de voltaje invertidas]
-\\
+        %%%%%%%%Sebastian Osses%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-Una malla es cualquier trayectoria cerrada de un circuito.
+    \end{example}
 
-Para resolver algún ejercicio por método de mallas, es importante tener en cuenta que se trabajan con las leyes de Ohm y Kirchhoff. Puede ser tanto la ley de corriente, como ley de voltaje de Kirchhoff.
-\iffalse
-\begin{figure}[H]
-    \centering
-  \begin{subfigure}{\textwidth}
-    \includegraphics[scale= 0.35]{SinFuenteinvertida.PNG}
-    \caption{Ejemplo a resolver sin invertir una fuente}
-    \label{fig:Imagen1}
-  \end{subfigure}
-  
-  \begin{subfigure}{\textwidth}
-    \includegraphics[scale=0.35]{ConFuenteinvertida.PNG}
-    \caption{Ejemplo a resolver con una fuente invertida}
-    \label{fig:Imagen2}
-  \end{subfigure}
-  
-\end{figure}
+    %%%%%%%%%%%%%% INICIO LEO PONCE %%%%%%%%%%%%%%%%55
+    \newpage
+    \begin{example}[Método de Mallas con 2 fuentes de voltaje invertidas]
+        \\
+
+
+        Una malla es cualquier trayectoria cerrada de un circuito.
+
+        Para resolver algún ejercicio por método de mallas, es importante tener en cuenta que se trabajan con las leyes de Ohm y Kirchhoff. Puede ser tanto la ley de corriente, como ley de voltaje de Kirchhoff.
+        \iffalse
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}{\textwidth}
+                    \includegraphics[scale= 0.35]{SinFuenteinvertida.PNG}
+                    \caption{Ejemplo a resolver sin invertir una fuente}
+                    \label{fig:Imagen1}
+                \end{subfigure}
+
+                \begin{subfigure}{\textwidth}
+                    \includegraphics[scale=0.35]{ConFuenteinvertida.PNG}
+                    \caption{Ejemplo a resolver con una fuente invertida}
+                    \label{fig:Imagen2}
+                \end{subfigure}
+
+            \end{figure}
+        \fi
+        En esta entrega se resolverán los circuitos de la figura 3.10 y 3.11, donde se tendrá que obtener el voltaje que hay entre la resistencia 1 y 2 (Vo). El objetivo de resolver estos dos circuitos, teniendo uno de ellos con una fuente invertida, es poder evaluar como se comporta el voltaje en una zona cuando se invierte una fuente.
+
+
+        Para los ejemplos a resolver, se ocupará la ley de voltaje de Kirchhoff, la cual dice que “La suma de los voltajes en una malla es igual a cero”.
+
+        \begin{equation*}
+        \notag
+        \displaystyle\sum_{n=1}^{} V_n=0
+        \end{equation*}
+        \begin{center}
+            Donde n es el numero de voltajes de los componentes en la malla.
+        \end{center}
+        \\
+        Pasos por seguir:
+        \begin{enumerate}
+            \item Identificar las mallas y sentido de la corriente en aquellas mallas.
+            \item Aplicar método de mallas con voltaje de Kirchhoff.
+            \item Resolver ecuaciones de respectivas mallas.
+            \item Encontrar términos de corrientes y/o voltaje.
+
+        \end{enumerate}
+
+        \newpage
+        \textbf{Ejemplo figura 1a (Sin invertir fuentes):}
+
+        \iffalse
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.4]{image/SinFuenteinvertida1.png}
+                \caption{Circuito sin invertir fuentes y con sentido de corriente antihorario}
+                \label{fig:1011101011}
+            \end{figure}
+        \fi
+        Siguiendo los pasos propuestos, identificamos que el circuito solo tiene una malla, por lo tanto, tendremos una ecuación de malla. Por consiguiente, utilizamos el método de mallas de voltaje(V=IR).
+        \\
+        Trazaremos el sentido de la corriente del circuito en antihorario (Opuesto a las manecillas del reloj), ese será el flujo de la corriente. Partimos en la fuente de voltaje V1, entrando por la parte negativa y saliendo por la positiva, por convención de signos, y puesto que no hay caída de voltaje, el signo que tomará esa fuente es negativo. Para el caso de las resistencias, utilizamos la ley de ohm para complementar con la ecuación de voltaje de Kirchhoff, puesto que el voltaje se expresa como la multiplicación de la corriente que pasa por la resistencia, por la resistencia. Al tener dos resistencias incluimos aquellas en la ecuación.
+        \\
+        Por último, nos encontramos con la segunda fuente V2, donde el flujo de corriente que pasa por ella va de positivo a negativo, por lo tanto, su signo es positivo puesto que cae voltaje. Como no tenemos más elementos en nuestro circuito y siguiendo la ley de Kirchhoff, la suma de voltajes es igual a cero, por ende, igualamos nuestra ecuación (3.43) a cero.
+        \begin{center}
+            \begin{equation*}
+            -V1+R1*I+R2*I+V2=0
+            \end{equation*}
+        \end{center}
+
+        Para hallar la corriente que pasa por la resistencia R1, debemos despejar de la ecuación (1) la corriente I.
+
+
+        \begin{equation*}
+        \notag
+        -V1+R1*I+R2*I+V2=0
+        \longrightarrow
+        2000*I+1=0
+        \longrightarrow
+        I= \frac{-1}{2000}
+        \longrightarrow
+        I=-0,0005[A]
+        \end{equation*}
+
+        Como la corriente I, de valor -0,0005[A], pasa por la resistencia R1,se debe obtener el valor de voltaje que cae en esa resistencia. Puesto que el voltaje Vo que queremos encontrar es lo mismo que el voltaje en el nodo b, se hace una diferencia de voltaje entre los nodos a y b, para hallar el valor de b (Vb=Vo).
+        \begin{center}
+            \begin{equation*}
+            Vab=Va-Vb
+            \end{equation*}
+        \end{center}
+
+        Puesto que se conoce el valor de la corriente en la resistencia R1, se ocupa ley de ohm para hayar el voltaje que cae en dicha resistencia.
+
+        \begin{equation*}
+        \notag
+        VR1= R1*I
+        \longrightarrow
+        VR1=1000*-0,0005
+        \longrightarrow
+        VR1= -0,5[V]
+        \end{equation*}
+
+        \newpage
+        Puesto que el voltaje que cae en la resistencia R1, esta entre los nodos a y b, se obtuvo el valor de Vab a travez de la ecuación(3.44).Ahora bien, el valor Va se puede deducir del sistema, puesto que en el nodo a, el único valor de voltaje que pasa por él, es el de la fuente V1.
+
+        Teniendo los dos valores de volatje (Vab y Va), se hace un despeje en la ecuación (3.44), para hayar el valor de Vb (Que es igual a Vo)
+
+        \begin{equation*}
+        \notag
+        Vab= Va-Vb
+        \longrightarrow
+        -0,5=5-Vb
+        \longrightarrow
+        -5,5=-Vb
+        \longrightarrow
+        5,5=Vb
+        \end{equation*}
+
+        El valor de voltaje que pasa entre la resistencia 1 y 2 (Nodo b) es 5,5 [V]
+        \\
+        \textbf{Ejemplo figura 1b (Con invertir fuente):}
+
+
+        Haciendo el mismo procedimiento explicado para la figura 3.12, tenemos una malla, el sentido del flujo de corriente será antihorario, por lo tanto, comenzamos con el método de mallas usando el voltaje de Kirchhoff. La fuente V1 es negativa, las resistencias positivas, pero, a diferencia del ejemplo anterior, ahora la corriente entra a la fuente V2 por el negativo y sale por el positivo, por lo tanto, su signo es negativo en la ecuación.
+        \begin{center}
+            \begin{equation*}
+            -5+R1*I + R2*I -6 =0
+            \end{equation*}
+        \end{center}
+
+        Ahora bien, hayamos el valor de la corriente I, haciendo un despeje de la variable en la ecuación (3.45).
+        \begin{equation*}
+        \notag
+        -5 +1000*I +1000*I -6 =0
+        \longrightarrow
+        2000*I -11=0
+        \longrightarrow
+        I =11/2000
+        \longrightarrow
+        I=0,0055 [A]
+        \end{equation*}
+
+        Como la corriente I, de valor 0,0055[A], pasa por la resistencia R1,se debe obtener el valor de voltaje que cae en esa resistencia. Puesto que el voltaje Vo que queremos encontrar es lo mismo que el voltaje en el nodo b, se hace una diferencia de voltaje entre los nodos a y b, para hallar el valor de b (Vb=Vo).
+
+        Al igual que en el ejemplo anterior, debemos hayar el voltaje que cae en la resistencia R1, por lo tanto
+        \begin{equation*}
+        \notag
+        VR1=R1*I
+        \longrightarrow
+        VR1=1000*0,0055
+        \longrightarrow
+        VR1=5,5[V]
+        \end{equation*}
+
+        Teniendo aquel valor, podemos hacer una diferencia de voltaje entre los nodos a y b, teniendo en consideración que el voltaje en el nodo a, sigue siendo el voltaje de la fuente V1
+        \newpage
+        Haciendo uso de la ecuación (3.44)
+
+        \begin{equation*}
+        \notag
+        Vab=Va-Vb
+        \longrightarrow
+        5,5=5-Vb
+        \longrightarrow
+        0,5=-Vb
+        \longrightarrow
+        -0,5=Vb
+        \end{equation*}
+
+        El valor de voltaje que pasa entre la resistencia 1 y 2 (Nodo b) es -0,5 [V].
+
+        A modo de conclusión, el voltaje en un punto varía si se invierte una fuente, puesto que cuando se hace una sumatoria de fuentes en serie, el valor neto que entrega la suma depende si la fuente esta sumando o restando, según su signo.
+    \end{example}
+    \newpage
+    %%%%%%fin leonardo ponce %%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%% FIN LEO PONCE %%%%%%%%%%%
+
+    \begin{example}[Método de nodos con 2 fuentes de voltaje invertidas]
+        %AndrésPinoElier%
+
+
+        Resolveremos el siguiente circuito utilizando el método de nodos
+
+        \\
+
+        \begin{circuitikz}[american]
+            \draw
+
+            (8,0) to (0,0)
+            (0,0) to [V=\huge$V_1$,invert] (0,2.5) to [R=\huge$R_1$,](0,4) to (0,5)
+            (0,5) to [R=\huge$R_2$,](5,5) to (5,5)
+            (5,0) to [R=\huge$R_3$](5,5)
+            (5,5) to (8,5)
+            (8,0) to [V_=\huge$V_2$,invert] (8,2.5) to [R=\huge$R_4$,](8,4) to (8,5);
+
+        \end{circuitikz}
+
+        \\
+
+
+        Como se puede ver tenemos 4 resistencias de las cuales 2 se encuentran en serie (R1 Y R2) y 2 fuentes de voltaje invertidas.
+
+        \\
+
+
+        Marcamos los nodos (a,b,c,d,e) y las corrientes que entran y salen por el nodo central (c). El nodo d para este ejercicio será considerado como tierra.
+
+        \begin{circuitikz}[american]
+            \draw
+
+            (8,0) to (0,0)
+            (0,0) to [V=\huge$V_1$,invert] (0,2.5) to [R=\huge$R_1$](0,4) to (0,5)
+            (0,2.5) to [short, -*](0,2)
+            (0,2) node[label={left:$a$}] {}
+            (0,5) to [short, -*](0,5)
+            (0,5) node[label={above:$b$}] {}
+            (0,5) to [R=\huge$R_2$,](5,5) to (5,5)
+            (4,5) to [short, -, i=$I_1$] (5,5)
+            (5,0) to [R=\huge$R_3$](5,5)
+            (5,5) to [short, -, i=$I_3$] (5,4)
+            (5,5) to (8,5)
+            (8,0) to [V_=\huge$V_2$,invert] (8,2.5) to [R=\huge$R_4$,](8,4) to (8,5)
+            (6.5,5) to [short, -, i=$I_2$] (5,5)
+            (8,2) to [short, -*](8,2)
+            (8,2) node[label={Right:$e$}] {}
+            (8,5) to [short, -*](5,5)
+            (5,5) node[label={above:$c$}] {}
+            (8,0) to [short, -*](5,0)
+            (5,0) node[label={below:$d$}] {};
+
+        \end{circuitikz}
+        \\
+        \\
+        \\
+        Primero utilizaremos la ley de kirchhoff en el nodo c. Esta dice que la sumatoria de corrientes que entra debe ser igual a la que sale. Entonces
+
+        \begin{equation*}
+        I_1 + I_2 = I_3
+        \end{equation*}
+
+        Luego, remplazamos las corrientes utilizando la ley de Ohm y para entender mejor el ejercicio vamos a considerar y llamar al voltaje que pasa por el nodo c $V_a$ al que pasa por el nodo d $V_b$. Recordar que $R_1$ y $R_2$ se encuentran en serie.
+
+        \begin{equation*}
+        \frac{V_1 - V_a}{R_1+R_2} + \frac{V_2 - V_a}{R_4}= \frac{V_a - V_b}{R_3}
+        \end{equation*}
+
+        Como dijimos anterior mentente el nodo d es tierra es decir que el Voltaje $V_b$ es igual a 0, entonces
+
+        \begin{equation*}
+        \frac{V_1 - V_a}{R_1+R_2} + \frac{V_2 - V_a}{R_4}= \frac{V_a }{R_3}
+        \end{equation*}
+
+        Para continuar con el ejercicio asignaremos valores a las variables
+
+        \hspace{1 cm}$V_1=26 V$\hspace{1 cm}$V_2=13 V$\hspace{1 cm}$R_1=30\Omega$\hspace{1 cm}$R_2=20 \Omega$\hspace{1 cm}$R_3=25 \Omega$\hspace{1 cm}$R_4=45 \Omega$
+
+        La formula quedaría así
+
+        \begin{equation*}
+        \frac{26 - V_a}{30+20} + \frac{13 - V_a}{45}= \frac{V_a }{25}
+        \end{equation*}
+
+        Separamos las fracciones y pasamos los $V_a$ hacia el otro lado para despejar la incognita
+
+        \begin{equation*}
+        \frac{26 }{50} + \frac{13 }{45}= \frac{V_a }{25} + \frac{V_a }{50} + \frac{V_a }{45}
+        \end{equation*}
+
+        \begin{equation*}
+        \frac{182}{225} = \frac{37V_a}{450}
+        \end{equation*}
+
+        despejamos la incógnita completamente
+
+        \begin{equation*}
+        \frac{182*450}{225*37} = V_a
+        \end{equation*}
+        \begin{equation*}
+        V_a =9,8 V
+        \end{equation*}
+
+        Ahora con este resultado nos podemos devolver y calcular los valores para las corrientes $I_1$, $I_2$, $I_3$
+
+        \begin{equation*}
+        I_1 = \frac{26-9.8}{30+20} = 0,3 A
+        \end{equation*}
+        \begin{equation*}
+        I_2 = \frac{13-9.8}{45} = 0,07 A
+        \end{equation*}
+        \begin{equation*}
+        I_3 = \frac{9.8}{25} = 0,4 A
+        \end{equation*}
+
+        Con eso sabemos las corrientes que pasan por cada resistencia , por $R_1$ y  $R_2$ pasan 0,3 A , por $R_4$ pasan 0,07 A y por $R_3$ pasan 0,4 A. Y además saber la caida de tensión de cada resistencia utilizando la ley de Omh.
+
+        Tambien podemos saber el voltaje del nodo b llamado $V_x$
+
+        \begin{equation*}
+        V_{R1} = 0,3*30 = 9 V
+        \end{equation*}
+        \begin{equation*}
+        V_x = 26-9 = 17 V
+        \end{equation*}
+
+
+
+    \end{example}
+
+    %\begin{example}[Método de malla con 2 fuentes de voltaje invertidas]
+    %\end{example}
+
+    \begin{example}[Método de nodos con fuente de corriente]
+        Resolveremos el siguiente circuito con el método de nodos
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+
+            (0,7) to [R, l=\huge{$R_1$}, ](4,7)  to [R, l=\huge{$R_3$}](8,7)
+            (4,4) to [R, l_=\huge{$R_2$}](4,7)
+            (8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) ;
+
+        \end{circuitikz}
+
+        Partimos identificando todos los nodos y asignando uno a tierra (V=0)
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+            node[label={above:$a$}] {}
+            (0,7) to [R=$R_1$, *-*, v=$v_{R_1}$](4,7) node[label={above:$b$}] {} to [R=$R_3$, *-*, v=$v_{R_3}$](8,7)
+            (4,7)  to [R=$R_2$,  *-*, v=$v_{R_2}$](4,4) node[ground] {}
+            (8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) node[label={above:$c$}] {};
+
+        \end{circuitikz}
+
+        Luego, resolvemos los voltajes fáciles, los que tienen una fuente de voltaje asociada. En este caso $V_a=V_s$.
+
+        A continuación, obtenemos las ecuaciones de corriente por LKC para los nodos.
+        En el nodo b
+        \begin{equation*}
+        I_{R_1}=I_{R_2}+I_{R_3}
+        \end{equation*}
+        Reemplazamos según ley de Ohm los valores para cada resistencia y asignamos $-I_s$ para $R_3$. Notamos que el signo de esta corriente es negativo, pues $I_s$ tiene la dirección opuesta a la que definimos al asignar la polaridad de la resistencia.
+
+        \begin{equation*}
+        \frac{V_s - V_b}{R_1}=\frac{V_b}{R_2}-I_s
+        \end{equation*}
+
+        Reordenamos y obtenemos
+        \begin{equation*}
+        V_b=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
+        \end{equation*}
+
+    \end{example}
+
+    \begin{example}[Método de mallas con fuente de corriente]
+        Resolveremos el siguiente anterior con el método de mallas
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+            (0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_3$}](8,7)
+            (4,4) to [R, l_=\huge{$R_2$}](4,7)
+            (8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7)
+            {(2,5.5) node {\huge{\color{blue}{$i_1$}}} (6.4,5.5) node {\huge{\color{blue}{$i_2$}}}};
+            \draw[very thick, blue, <-, >=triangle 45] (2.5,4.6) arc (-60:240:1);
+            \draw[very thick, blue, <-, >=triangle 45] (6.9,4.6) arc (-60:240:1);
+        \end{circuitikz}
+
+        Notamos que tenemos 2 mallas: la de $i_1$ y la de $i_2$. Por la fuente de corriente, además, sabemos que $i_2=-I_\textrm{s}$. Aplicamos ley de Kirkchoff de voltage en la malla 1:
+
+        \begin{equation*}
+        V_s=V_{R_1}+V_{R_2}
+        \end{equation*}
+        Reemplazamos las ecuaciones de las resistencias con la ley de Ohm
+        \begin{equation*}
+        V_s=R_1*i_1 + R_2*(i_1-i_2)
+        \end{equation*}
+
+        Reordenamos para obtener
+        \begin{equation*}
+        i_1 =  \frac{V_s+R_2*i_2}{R_1 + R_2} = \frac{V_s-R_2*I_s}{R_1 + R_2}
+        \end{equation*}
+        Recordamos que para R2 el voltaje es Vb definido en el ejemplo anterior, por lo que deberíamos obtener el mismo resultado:
+        \begin{equation*}
+        V_{R_2}=R_2*(i_1-i_2) = R_2*(\frac{V_s-R_2*I_s}{R_1 + R_2}--I_s)=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
+        \end{equation*}
+
+
+        %Fin%
+    \end{example}
+
+    \begin{example}[Método de nodos con fuente de corriente]
+        Resolveremos el siguiente circuito con el método de nodos
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+
+            (0,7) to [R, l=\huge{$R_1$}, ](4,7)  to [R, l=\huge{$R_3$}](8,7)
+            (4,4) to [R, l_=\huge{$R_2$}](4,7)
+            (8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7)
+
+        \end{circuitikz}
+        asignando
+        Partimos identificando todos los nodos y  uno a tierra (V=0)
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+            node[label={above:$a$}] {}
+            (0,7) to [R=$R_1$, *-*, v=$v_{R_1}$](4,7) node[label={above:$b$}] {} to [R=$R_3$, *-*, v=$v_{R_3}$](8,7)
+            (4,7)  to [R=$R_2$,  *-*, v=$v_{R_2}$](4,4) node[ground] {}
+            (8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) node[label={above:$c$}] {}
+
+        \end{circuitikz}
+
+        Luego, resolvemos los voltajes fáciles, los que tienen una fuente de voltaje asociada. En este caso $V_a=V_s$.
+
+        A continuación, obtenemos las ecuaciones de corriente por LKC para los nodos.
+        En el nodo b
+        \begin{equation*}
+        I_{R_1}=I_{R_2}+I_{R_3}
+        \end{equation*}
+        Reemplazamos según ley de Ohm los valores para cada resistencia y asignamos $-I_s$ para $R_3$. Notamos que el signo de esta corriente es negativo, pues $I_s$ tiene la dirección opuesta a la que definimos al asignar la polaridad de la resistencia.
+
+        \begin{equation*}
+        \frac{V_s - V_b}{R_1}=\frac{V_b}{R_2}-I_s
+        \end{equation*}
+
+        Reordenamos y obtenemos
+        \begin{equation*}
+        V_b=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
+        \end{equation*}
+
+    \end{example}
 \fi
-En esta entrega se resolverán los circuitos de la figura 3.10 y 3.11, donde se tendrá que obtener el voltaje que hay entre la resistencia 1 y 2 (Vo). El objetivo de resolver estos dos circuitos, teniendo uno de ellos con una fuente invertida, es poder evaluar como se comporta el voltaje en una zona cuando se invierte una fuente.
-
-
-Para los ejemplos a resolver, se ocupará la ley de voltaje de Kirchhoff, la cual dice que “La suma de los voltajes en una malla es igual a cero”.
-
-\begin {equation*}
-\notag
-\displaystyle\sum_{n=1}^{} V_n=0
-\end {equation*}
-\begin{center}
-Donde n es el numero de voltajes de los componentes en la malla.
-\end{center}
-\\
-Pasos por seguir:
-\begin{enumerate}
-    \item Identificar las mallas y sentido de la corriente en aquellas mallas.
-    \item Aplicar método de mallas con voltaje de Kirchhoff.
-    \item Resolver ecuaciones de respectivas mallas.
-    \item Encontrar términos de corrientes y/o voltaje.
-
-\end{enumerate}
-
-\newpage
-\textbf{Ejemplo figura 1a (Sin invertir fuentes):}
-
-\iffalse
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.4]{image/SinFuenteinvertida1.png}
-    \caption{Circuito sin invertir fuentes y con sentido de corriente antihorario}
-    \label{fig:1011101011}
-\end{figure}
-\fi
-Siguiendo los pasos propuestos, identificamos que el circuito solo tiene una malla, por lo tanto, tendremos una ecuación de malla. Por consiguiente, utilizamos el método de mallas de voltaje(V=IR).
-\\
-Trazaremos el sentido de la corriente del circuito en antihorario (Opuesto a las manecillas del reloj), ese será el flujo de la corriente. Partimos en la fuente de voltaje V1, entrando por la parte negativa y saliendo por la positiva, por convención de signos, y puesto que no hay caída de voltaje, el signo que tomará esa fuente es negativo. Para el caso de las resistencias, utilizamos la ley de ohm para complementar con la ecuación de voltaje de Kirchhoff, puesto que el voltaje se expresa como la multiplicación de la corriente que pasa por la resistencia, por la resistencia. Al tener dos resistencias incluimos aquellas en la ecuación.
-\\
-Por último, nos encontramos con la segunda fuente V2, donde el flujo de corriente que pasa por ella va de positivo a negativo, por lo tanto, su signo es positivo puesto que cae voltaje. Como no tenemos más elementos en nuestro circuito y siguiendo la ley de Kirchhoff, la suma de voltajes es igual a cero, por ende, igualamos nuestra ecuación (3.43) a cero.
-\begin{center}
-\begin {equation*}
--V1+R1*I+R2*I+V2=0
-\end {equation*}
-\end{center}
-
-Para hallar la corriente que pasa por la resistencia R1, debemos despejar de la ecuación (1) la corriente I. 
-
-
-\begin {equation*}
-\notag
--V1+R1*I+R2*I+V2=0
-\longrightarrow
-2000*I+1=0
-\longrightarrow
-I= \frac{-1}{2000}
-\longrightarrow
-I=-0,0005[A]
-\end {equation*}
-
-Como la corriente I, de valor -0,0005[A], pasa por la resistencia R1,se debe obtener el valor de voltaje que cae en esa resistencia. Puesto que el voltaje Vo que queremos encontrar es lo mismo que el voltaje en el nodo b, se hace una diferencia de voltaje entre los nodos a y b, para hallar el valor de b (Vb=Vo).
-\begin{center}
-\begin {equation*}
-Vab=Va-Vb
-\end {equation*}
-\end{center}
-
-Puesto que se conoce el valor de la corriente en la resistencia R1, se ocupa ley de ohm para hayar el voltaje que cae en dicha resistencia.
-
-\begin {equation*}
-\notag
-VR1= R1*I
-\longrightarrow
-VR1=1000*-0,0005
-\longrightarrow
-VR1= -0,5[V]
-\end {equation*}
-
-\newpage
-Puesto que el voltaje que cae en la resistencia R1, esta entre los nodos a y b, se obtuvo el valor de Vab a travez de la ecuación(3.44).Ahora bien, el valor Va se puede deducir del sistema, puesto que en el nodo a, el único valor de voltaje que pasa por él, es el de la fuente V1.
-
-Teniendo los dos valores de volatje (Vab y Va), se hace un despeje en la ecuación (3.44), para hayar el valor de Vb (Que es igual a Vo)
-
-\begin {equation*}
-\notag
-Vab= Va-Vb
-\longrightarrow
--0,5=5-Vb
-\longrightarrow
--5,5=-Vb
-\longrightarrow
-5,5=Vb
-\end {equation*}
-
-El valor de voltaje que pasa entre la resistencia 1 y 2 (Nodo b) es 5,5 [V]
-\\
-\textbf{Ejemplo figura 1b (Con invertir fuente):}
-
-
-Haciendo el mismo procedimiento explicado para la figura 3.12, tenemos una malla, el sentido del flujo de corriente será antihorario, por lo tanto, comenzamos con el método de mallas usando el voltaje de Kirchhoff. La fuente V1 es negativa, las resistencias positivas, pero, a diferencia del ejemplo anterior, ahora la corriente entra a la fuente V2 por el negativo y sale por el positivo, por lo tanto, su signo es negativo en la ecuación.
-\begin{center}
-\begin {equation*}
--5+R1*I + R2*I -6 =0 
-\end {equation*}
-\end{center}
-
-Ahora bien, hayamos el valor de la corriente I, haciendo un despeje de la variable en la ecuación (3.45).
-\begin {equation*}
-\notag
--5 +1000*I +1000*I -6 =0
-\longrightarrow
-2000*I -11=0
-\longrightarrow
-I =11/2000
-\longrightarrow
-I=0,0055 [A]
-\end {equation*}
-
-Como la corriente I, de valor 0,0055[A], pasa por la resistencia R1,se debe obtener el valor de voltaje que cae en esa resistencia. Puesto que el voltaje Vo que queremos encontrar es lo mismo que el voltaje en el nodo b, se hace una diferencia de voltaje entre los nodos a y b, para hallar el valor de b (Vb=Vo).
-
-Al igual que en el ejemplo anterior, debemos hayar el voltaje que cae en la resistencia R1, por lo tanto 
-\begin {equation*}
-\notag
-VR1=R1*I
-\longrightarrow
-VR1=1000*0,0055
-\longrightarrow
-VR1=5,5[V]
-\end {equation*}
-
-Teniendo aquel valor, podemos hacer una diferencia de voltaje entre los nodos a y b, teniendo en consideración que el voltaje en el nodo a, sigue siendo el voltaje de la fuente V1
-\newpage
-Haciendo uso de la ecuación (3.44)
-
-\begin {equation*}
-\notag
-Vab=Va-Vb
-\longrightarrow
-5,5=5-Vb
-\longrightarrow
-0,5=-Vb
-\longrightarrow
--0,5=Vb
-\end {equation*}
- 
-El valor de voltaje que pasa entre la resistencia 1 y 2 (Nodo b) es -0,5 [V].
-
-A modo de conclusión, el voltaje en un punto varía si se invierte una fuente, puesto que cuando se hace una sumatoria de fuentes en serie, el valor neto que entrega la suma depende si la fuente esta sumando o restando, según su signo.
-\end{example}
-\newpage
-%%%%%%fin leonardo ponce %%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%% FIN LEO PONCE %%%%%%%%%%%
-
-\begin{example}[Método de nodos con 2 fuentes de voltaje invertidas]
-%AndrésPinoElier%
-
-
-Resolveremos el siguiente circuito utilizando el método de nodos
-
-\\
-
-\begin{circuitikz}[american]
-\draw
-
-	(8,0) to (0,0)
-	(0,0) to [V=\huge$V_1$,invert] (0,2.5) to [R=\huge$R_1$,](0,4) to (0,5)
-   	(0,5) to [R=\huge$R_2$,](5,5) to (5,5)
-	(5,0) to [R=\huge$R_3$](5,5)
-    (5,5) to (8,5)
-    (8,0) to [V_=\huge$V_2$,invert] (8,2.5) to [R=\huge$R_4$,](8,4) to (8,5);
-  
-\end{circuitikz}
-
-\\
-
-
-Como se puede ver tenemos 4 resistencias de las cuales 2 se encuentran en serie (R1 Y R2) y 2 fuentes de voltaje invertidas.
-
-\\
-
-
-Marcamos los nodos (a,b,c,d,e) y las corrientes que entran y salen por el nodo central (c). El nodo d para este ejercicio será considerado como tierra.
-
-\begin{circuitikz}[american]
-\draw
-
-	(8,0) to (0,0)
-	(0,0) to [V=\huge$V_1$,invert] (0,2.5) to [R=\huge$R_1$](0,4) to (0,5)
-	(0,2.5) to [short, -*](0,2)
-	(0,2) node[label={left:$a$}] {}
-	(0,5) to [short, -*](0,5)
-	(0,5) node[label={above:$b$}] {}
-   	(0,5) to [R=\huge$R_2$,](5,5) to (5,5)
-   	(4,5) to [short, -, i=$I_1$] (5,5)
-	(5,0) to [R=\huge$R_3$](5,5)
-	(5,5) to [short, -, i=$I_3$] (5,4)
-    (5,5) to (8,5)
-    (8,0) to [V_=\huge$V_2$,invert] (8,2.5) to [R=\huge$R_4$,](8,4) to (8,5)
-    (6.5,5) to [short, -, i=$I_2$] (5,5)
-    (8,2) to [short, -*](8,2)
-    (8,2) node[label={Right:$e$}] {}
-    (8,5) to [short, -*](5,5)
-    (5,5) node[label={above:$c$}] {}
-    (8,0) to [short, -*](5,0)
-    (5,0) node[label={below:$d$}] {};
-    
-\end{circuitikz}
-\\
-\\
-\\
-Primero utilizaremos la ley de kirchhoff en el nodo c. Esta dice que la sumatoria de corrientes que entra debe ser igual a la que sale. Entonces
-
-\begin {equation*}
-I_1 + I_2 = I_3
-\end {equation*}
-
-Luego, remplazamos las corrientes utilizando la ley de Ohm y para entender mejor el ejercicio vamos a considerar y llamar al voltaje que pasa por el nodo c $V_a$ al que pasa por el nodo d $V_b$. Recordar que $R_1$ y $R_2$ se encuentran en serie.
-
-\begin {equation*}
- \frac{V_1 - V_a}{R_1+R_2} + \frac{V_2 - V_a}{R_4}= \frac{V_a - V_b}{R_3}
-\end {equation*}
-
-Como dijimos anterior mentente el nodo d es tierra es decir que el Voltaje $V_b$ es igual a 0, entonces
-
-\begin {equation*}
- \frac{V_1 - V_a}{R_1+R_2} + \frac{V_2 - V_a}{R_4}= \frac{V_a }{R_3}
-\end {equation*}
-
-Para continuar con el ejercicio asignaremos valores a las variables
-
-\hspace{1 cm}$V_1=26 V$\hspace{1 cm}$V_2=13 V$\hspace{1 cm}$R_1=30\Omega$\hspace{1 cm}$R_2=20 \Omega$\hspace{1 cm}$R_3=25 \Omega$\hspace{1 cm}$R_4=45 \Omega$
-
-La formula quedaría así
-
-\begin {equation*}
- \frac{26 - V_a}{30+20} + \frac{13 - V_a}{45}= \frac{V_a }{25}
-\end {equation*}
-
-Separamos las fracciones y pasamos los $V_a$ hacia el otro lado para despejar la incognita
-
-\begin {equation*}
- \frac{26 }{50} + \frac{13 }{45}= \frac{V_a }{25} + \frac{V_a }{50} + \frac{V_a }{45}
-\end {equation*}
-
-\begin {equation*}
- \frac{182}{225} = \frac{37V_a}{450} 
-\end {equation*}
-
-despejamos la incógnita completamente
-
-\begin {equation*}
- \frac{182*450}{225*37} = V_a
-\end {equation*}
-\begin {equation*}
- V_a =9,8 V
-\end {equation*}
-
-Ahora con este resultado nos podemos devolver y calcular los valores para las corrientes $I_1$, $I_2$, $I_3$
-
-\begin {equation*}
- I_1 = \frac{26-9.8}{30+20} = 0,3 A
-\end {equation*}
-\begin {equation*}
- I_2 = \frac{13-9.8}{45} = 0,07 A
-\end {equation*}
-\begin {equation*}
- I_3 = \frac{9.8}{25} = 0,4 A
-\end {equation*}
-
-Con eso sabemos las corrientes que pasan por cada resistencia , por $R_1$ y  $R_2$ pasan 0,3 A , por $R_4$ pasan 0,07 A y por $R_3$ pasan 0,4 A. Y además saber la caida de tensión de cada resistencia utilizando la ley de Omh.
-
-Tambien podemos saber el voltaje del nodo b llamado $V_x$
-
-\begin {equation*}
- V_{R1} = 0,3*30 = 9 V
-\end {equation*}
-\begin {equation*}
- V_x = 26-9 = 17 V
-\end {equation*}
-
-
-
-\end{example}
-
-%\begin{example}[Método de malla con 2 fuentes de voltaje invertidas]
-%\end{example}
-
-\begin{example}[Método de nodos con fuente de corriente]
-Resolveremos el siguiente circuito con el método de nodos   
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-   
-	(0,7) to [R, l=\huge{$R_1$}, ](4,7)  to [R, l=\huge{$R_3$}](8,7)
-	(4,4) to [R, l_=\huge{$R_2$}](4,7) 
-	(8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) ;
-
-\end{circuitikz}
-
-Partimos identificando todos los nodos y asignando uno a tierra (V=0)
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-    node[label={above:$a$}] {}
-	(0,7) to [R=$R_1$, *-*, v=$v_{R_1}$](4,7) node[label={above:$b$}] {} to [R=$R_3$, *-*, v=$v_{R_3}$](8,7)
-	(4,7)  to [R=$R_2$,  *-*, v=$v_{R_2}$](4,4) node[ground] {}
-	(8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) node[label={above:$c$}] {};
-
-\end{circuitikz}
-
-Luego, resolvemos los voltajes fáciles, los que tienen una fuente de voltaje asociada. En este caso $V_a=V_s$.
-
-A continuación, obtenemos las ecuaciones de corriente por LKC para los nodos.
-En el nodo b
-\begin {equation*}
-    I_{R_1}=I_{R_2}+I_{R_3}
-\end {equation*}
-Reemplazamos según ley de Ohm los valores para cada resistencia y asignamos $-I_s$ para $R_3$. Notamos que el signo de esta corriente es negativo, pues $I_s$ tiene la dirección opuesta a la que definimos al asignar la polaridad de la resistencia.
-
-\begin {equation*}
-    \frac{V_s - V_b}{R_1}=\frac{V_b}{R_2}-I_s
-\end {equation*}
-
-Reordenamos y obtenemos
-\begin {equation*}
-    V_b=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
-\end {equation*}
-
-\end{example}
-
 \begin{example}[Método de mallas con fuente de corriente]
-Resolveremos el siguiente anterior con el método de mallas
+    Resolveremos el siguiente anterior con el método de mallas
 
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
-	(0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_3$}](8,7)
-	(4,4) to [R, l_=\huge{$R_2$}](4,7)
-	(8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7)
-	{(2,5.5) node {\huge{\color{blue}{$i_1$}}} (6.4,5.5) node {\huge{\color{blue}{$i_2$}}}};
-	\draw[very thick, blue, <-, >=triangle 45] (2.5,4.6) arc (-60:240:1);
-	\draw[very thick, blue, <-, >=triangle 45] (6.9,4.6) arc (-60:240:1);
-\end{circuitikz}
+    \begin{circuitikz}[american]
+        \draw
+        %(8,7) to
+        (8,4) to (0,4)
+        to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
+        (0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_3$}](8,7)
+        (4,4) to [R, l_=\huge{$R_2$}](4,7)
+        (8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7)
+        {(2,5.5) node {\huge{\color{blue}{$i_1$}}} (6.4,5.5) node {\huge{\color{blue}{$i_2$}}}};
+        \draw[very thick, blue, <-, >=triangle 45] (2.5,4.6) arc (-60:240:1);
+        \draw[very thick, blue, <-, >=triangle 45] (6.9,4.6) arc (-60:240:1);
+    \end{circuitikz}
 
-Notamos que tenemos 2 mallas: la de $i_1$ y la de $i_2$. Por la fuente de corriente, además, sabemos que $i_2=-I_\textrm{s}$. Aplicamos ley de Kirkchoff de voltage en la malla 1:
+    Notamos que tenemos 2 mallas: la de $i_1$ y la de $i_2$. Por la fuente de corriente, además, sabemos que $i_2=-I_\textrm{s}$. Aplicamos ley de Kirkchoff de voltage en la malla 1:
 
-\begin {equation*}
-V_s=V_{R_1}+V_{R_2}
-\end {equation*}
-Reemplazamos las ecuaciones de las resistencias con la ley de Ohm
-\begin {equation*}
-V_s=R_1*i_1 + R_2*(i_1-i_2)
-\end {equation*}
+    \begin{equation*}
+    V_s=V_{R_1}+V_{R_2}
+    \end{equation*}
+    Reemplazamos las ecuaciones de las resistencias con la ley de Ohm
+    \begin{equation*}
+    V_s=R_1*i_1 + R_2*(i_1-i_2)
+    \end{equation*}
 
-Reordenamos para obtener
-\begin {equation*}
-i_1 =  \frac{V_s+R_2*i_2}{R_1 + R_2} = \frac{V_s-R_2*I_s}{R_1 + R_2}
-\end {equation*}
-Recordamos que para R2 el voltaje es Vb definido en el ejemplo anterior, por lo que deberíamos obtener el mismo resultado:
-\begin {equation*}
-V_{R_2}=R_2*(i_1-i_2) = R_2*(\frac{V_s-R_2*I_s}{R_1 + R_2}--I_s)=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
-\end {equation*}
-
-
-%Fin%
-\end{example}
-
-\begin{example}[Método de nodos con fuente de corriente]
-Resolveremos el siguiente circuito con el método de nodos   
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-   
-	(0,7) to [R, l=\huge{$R_1$}, ](4,7)  to [R, l=\huge{$R_3$}](8,7)
-	(4,4) to [R, l_=\huge{$R_2$}](4,7) 
-	(8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) 
-
-\end{circuitikz}
-asignando
-Partimos identificando todos los nodos y  uno a tierra (V=0)
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7) 
-    node[label={above:$a$}] {}
-	(0,7) to [R=$R_1$, *-*, v=$v_{R_1}$](4,7) node[label={above:$b$}] {} to [R=$R_3$, *-*, v=$v_{R_3}$](8,7)
-	(4,7)  to [R=$R_2$,  *-*, v=$v_{R_2}$](4,4) node[ground] {}
-	(8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7) node[label={above:$c$}] {}
-
-\end{circuitikz}
-
-Luego, resolvemos los voltajes fáciles, los que tienen una fuente de voltaje asociada. En este caso $V_a=V_s$.
-
-A continuación, obtenemos las ecuaciones de corriente por LKC para los nodos.
-En el nodo b
-\begin {equation*}
-    I_{R_1}=I_{R_2}+I_{R_3}
-\end {equation*}
-Reemplazamos según ley de Ohm los valores para cada resistencia y asignamos $-I_s$ para $R_3$. Notamos que el signo de esta corriente es negativo, pues $I_s$ tiene la dirección opuesta a la que definimos al asignar la polaridad de la resistencia.
-
-\begin {equation*}
-    \frac{V_s - V_b}{R_1}=\frac{V_b}{R_2}-I_s
-\end {equation*}
-
-Reordenamos y obtenemos
-\begin {equation*}
-    V_b=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
-\end {equation*}
-
-\end{example}
-\fi
-\begin{example}[Método de mallas con fuente de corriente]
-Resolveremos el siguiente anterior con el método de mallas
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{s}$}, invert] (0,7)
-	(0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_3$}](8,7)
-	(4,4) to [R, l_=\huge{$R_2$}](4,7)
-	(8,4) to [I, l_=\huge{$I_\textrm{s}$}](8,7)
-	{(2,5.5) node {\huge{\color{blue}{$i_1$}}} (6.4,5.5) node {\huge{\color{blue}{$i_2$}}}};
-	\draw[very thick, blue, <-, >=triangle 45] (2.5,4.6) arc (-60:240:1);
-	\draw[very thick, blue, <-, >=triangle 45] (6.9,4.6) arc (-60:240:1);
-\end{circuitikz}
-
-Notamos que tenemos 2 mallas: la de $i_1$ y la de $i_2$. Por la fuente de corriente, además, sabemos que $i_2=-I_\textrm{s}$. Aplicamos ley de Kirkchoff de voltage en la malla 1:
-
-\begin {equation*}
-V_s=V_{R_1}+V_{R_2}
-\end {equation*}
-Reemplazamos las ecuaciones de las resistencias con la ley de Ohm
-\begin {equation*}
-V_s=R_1*i_1 + R_2*(i_1-i_2)
-\end {equation*}
-
-Reordenamos para obtener
-\begin {equation*}
-i_1 =  \frac{V_s+R_2*i_2}{R_1 + R_2} = \frac{V_s-R_2*I_s}{R_1 + R_2}
-\end {equation*}
-Recordamos que para R2 el voltaje es Vb definido en el ejemplo anterior, por lo que deberíamos obtener el mismo resultado:
-\begin {equation*}
-V_{R_2}=R_2*(i_1-i_2) = R_2*(\frac{V_s-R_2*I_s}{R_1 + R_2}--I_s)=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
-\end {equation*}
+    Reordenamos para obtener
+    \begin{equation*}
+    i_1 =  \frac{V_s+R_2*i_2}{R_1 + R_2} = \frac{V_s-R_2*I_s}{R_1 + R_2}
+    \end{equation*}
+    Recordamos que para R2 el voltaje es Vb definido en el ejemplo anterior, por lo que deberíamos obtener el mismo resultado:
+    \begin{equation*}
+    V_{R_2}=R_2*(i_1-i_2) = R_2*(\frac{V_s-R_2*I_s}{R_1 + R_2}--I_s)=\frac{R_1R_2}{R_2+R_1}(\frac{V_s}{R_1}+I_s)
+    \end{equation*}
 
 
 \end{example}
@@ -1853,7 +1853,7 @@ El principio de superposición se aplica a una función lineal $f(x)$, en la que
 
 Lo anterior nos dice que si se tienen dos entradas superpuestas, $(x_1 + x_2)$, podemos obtener el resultado de ambas como la suma del resultado de cada una de forma independiente.\\
 
-En el caso de un circuito, cuando usamos fuentes y componentes lineales (como las resistencias), podemos considerar que la $i$ es una función del voltaje, por lo que se cumplirá: 
+En el caso de un circuito, cuando usamos fuentes y componentes lineales (como las resistencias), podemos considerar que la $i$ es una función del voltaje, por lo que se cumplirá:
 \begin{equation*}
     i(V_1+V_2)=i(V_1)+i(V_2)
 \end{equation*}
@@ -1863,215 +1863,215 @@ El método de superposición es especialmente útil cuando se tienen múltiples 
 
 \begin{enumerate}
     \item \textbf{Desactivar todas las fuentes excepto una}: Apagamos todas las fuentes excepto una y calculamos las corrientes y voltajes resultantes en el circuito.
-    
+
     \item \textbf{Repetir para cada fuente}: Repetimos el paso anterior para cada fuente de tensión o corriente en el circuito, desactivando las demás fuentes en cada caso.
-    
+
     \item \textbf{Sumar resultados}: Sumamos algebraicamente los valores de corrientes y voltajes obtenidos en cada caso para obtener el resultado final.
 \end{enumerate}
 
 \iffalse
-\textbf{Ejemplo: } \\
-Lo que queremos encontrar en este ejemplo es el voltaje en el punto $V_A$, si tratáramos de resolverlo por algún otro método
-el desarrollo de este sería complejo, con lo cual aplicaremos el principio de superposición. \\
-Para comenzar a desarrollar este ejercicio seguiremos los pasos anteriormente nombrados, primero identificamos 2 fuentes de voltaje distintas como se puede apreciar en la figura
+    \textbf{Ejemplo: } \\
+    Lo que queremos encontrar en este ejemplo es el voltaje en el punto $V_A$, si tratáramos de resolverlo por algún otro método
+    el desarrollo de este sería complejo, con lo cual aplicaremos el principio de superposición. \\
+    Para comenzar a desarrollar este ejercicio seguiremos los pasos anteriormente nombrados, primero identificamos 2 fuentes de voltaje distintas como se puede apreciar en la figura
 
- 
-\begin{figure}[h]
-    \centering
+
+    \begin{figure}[h]
+        \centering
+        \begin{circuitikz}[american]
+            \draw (3,3) to [R=$6\Omega$, *-*] (3,0);
+            \draw (3,3) to [R=$6\Omega$] (6,3);
+            \draw (0,3) to [R=$6\Omega$] (3,3);
+            \node at (3, 3.4) {$V_A$};
+            %\draw (0,0) grid (6,3);
+            \draw (0,3) to [V=$24V$] (0,0);
+            \draw (6,0) to [V=$12V$, invert] (6,3);
+            \draw (0,0) to [short] (6, 0);
+        \end{circuitikz}
+    \end{figure}
+
+
+    Partiremos con la fuente de $12V$ con lo cual apagaremos la otra fuente, quedando el siguiente circuito:
+
+    \begin{figure}[h]
+        \centering
+        \begin{circuitikz}[american]
+            \draw (3,3) to [R=$6\Omega$, *-*] (3,0);
+            \draw (3,3) to [R=$6\Omega$] (6,3);
+            \draw (0,3) to [R=$6\Omega$] (3,3);
+            \node at (3, 3.4) {$V_A$};
+            %\draw (0,0) grid (6,3);
+            \draw (0,0) to [short] (0,3);
+            \draw (6,0) to [V=$12V$, invert] (6,3);
+            \draw (0,0) to [short] (6, 0);
+        \end{circuitikz}
+    \end{figure}
+
+
+    Ahora podemos observar que el ejercicio se redujo bastante, nos damos cuenta que $R1$ y $R2$ se encuentran en paralelo, por lo que podemos calcular la resistencia equivalente entre estas dos, quedándonos:
+    \begin{center}
+        \begin{equation*}
+        \frac{1}{R_{12}} = \frac{1}{6} + \frac{1}{6}
+        \longrightarrow
+        R_{12} = 3 \Omega
+        \end{equation*}
+    \end{center}
+
+
+    con esto podemos reducir el circuito a lo siguiente:
+
+
+    %\begin{figure}[h]
+    %    \centering
     \begin{circuitikz}[american]
-        \draw (3,3) to [R=$6\Omega$, *-*] (3,0); 
-        \draw (3,3) to [R=$6\Omega$] (6,3);
-        \draw (0,3) to [R=$6\Omega$] (3,3);
-        \node at (3, 3.4) {$V_A$};
-        %\draw (0,0) grid (6,3);
-        \draw (0,3) to [V=$24V$] (0,0);
-        \draw (6,0) to [V=$12V$, invert] (6,3);
-        \draw (0,0) to [short] (6, 0);
-    \end{circuitikz}
-\end{figure}
-
-
-Partiremos con la fuente de $12V$ con lo cual apagaremos la otra fuente, quedando el siguiente circuito: 
-
-\begin{figure}[h]
-    \centering
-    \begin{circuitikz}[american]
-        \draw (3,3) to [R=$6\Omega$, *-*] (3,0); 
-        \draw (3,3) to [R=$6\Omega$] (6,3);
-        \draw (0,3) to [R=$6\Omega$] (3,3);
-        \node at (3, 3.4) {$V_A$};
-        %\draw (0,0) grid (6,3);
-        \draw (0,0) to [short] (0,3);
-        \draw (6,0) to [V=$12V$, invert] (6,3);
-        \draw (0,0) to [short] (6, 0);
-    \end{circuitikz}
-\end{figure}
-
-
-Ahora podemos observar que el ejercicio se redujo bastante, nos damos cuenta que $R1$ y $R2$ se encuentran en paralelo, por lo que podemos calcular la resistencia equivalente entre estas dos, quedándonos: 
-\begin{center}
-\begin {equation*}
-\frac{1}{R_{12}} = \frac{1}{6} + \frac{1}{6}
-\longrightarrow
-R_{12} = 3 \Omega 
-\end {equation*}
-\end{center}
-
-
-con esto podemos reducir el circuito a lo siguiente: 
-
-
-%\begin{figure}[h]
-%    \centering
-    \begin{circuitikz}[american]
-        \draw (3,3) to [R=$3\Omega$, *-*] (3,0); 
+        \draw (3,3) to [R=$3\Omega$, *-*] (3,0);
         \draw (3,3) to [R=$6\Omega$] (6,3);
         \node at (3, 3.4) {$V_A$};
         %\draw (0,0) grid (6,3);
         \draw (6,0) to [V=$12V$, invert] (6,3);
         \draw (3,0) to [short] (6, 0);
     \end{circuitikz}
-%\end{figure}
+    %\end{figure}
 
-Aquí simplemente debemos calcular $V_A$ y lo haremos con la siguiente fórmula.
-\begin {equation*}
+    Aquí simplemente debemos calcular $V_A$ y lo haremos con la siguiente fórmula.
+    \begin{equation*}
     V_{Salida} = \frac{R_2}{R_{Eq}} \cdot V_{Entrada}
-\end {equation*}
-Si reemplazamos los valores nos queda: 
-\begin {equation*}
-    V_A = \frac{3}{9} \cdot 12 
+    \end{equation*}
+    Si reemplazamos los valores nos queda:
+    \begin{equation*}
+    V_A = \frac{3}{9} \cdot 12
     \longrightarrow
     4V
-\end {equation*}
+    \end{equation*}
 
-Ya una vez calculado el $V_A$ con la fuente de $12V$, ahora la calcularemos con la otra fuente, con lo cual apagaremos la de $12V$, quedando el siguiente circuito: 
-
-
-\begin{figure}[h!]
-    \centering
-    \begin{circuitikz}[american]
-        \draw (3,3) to [R=$6\Omega$, *-*] (3,0); 
-        \draw (3,3) to [R=$6\Omega$] (6,3);
-        \draw (0,3) to [R=$6\Omega$] (3,3);
-        \node at (3, 3.4) {$V_A$};
-        %\draw (0,0) grid (6,3);
-        \draw (0,3) to [V=$24V$] (0,0);
-        \draw (6,0) to [short] (6,3);
-        \draw (0,0) to [short] (6, 0);
-    \end{circuitikz}
-\end{figure}
-
-Igual que en el caso anterior podemos reducir el circuito, calculamos la resistencia equivalente entre $R2$ y $R3$ dando como resultado: 
-
-\begin {equation*}
-\frac{1}{R_{23}} = \frac{1}{6} + \frac{1}
-\longrightarrow
-R_{23} = 3 \Omega 
-\end {equation*}
-
-Y el circuito se reduce al siguiente: 
+    Ya una vez calculado el $V_A$ con la fuente de $12V$, ahora la calcularemos con la otra fuente, con lo cual apagaremos la de $12V$, quedando el siguiente circuito:
 
 
-\begin{figure}[h]
-    \centering
-    \begin{circuitikz}[american]
-        \draw (3,3) to [R=$3\Omega$, *-*] (3,0); 
-        \draw (0,3) to [R=$6\Omega$] (3,3);
-        \node at (3, 3.4) {$V_A$};
-        %\draw (0,0) grid (6,3);
-        \draw (0,3) to [V=$24V$] (0,0);
-        \draw (0,0) to [short] (3, 0)
-    \end{circuitikz}
-\end{figure}
+    \begin{figure}[h!]
+        \centering
+        \begin{circuitikz}[american]
+            \draw (3,3) to [R=$6\Omega$, *-*] (3,0);
+            \draw (3,3) to [R=$6\Omega$] (6,3);
+            \draw (0,3) to [R=$6\Omega$] (3,3);
+            \node at (3, 3.4) {$V_A$};
+            %\draw (0,0) grid (6,3);
+            \draw (0,3) to [V=$24V$] (0,0);
+            \draw (6,0) to [short] (6,3);
+            \draw (0,0) to [short] (6, 0);
+        \end{circuitikz}
+    \end{figure}
 
-Donde podemos aplicar la fórmula mencionada anteriormente, quedando: 
-\begin {equation*}
-    V_A = \frac{3}{9} \cdot 24 
+    Igual que en el caso anterior podemos reducir el circuito, calculamos la resistencia equivalente entre $R2$ y $R3$ dando como resultado:
+
+    \begin{equation*}
+    \frac{1}{R_{23}} = \frac{1}{6} + \frac{1}
+    \longrightarrow
+    R_{23} = 3 \Omega
+    \end{equation*}
+
+    Y el circuito se reduce al siguiente:
+
+
+    \begin{figure}[h]
+        \centering
+        \begin{circuitikz}[american]
+            \draw (3,3) to [R=$3\Omega$, *-*] (3,0);
+            \draw (0,3) to [R=$6\Omega$] (3,3);
+            \node at (3, 3.4) {$V_A$};
+            %\draw (0,0) grid (6,3);
+            \draw (0,3) to [V=$24V$] (0,0);
+            \draw (0,0) to [short] (3, 0)
+        \end{circuitikz}
+    \end{figure}
+
+    Donde podemos aplicar la fórmula mencionada anteriormente, quedando:
+    \begin{equation*}
+    V_A = \frac{3}{9} \cdot 24
     \longrightarrow
     8V
-\end {equation*}
+    \end{equation*}
 
-Y para finalizar simplemente bastaría con sumar ambos valores de $V_A$ obtenidos quedando: 
-\begin {equation*}
-    V_{A Final} = 4V + 8V 
-\end {equation*}
-\begin {equation*}
+    Y para finalizar simplemente bastaría con sumar ambos valores de $V_A$ obtenidos quedando:
+    \begin{equation*}
+    V_{A Final} = 4V + 8V
+    \end{equation*}
+    \begin{equation*}
     V_{A Final} = 12V
-\end {equation*}
+    \end{equation*}
 \fi
 
 %Inicio celeste ramirez%
 \begin{example}[Método de superposición con dos fuentes de voltaje]
 
-Se busca determinar la corriente de $R_1$ en el siguiente circuito:
+    Se busca determinar la corriente de $R_1$ en el siguiente circuito:
 
-\begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V_=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   
-    \end{circuitikz}
+    \begin{center}
+        \begin{circuitikz}[american]
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to[V=$V_1$,invert] (0,3)
+            to[R=$R_1$] (3,3)
+            to[R=$R_3$] (6,3);
+            \draw (6,0) to[V_=$V_2$,invert] (6,3);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,0) to[R=$R_2$] (3,3);
+
+        \end{circuitikz}
     \end{center}
 
-Para resolver este circuito utilizando el método de superposición, seguimos los siguientes pasos:
+    Para resolver este circuito utilizando el método de superposición, seguimos los siguientes pasos:
 
-\begin{enumerate}
-    \item \textbf{Desactivar todas las fuentes excepto una}: Apagamos una fuente de tensión y calculamos las corrientes y voltajes resultantes en el circuito. Supongamos que dejamos activa \(V_1\) y desactivamos \(V_2\), con lo que el circuito queda de la siguiente forma:
-\begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   
-    \end{circuitikz}
-    \end{center}
-    
+    \begin{enumerate}
+        \item \textbf{Desactivar todas las fuentes excepto una}: Apagamos una fuente de tensión y calculamos las corrientes y voltajes resultantes en el circuito. Supongamos que dejamos activa \(V_1\) y desactivamos \(V_2\), con lo que el circuito queda de la siguiente forma:
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to[V=$V_1$,invert] (0,3)
+                      to[R=$R_1$] (3,3)
+                      to[R=$R_3$] (6,3);
+                      \draw (6,0) to (6,3);
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,0) to[R=$R_2$] (3,3);
 
-    
-    \item \textbf{Calcular corrientes y voltajes}: Aplicamos el método de mallas o nodos para calcular las corrientes y los voltajes en con solo \(V_1\) activa.
+                  \end{circuitikz}
+              \end{center}
 
-    \begin{align*}
-        i_{{R_1}_1}=\frac{V_1}{R_1+R_2//R_3}
-    \end{align*}
-    Donde $R_2//R_3$ es la equivalencia del paralelo entre $R_2$ y $R_3$.
-    
-    \item \textbf{Repetir para cada fuente}: Repetimos los pasos anteriores para la otra fuente de tensión. Desactivamos \(V_2\) y dejamos activa \(V_1\).
 
-\begin{center}        
-    \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to (0,3)
-   to[R=$R_1$] (3,3)
-   to[R=$R_3$] (6,3);
-   \draw (6,0) to[V_=$V_2$,invert] (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R_2$] (3,3);
-   
-    \end{circuitikz}
-    \end{center}
-    Luego, aplicando equivalencias y ley de ohm
-    \begin{align*}
-        %i_{{R_1}_2}&=V_2\frac{1-\frac{R_3}{R_3+R_1//R_2}}{R_1}\\
-        %i_{{R_1}_2}&=V_2\frac{\frac{R_1//R_2}{R_3+R_1//R_2}}{R_1}\\
-        i_{{R_1}_2}&=V_2\frac{R_1//R_2}{R_1(R_3+R_1//R_2)}\\
-    \end{align*}
-    
-    \item \textbf{Sumar resultados}: Sumamos las corrientes obtenidas en cada caso para obtener el resultado final.
-    Finalmente, tendremos que
-     \begin{align*}
-         i_{R_1}&=i_{{R_1}_1}+i_{{R_1}_2}\\
-         i_{R_1}&=\frac{V_1}{R_1+R_2//R_3}+V_2\frac{R_1//R_2}{R_1(R_3+R_1//R_2)}
-     \end{align*}
-\end{enumerate}
+
+        \item \textbf{Calcular corrientes y voltajes}: Aplicamos el método de mallas o nodos para calcular las corrientes y los voltajes en con solo \(V_1\) activa.
+
+              \begin{align*}
+                  i_{{R_1}_1}=\frac{V_1}{R_1+R_2//R_3}
+              \end{align*}
+              Donde $R_2//R_3$ es la equivalencia del paralelo entre $R_2$ y $R_3$.
+
+        \item \textbf{Repetir para cada fuente}: Repetimos los pasos anteriores para la otra fuente de tensión. Desactivamos \(V_2\) y dejamos activa \(V_1\).
+
+              \begin{center}
+                  \begin{circuitikz}[american]
+                      %\draw[help lines] (0,0) grid (6,3);
+                      \draw (0,0) to (0,3)
+                      to[R=$R_1$] (3,3)
+                      to[R=$R_3$] (6,3);
+                      \draw (6,0) to[V_=$V_2$,invert] (6,3);
+                      \draw (0,0) to[short] (6,0);
+                      \draw (3,0) to[R=$R_2$] (3,3);
+
+                  \end{circuitikz}
+              \end{center}
+              Luego, aplicando equivalencias y ley de ohm
+              \begin{align*}
+                  %i_{{R_1}_2}&=V_2\frac{1-\frac{R_3}{R_3+R_1//R_2}}{R_1}\\
+                  %i_{{R_1}_2}&=V_2\frac{\frac{R_1//R_2}{R_3+R_1//R_2}}{R_1}\\
+                  i_{{R_1}_2} & =V_2\frac{R_1//R_2}{R_1(R_3+R_1//R_2)} \\
+              \end{align*}
+
+        \item \textbf{Sumar resultados}: Sumamos las corrientes obtenidas en cada caso para obtener el resultado final.
+              Finalmente, tendremos que
+              \begin{align*}
+                  i_{R_1} & =i_{{R_1}_1}+i_{{R_1}_2}                                        \\
+                  i_{R_1} & =\frac{V_1}{R_1+R_2//R_3}+V_2\frac{R_1//R_2}{R_1(R_3+R_1//R_2)}
+              \end{align*}
+    \end{enumerate}
 
 
 \end{example}
@@ -2109,241 +2109,241 @@ Ahora pasamos a nuestro circuito 2, con la fuente de corriente:
 
 Buscaremos la corriente que circula por \textbf{R4}.
 
-\begin{center}
-Sumamos las resistencias en serie, quedando como circuito equivalente:
+\begin{example}
+    Sumamos las resistencias en serie, quedando como circuito equivalente:
 
-Del cual podemos concluir que la corriente en el nodo 1 se divide en 2, ya que tiene resistencias iguales en ambos lados.\\
-Utilizamos ley de Ohm:
-\[V_{R4} = I*R4\]
-\[V_{R4} = 5e^{-3}A * 250\Omega\]
-\[(2)\hspace{5mm} [\hspace{2mm}V_{R4} = 1,25V\hspace{2mm}]\]
-\vspace{10mm}\\
-Como la corriente del circuito 1 como el 2 que pasan por la \textbf{R4} van en el mismo sentido \(V_t\) será \(V_1 + V_2\)
-\[.: \hspace{5mm} V_{R4} = 1,66V + 1,25V \]
-\[[\hspace{2mm}V_{R4} = 2,91V\hspace{2mm}]\]
-
-
-\end{example}
-
-\section{Circuitos típicos}
-\subsection{Divisor de voltaje}
-
-El divisor de voltaje es uno de los circuitos más utilizados. Una de sus aplicaciones es la lectura de sensores.
+    Del cual podemos concluir que la corriente en el nodo 1 se divide en 2, ya que tiene resistencias iguales en ambos lados.\\
+    Utilizamos ley de Ohm:
+    \[V_{R4} = I*R4\]
+    \[V_{R4} = 5e^{-3}A * 250\Omega\]
+    \[(2)\hspace{5mm} [\hspace{2mm}V_{R4} = 1,25V\hspace{2mm}]\]
+    \vspace{10mm}\\
+    Como la corriente del circuito 1 como el 2 que pasan por la \textbf{R4} van en el mismo sentido \(V_t\) será \(V_1 + V_2\)
+    \[.: \hspace{5mm} V_{R4} = 1,66V + 1,25V \]
+    \[[\hspace{2mm}V_{R4} = 2,91V\hspace{2mm}]\]
 
 
-\begin{circuitikz}[american]
-\draw 
-    (0,0) to [V, l=\large{$V_\textrm{1}$}, invert](0,3)   to [R,l={$R_1$}](3,3)  
-     to [R,l={$R_2$}](3,0) to (0,0) ;
-    
-\end{circuitikz}
+    \end{example}
 
-Notamos que la corriente que sale de la fuente depende de la equivalencia entre $R_1$ y $R_2$. De esto, tendremos que
+    \section{Circuitos típicos}
+    \subsection{Divisor de voltaje}
 
-\begin{equation*}
-    I=\frac{V_1}{R_1+R_2}
-\end{equation*}
-Como esta corriente es la misma para ambas resistencias, podemos obtener el voltaje de caída para ambas. Para $R_1$ tendremos:
-
-\begin{align*}
-    V_{R_1}&=IR_1\\
-    V_{R_1}&=\frac{V_1}{R_1+R_2}R_1    
-\end{align*}
-
-Para $R_2$:
-
-\begin{align*}
-    V_{R_2}&=IR_2\\
-    V_{R_2}&=\frac{V_1}{R_1+R_2}R_2    
-\end{align*}
-
-Luego, el voltaje en el nodo que une a ambas resistencias está determinado por $V_{R_2}$.
-
-\begin{remark}
-    Es importante notar que la resistencia de mayor tamaño tendrá la caída de voltaje mayor. 
-\end{remark}
-
-\subsection{Divisor de corriente}
-
-En este circuito, la corriente principal, o de entrada, se divide en corrientes más pequeñas.
-
-\begin{circuitikz}[american]
-\draw 
-    (0,0) to [V, l=\large{$V_\textrm{1}$},  i=$i_{V}$, invert](0,3)   to (3,3)to [R,l={$R_2$}, i=$i_{R_2}$](3,0) to (0,0) ;
-    \draw (1.5,3) to [R,l={$R_1$}, i=$i_{R_1}$](1.5,0)  ;
-     
-    
-\end{circuitikz}
+    El divisor de voltaje es uno de los circuitos más utilizados. Una de sus aplicaciones es la lectura de sensores.
 
 
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to [V, l=\large{$V_\textrm{1}$}, invert](0,3)   to [R,l={$R_1$}](3,3)
+        to [R,l={$R_2$}](3,0) to (0,0) ;
+
+    \end{circuitikz}
+
+    Notamos que la corriente que sale de la fuente depende de la equivalencia entre $R_1$ y $R_2$. De esto, tendremos que
+
+    \begin{equation*}
+        I=\frac{V_1}{R_1+R_2}
+    \end{equation*}
+    Como esta corriente es la misma para ambas resistencias, podemos obtener el voltaje de caída para ambas. Para $R_1$ tendremos:
+
+    \begin{align*}
+        V_{R_1} & =IR_1                   \\
+        V_{R_1} & =\frac{V_1}{R_1+R_2}R_1
+    \end{align*}
+
+    Para $R_2$:
+
+    \begin{align*}
+        V_{R_2} & =IR_2                   \\
+        V_{R_2} & =\frac{V_1}{R_1+R_2}R_2
+    \end{align*}
+
+    Luego, el voltaje en el nodo que une a ambas resistencias está determinado por $V_{R_2}$.
+
+    \begin{remark}
+        Es importante notar que la resistencia de mayor tamaño tendrá la caída de voltaje mayor.
+    \end{remark}
+
+    \subsection{Divisor de corriente}
+
+    En este circuito, la corriente principal, o de entrada, se divide en corrientes más pequeñas.
+
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to [V, l=\large{$V_\textrm{1}$},  i=$i_{V}$, invert](0,3)   to (3,3)to [R,l={$R_2$}, i=$i_{R_2}$](3,0) to (0,0) ;
+        \draw (1.5,3) to [R,l={$R_1$}, i=$i_{R_1}$](1.5,0)  ;
+
+
+    \end{circuitikz}
 
 
 
-       Por equivalencia de resistencias, sabemos que la equivalencia entre $R_1$ y $R_2$ es:
-     \begin{equation*}
-         R_{eq}=\frac{R_1R_2}{R_1+R_2}
-     \end{equation*}
+
+
+    Por equivalencia de resistencias, sabemos que la equivalencia entre $R_1$ y $R_2$ es:
+    \begin{equation*}
+        R_{eq}=\frac{R_1R_2}{R_1+R_2}
+    \end{equation*}
     Luego, aplicamos ley de Ohm para determinar que la corriente que pasa por el circuito será
-    \begin {equation*}
+    \begin{equation*}
     i_1= \frac{V_1}{R_{eq}}
-    \end {equation*}
+    \end{equation*}
 
     Además, como para ambas resistencias el voltaje es el de la fuente, se cumple que:
     \begin{align*}
-        i_{R_1}&=V_1/R_1\\
-        i_{R_2}&=V_1/R_2
+        i_{R_1} & =V_1/R_1 \\
+        i_{R_2} & =V_1/R_2
     \end{align*}
-    
-Notamos que \textbf{la corriente será más grande si disminuye la resistencia}, pero pasará corriente por ambas resistencias. 
 
-\begin{remark}
-    En el caso extremo de un corto circuito, la resistencia se hace 0, por lo que pasará corriente infinita por el cable.
-\end{remark}
+    Notamos que \textbf{la corriente será más grande si disminuye la resistencia}, pero pasará corriente por ambas resistencias.
 
-    
+    \begin{remark}
+        En el caso extremo de un corto circuito, la resistencia se hace 0, por lo que pasará corriente infinita por el cable.
+    \end{remark}
 
 
 
 
 
-\section{Componentes reales}
-\subsection{Fuentes ideales vs fuentes reales}
-%%%%%%%%Eduardo Maldonado%%%%%%%%%%%%%%
-
-Las fuentes ideales entregan un voltaje o corriente constante. Sin embargo, en la realidad, las fuentes poseen pérdidas. Estas pérdidas se pueden modelar como una resistencia interna de la siguiente forma:
-
-\begin{circuitikz}[american]
-\draw 
-    (0,0) to [V, l=\large{$V_\textrm{1}$}, invert](0,3)   to [R,l={$R_{int}$}](3,3)  
-     to [R,l={$R_L$}](3,0) to (0,0) ;
-    
-\end{circuitikz}
-
-\justify{
-Donde:\\
-$V_{}$: Tensión de la fuente ideal\\
-$R_{int}$: Resistor interno de la fuente\\
-$R_{L}$: Resistor de carga
-
-En una fuente ideal, entonces, la resistencia interna es $0\Omega$. En cambio, en una fuente real, $R_{int}>0\Omega$. Luego, el voltaje que recibe $R_L$ de la fuente se puede resolver a partir de un divisor de voltaje.\\
-}
-
-%De esta manera, y ya habiendo entendido anteriormente la Ley de Ohm, se plantean las siguientes interrogantes; ¿qué ocurre si el resistor externo ($R_L$) tiene un valor mucho más pequeño que el resistor interno? y ¿qué ocurre si el resistor externo ($R_L$) tiene un valor mucho más grande que el resistor interno? 
-
-%Para la primera interrogante, al tener un $R_{L}$ con un valor mucho menor al del $R_{int}$ la corriente que solicitará $R_{L}$ a la fuente será muy alta, lo que provocará que la fuente se caliente y posiblemente se queme.  
-%En el caso de la segunda interrogante, si $R_L$ es mucho mayor a $R_{int}$, la corriente que tendrá que pasar por $R_L$ será muy baja, de esta manera la fuente no se calentará como en el caso anterior y por ende, no se verá afectada por una posible falla debido a la alza en su temperatura. 
- 
-%Es por este ultimo caso, que mientras más cercano a 0Ω sea el valor del resistor interno de la fuente de tensión está será "mejor" en comparación a aquellas que posean un resistor interno con un valor muy alto.
-
-\begin{remark}
-    Las baterías comerciales poseen un resistor interno cercano a 1Ω. Esto implica que hay pérdidas de potencia y que el voltaje cambia según la resistencia de carga que se conecte.
-\end{remark} 
-{\justify
- Por otro lado, las fuentes reales suelen tener restricciones en cuanto a las corrientes y potencias máximas que pueden entregan. Así, si un circuito requiere más corriente de la que especifica el fabricante, es probable que la fuente baje su voltaje.\\
-
- Finalmente, muchas veces utilizaremos fuentes en forma de baterías. Estas pueden entregar un máximo de energía. Esta se mide en Wh (Watt-hora) o Ah (Ampere-hora) y representa el tiempo que podrá entregar potencia una fuente de voltaje.
-}
-
-\subsection{Resistores reales}
-
-Las resistencias en la realidad suele soportar hasta cierta potencia. En general, los resistores comienzan a emitir calor cuando pasa corriente por ellas, ya que la potencia que consumen es disipada en forma de calor. Por lo tanto, se diseñan para resistir un máximo de potencia.
-
-\newpage
 
 
-\section{Condensadores e Inductores}
-\subsection{Condensadores}
-Los condensadores son componentes eléctricos capaces de acumular energía eléctrica en forma de campo eléctrico. Físicamente, cuentan con dos placas que al ser sometidas a una diferencia de voltaje acumulan una carga eléctrica según la función:
-\begin {equation*}
+    \section{Componentes reales}
+    \subsection{Fuentes ideales vs fuentes reales}
+    %%%%%%%%Eduardo Maldonado%%%%%%%%%%%%%%
+
+    Las fuentes ideales entregan un voltaje o corriente constante. Sin embargo, en la realidad, las fuentes poseen pérdidas. Estas pérdidas se pueden modelar como una resistencia interna de la siguiente forma:
+
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to [V, l=\large{$V_\textrm{1}$}, invert](0,3)   to [R,l={$R_{int}$}](3,3)
+        to [R,l={$R_L$}](3,0) to (0,0) ;
+
+    \end{circuitikz}
+
+    \justify{
+        Donde:\\
+        $V_{}$: Tensión de la fuente ideal\\
+        $R_{int}$: Resistor interno de la fuente\\
+        $R_{L}$: Resistor de carga
+
+        En una fuente ideal, entonces, la resistencia interna es $0\Omega$. En cambio, en una fuente real, $R_{int}>0\Omega$. Luego, el voltaje que recibe $R_L$ de la fuente se puede resolver a partir de un divisor de voltaje.\\
+    }
+
+    %De esta manera, y ya habiendo entendido anteriormente la Ley de Ohm, se plantean las siguientes interrogantes; ¿qué ocurre si el resistor externo ($R_L$) tiene un valor mucho más pequeño que el resistor interno? y ¿qué ocurre si el resistor externo ($R_L$) tiene un valor mucho más grande que el resistor interno? 
+
+    %Para la primera interrogante, al tener un $R_{L}$ con un valor mucho menor al del $R_{int}$ la corriente que solicitará $R_{L}$ a la fuente será muy alta, lo que provocará que la fuente se caliente y posiblemente se queme.  
+    %En el caso de la segunda interrogante, si $R_L$ es mucho mayor a $R_{int}$, la corriente que tendrá que pasar por $R_L$ será muy baja, de esta manera la fuente no se calentará como en el caso anterior y por ende, no se verá afectada por una posible falla debido a la alza en su temperatura. 
+
+    %Es por este ultimo caso, que mientras más cercano a 0$\Omega$ sea el valor del resistor interno de la fuente de tensión está será "mejor" en comparación a aquellas que posean un resistor interno con un valor muy alto.
+
+    \begin{remark}
+        Las baterías comerciales poseen un resistor interno cercano a 1$\Omega$. Esto implica que hay pérdidas de potencia y que el voltaje cambia según la resistencia de carga que se conecte.
+    \end{remark}
+    {\justify
+    Por otro lado, las fuentes reales suelen tener restricciones en cuanto a las corrientes y potencias máximas que pueden entregan. Así, si un circuito requiere más corriente de la que especifica el fabricante, es probable que la fuente baje su voltaje.\\
+
+    Finalmente, muchas veces utilizaremos fuentes en forma de baterías. Estas pueden entregar un máximo de energía. Esta se mide en Wh (Watt-hora) o Ah (Ampere-hora) y representa el tiempo que podrá entregar potencia una fuente de voltaje.
+    }
+
+    \subsection{Resistores reales}
+
+    Las resistencias en la realidad suele soportar hasta cierta potencia. En general, los resistores comienzan a emitir calor cuando pasa corriente por ellas, ya que la potencia que consumen es disipada en forma de calor. Por lo tanto, se diseñan para resistir un máximo de potencia.
+
+    \newpage
+
+
+    \section{Condensadores e Inductores}
+    \subsection{Condensadores}
+    Los condensadores son componentes eléctricos capaces de acumular energía eléctrica en forma de campo eléctrico. Físicamente, cuentan con dos placas que al ser sometidas a una diferencia de voltaje acumulan una carga eléctrica según la función:
+    \begin{equation*}
     Q=CV
-\end {equation*}
-Al derivar esta función obtendremos
-\begin {equation*}
+    \end{equation*}
+    Al derivar esta función obtendremos
+    \begin{equation*}
     i_C=C\frac{dV}{dt}
-\end {equation*}
+    \end{equation*}
 
-Es decir, que la corriente por el capacitor es la derivada del voltaje por la capacitancia.
+    Es decir, que la corriente por el capacitor es la derivada del voltaje por la capacitancia.
 
-\subsection{Inductores}
-Los inductores, por su parte, acumulan energía en forma de campo magnético cuando la corriente fluye por ellos. Físicamente, consisten en una bobina de alambre enrollada alrededor de un núcleo magnético. La inductancia, representada como L, mide la capacidad de un inductor para almacenar energía en forma de campo magnético. Cuando la corriente que fluye a través del inductor cambia con el tiempo, se induce una fuerza electromotriz (fem) en el inductor, que genera un voltaje en la bobina según la función:
+    \subsection{Inductores}
+    Los inductores, por su parte, acumulan energía en forma de campo magnético cuando la corriente fluye por ellos. Físicamente, consisten en una bobina de alambre enrollada alrededor de un núcleo magnético. La inductancia, representada como L, mide la capacidad de un inductor para almacenar energía en forma de campo magnético. Cuando la corriente que fluye a través del inductor cambia con el tiempo, se induce una fuerza electromotriz (fem) en el inductor, que genera un voltaje en la bobina según la función:
 
-\begin{equation*}
-    V_L = L \frac{di}{dt}
-\end{equation*}
+    \begin{equation*}
+        V_L = L \frac{di}{dt}
+    \end{equation*}
 
-Esta ecuación nos muestra que el voltaje en el inductor es directamente proporcional a la tasa de cambio de la corriente a lo largo del tiempo. %Por lo tanto, los inductores se oponen a cambios rápidos en la corriente, lo que se conoce como autoinducción.
+    Esta ecuación nos muestra que el voltaje en el inductor es directamente proporcional a la tasa de cambio de la corriente a lo largo del tiempo. %Por lo tanto, los inductores se oponen a cambios rápidos en la corriente, lo que se conoce como autoinducción.
 
-%En resumen, los condensadores almacenan energía en forma de campo eléctrico y están relacionados con la acumulación de carga, mientras que los inductores almacenan energía en forma de campo magnético y están relacionados con la generación de un voltaje inducido debido a cambios en la corriente. Ambos componentes desempeñan roles clave en circuitos eléctricos y electrónicos y son fundamentales para comprender el comportamiento de los sistemas eléctricos.
+    %En resumen, los condensadores almacenan energía en forma de campo eléctrico y están relacionados con la acumulación de carga, mientras que los inductores almacenan energía en forma de campo magnético y están relacionados con la generación de un voltaje inducido debido a cambios en la corriente. Ambos componentes desempeñan roles clave en circuitos eléctricos y electrónicos y son fundamentales para comprender el comportamiento de los sistemas eléctricos.
 
-\subsection{Régimen permanente}
-Hablamos de régimen permanente cuando un circuito con condensador o inductor se encuentra en un estado sin cambios en sus respectivos voltajes y corrientes.
+    \subsection{Régimen permanente}
+    Hablamos de régimen permanente cuando un circuito con condensador o inductor se encuentra en un estado sin cambios en sus respectivos voltajes y corrientes.
 
-En el caso del condensador, en régimen permanente este se comporta como circuito abierto, mientras que los inductores se comportan como corto circuito. Por ejemplo, si tuviéramos el siguiente circuito:
+    En el caso del condensador, en régimen permanente este se comporta como circuito abierto, mientras que los inductores se comportan como corto circuito. Por ejemplo, si tuviéramos el siguiente circuito:
 
-\begin{center}
-\begin{circuitikz}[american]
-\draw
+    \begin{center}
+        \begin{circuitikz}[american]
+            \draw
 
-%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
-	(0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_2$}](8,7)
-	(4,4) to [C, l=\huge{$C$}](4,7)
-	(8,4) to [L, l=\huge{$L$}](8,7)
-	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
-\end{circuitikz}
-\end{center}
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
+            (0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_2$}](8,7)
+            (4,4) to [C, l=\huge{$C$}](4,7)
+            (8,4) to [L, l=\huge{$L$}](8,7)
+            {(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+        \end{circuitikz}
+    \end{center}
 
-en régimen permanente sería equivalente a
+    en régimen permanente sería equivalente a
 
-\begin{center}
-\begin{circuitikz}[american]
-\draw
+    \begin{center}
+        \begin{circuitikz}[american]
+            \draw
 
-%(8,7) to
-	(8,4) to (0,4)
-	to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
-	(0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_2$}](8,7)
-	(8,4) to(8,7)
-	{(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
-\end{circuitikz}
-\end{center}
+            %(8,7) to
+            (8,4) to (0,4)
+            to [V, l=\huge{$V_\textrm{1}$}, invert] (0,7)
+            (0,7) to [R, l=\huge{$R_1$}](4,7) to [R, l=\huge{$R_2$}](8,7)
+            (8,4) to(8,7)
+            {(2,5.5) node {\huge{\color{blue}{}}} (6.4,5.5) node {\huge{\color{blue}{}}}};
+        \end{circuitikz}
+    \end{center}
 
-\subsection{Carga de un condensador}
-\subsubsection{Circuito RC con fuente de voltaje}
-Evaluaremos qué ocurre si se cierra el interruptor del siguiente circuito:
+    \subsection{Carga de un condensador}
+    \subsubsection{Circuito RC con fuente de voltaje}
+    Evaluaremos qué ocurre si se cierra el interruptor del siguiente circuito:
 
-\begin{center}
-\begin{circuitikz}[american]
-\draw
-	   (0,0) to [V, l=$V_s$,invert](0,3) 
-	  (0,3) to [spst](2,3) to [R, l=R](4,3)
-	   to [C, l=C](4,0) to (0,0)
-	  (2,0) node[ground](GND){};
-\end{circuitikz}
-\end{center}
+    \begin{center}
+        \begin{circuitikz}[american]
+            \draw
+            (0,0) to [V, l=$V_s$,invert](0,3)
+            (0,3) to [spst](2,3) to [R, l=R](4,3)
+            to [C, l=C](4,0) to (0,0)
+            (2,0) node[ground](GND){};
+        \end{circuitikz}
+    \end{center}
 
-Antes de cerrar el circuito, tendremos un circuito abierto. Asumiremos el condensador C comienza descargado, por tanto, la carga inicial es 0 para $t<0$. 
+    Antes de cerrar el circuito, tendremos un circuito abierto. Asumiremos el condensador C comienza descargado, por tanto, la carga inicial es 0 para $t<0$.
 
-Luego, vemos qué ocurre para $t=>0$. En este caso, tendremos el siguiente circuito
+    Luego, vemos qué ocurre para $t=>0$. En este caso, tendremos el siguiente circuito
 
-\begin{center}
-\begin{circuitikz}[american]
-\draw
-	   (0,0) to [V, l=$V_s$,invert](0,3) 
-	   to [R, l=R](4,3)
-	   to [C, l=C](4,0) to (0,0)
-	  (2,0) node[ground](GND){};
-\end{circuitikz}
-\end{center}\end{center}
+    \begin{center}
+        \begin{circuitikz}[american]
+            \draw
+            (0,0) to [V, l=$V_s$,invert](0,3)
+            to [R, l=R](4,3)
+            to [C, l=C](4,0) to (0,0)
+            (2,0) node[ground](GND){};
+        \end{circuitikz}
+    \end{center}\end{center}
 
 Resolveremos con el método de nodos el voltaje en el condensador. Para el nodo superior izquierdo, el voltaje es $V_s$. Luego, aplicamos LKC en el nodo de la derecha, considerando que en el condensador se cumple $i_C=C\frac{dv_C}{dt}$:
 
-\begin{align*} 
-i_R &=   i_C \\ 
-\frac{V_s-v_C}{R} &=    C\frac{dv_C}{dt}\\
-\frac{V_s}{R} &= \frac{v_C}{R}+   C\frac{dv_C}{dt}\\
-V_s &= v_C+   RC\frac{dv_C}{dt}\\
+\begin{align*}
+    i_R               & =   i_C                             \\
+    \frac{V_s-v_C}{R} & =    C\frac{dv_C}{dt}               \\
+    \frac{V_s}{R}     & = \frac{v_C}{R}+   C\frac{dv_C}{dt} \\
+    V_s               & = v_C+   RC\frac{dv_C}{dt}          \\
 \end{align*}
 
 Con lo que obtenemos una ecuación diferencial ordinaria (EDO) en que la incógnita es $v_C$. Notamos que por ser una ecuación no homogénea debemos resolver:
@@ -2352,38 +2352,38 @@ Con lo que obtenemos una ecuación diferencial ordinaria (EDO) en que la incógn
 \end{equation*}
 
 Para resolver la solución homogénea $v_{C_h}$ tendremos que hacer $V_s$ cero
-\begin{align*} 
-0 &= v_{C_h} +  RC\frac{dv_{C_h}}{dt} \\
--RC\frac{dv_{C_h}}{dt} &= v_{C_h} 
+\begin{align*}
+    0                      & = v_{C_h} +  RC\frac{dv_{C_h}}{dt} \\
+    -RC\frac{dv_{C_h}}{dt} & = v_{C_h}
 \end{align*}
 
 Este tipo de ecuación se resuelve con una exponencial, por lo tanto $v_{C_h}$ debe tener la forma $Ae^{st}$.
-\begin{align*} 
--RC\frac{d(Ae^{st})}{dt} &= Ae^{st}\\
--RCsAe^{st} &= Ae^{st}\\
--RCs &= 1\\
-s &= \frac{-1}{RC}\\
+\begin{align*}
+    -RC\frac{d(Ae^{st})}{dt} & = Ae^{st}       \\
+    -RCsAe^{st}              & = Ae^{st}       \\
+    -RCs                     & = 1             \\
+    s                        & = \frac{-1}{RC} \\
 \end{align*}
- Entonces, $v_{C_h}=Ae^{\frac{-t}{RC}}$.
- 
+Entonces, $v_{C_h}=Ae^{\frac{-t}{RC}}$.
+
 Para resolver la solución particular $v_{C_p}$ asumiremos que esta será una constante K:
-\begin{align*} 
-V_s &= v_{C_p} +  RC\frac{d(v_{C_p})}{dt}\\
-V_s &= K + 0\\
+\begin{align*}
+    V_s & = v_{C_p} +  RC\frac{d(v_{C_p})}{dt} \\
+    V_s & = K + 0                              \\
 \end{align*}
 Entonces  $v_{C_p}=V_s$, con lo que llegamos a que
 
-\begin{align*} 
- v_C&=v_{C_h}+ v_{C_p}\\
-v_C&=Ae^{\frac{-t}{RC}}+ V_s\\
+\begin{align*}
+    v_C & =v_{C_h}+ v_{C_p}        \\
+    v_C & =Ae^{\frac{-t}{RC}}+ V_s \\
 \end{align*}
 
 Luego, vemos qué ocurre en el tiempo $t=0$, en que el voltaje $v_C=0$, ya que estaba descargado el condensador.
 
-\begin{align*} 
- v_C(0)&=Ae^{\frac{-0}{RC}}+ V_s\\
- 0&=A+ V_s\\
- -V_s&=A \\
+\begin{align*}
+    v_C(0) & =Ae^{\frac{-0}{RC}}+ V_s \\
+    0      & =A+ V_s                  \\
+    -V_s   & =A                       \\
 \end{align*}
 
 Con lo que llegamos a que $v_C&=-V_se^{\frac{-t}{RC}}+ V_s$, lo que implica que el condensador parte con voltaje 0 y se va cargando hasta llegar al voltaje $V_s$.
@@ -2393,34 +2393,34 @@ Con lo que llegamos a que $v_C&=-V_se^{\frac{-t}{RC}}+ V_s$, lo que implica que 
 Evaluaremos qué ocurre si se cierra el interruptor del siguiente circuito:
 
 \begin{center}
-\begin{circuitikz}[american]
-\draw
-	   (0,0) to [I, l=$I_s$](0,3) 
-	  (0,3) to [spst](2,3) to [R, l=R](2,0)
-	  (2,3) to (4,3) to [C, l=C](4,0) to (0,0)
-	  (2,0) node[ground](GND){};
-\end{circuitikz}
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to [I, l=$I_s$](0,3)
+        (0,3) to [spst](2,3) to [R, l=R](2,0)
+        (2,3) to (4,3) to [C, l=C](4,0) to (0,0)
+        (2,0) node[ground](GND){};
+    \end{circuitikz}
 \end{center}
 
-Antes de cerrar el circuito, tendremos un circuito entre R y C. Asumiremos que ha pasado el suficiente tiempo para que el condensador C se haya descargado por completo, por tanto, la carga inicial es 0 para $t<0$. 
+Antes de cerrar el circuito, tendremos un circuito entre R y C. Asumiremos que ha pasado el suficiente tiempo para que el condensador C se haya descargado por completo, por tanto, la carga inicial es 0 para $t<0$.
 
 Luego, vemos qué ocurre para $t=>0$. En este caso, tendremos el siguiente circuito
 \begin{center}
-\begin{circuitikz}[american]
-\draw
-	  (0,0) to [I, l=$I_s$](0,3)
-	  (0,3) to (2,3) to[R, l=R](2,0)
-	  (2,3) to (4,3) to [C, l=C,v=$v_C$](4,0) to (0,0)
-	  (2,0) node[ground](GND){};
-\end{circuitikz}
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to [I, l=$I_s$](0,3)
+        (0,3) to (2,3) to[R, l=R](2,0)
+        (2,3) to (4,3) to [C, l=C,v=$v_C$](4,0) to (0,0)
+        (2,0) node[ground](GND){};
+    \end{circuitikz}
 \end{center}
 
 Recordamos que en el condesador se cumple $i_C=C\frac{dV_c}{dt}$ y aplicamos LKC en el nodo de arriba:
 
-\begin{align*} 
-I_s &= i_R +  i_C \\ 
-I_s &= \frac{v_C}{R} +  C\frac{dV_c}{dt}\\
-I_sR &= v_C +  RC\frac{dV_c}{dt}
+\begin{align*}
+    I_s  & = i_R +  i_C                        \\
+    I_s  & = \frac{v_C}{R} +  C\frac{dV_c}{dt} \\
+    I_sR & = v_C +  RC\frac{dV_c}{dt}
 \end{align*}
 
 Con lo que obtenemos una ecuación diferencial ordinaria (EDO) en que la incógnita es $v_C$. Notamos que por ser una ecuación no homogénea debemos resolver:
@@ -2429,58 +2429,63 @@ Con lo que obtenemos una ecuación diferencial ordinaria (EDO) en que la incógn
 \end{equation*}
 
 Para resolver la solución homogénea $v_{C_h}$ tendremos que igualar a 0
-\begin{align*} 
-0 &= v_{C_h} +  RC\frac{dv_{C_h}}{dt} \\
--RC\frac{dv_{C_h}}{dt} &= v_{C_h} 
+\begin{align*}
+    0                      & = v_{C_h} +  RC\frac{dv_{C_h}}{dt} \\
+    -RC\frac{dv_{C_h}}{dt} & = v_{C_h}
 \end{align*}
 
 Este tipo de ecuación se resuelve con una exponencial, por lo tanto $v_{C_h}$ debe tener la forma $Ae^{st}$.
-\begin{align*} 
--RC\frac{d(Ae^{st})}{dt} &= Ae^{st}\\
--RCsAe^{st} &= Ae^{st}\\
--RCs &= 1\\
-s &= \frac{-1}{RC}\\
+\begin{align*}
+    -RC\frac{d(Ae^{st})}{dt} & = Ae^{st}       \\
+    -RCsAe^{st}              & = Ae^{st}       \\
+    -RCs                     & = 1             \\
+    s                        & = \frac{-1}{RC} \\
 \end{align*}
- Entonces, $v_{C_h}=Ae^{\frac{-t}{RC}}$.
- 
+Entonces, $v_{C_h}=Ae^{\frac{-t}{RC}}$.
+
 Para resolver la solución particular $v_{C_p}$ asumiremos que esta será una constante K:
-\begin{align*} 
-I_sR &= v_{C_p} +  RC\frac{d(v_{C_p})}{dt}\\
-I_sR &= K + 0\\
+\begin{align*}
+    I_sR & = v_{C_p} +  RC\frac{d(v_{C_p})}{dt} \\
+    I_sR & = K + 0                              \\
 \end{align*}
 Entonces  $v_{C_p}=I_sR$, con lo que llegamos a que
 
-\begin{align*} 
- v_C&=v_{C_h}+ v_{C_p}\\
-v_C&=Ae^{\frac{-t}{RC}}+ I_sR\\
+\begin{align*}
+    v_C & =v_{C_h}+ v_{C_p}         \\
+    v_C & =Ae^{\frac{-t}{RC}}+ I_sR \\
 \end{align*}
 
 Luego, vemos qué ocurre en el tiempo $t=0$, en que el voltaje $v_C=0$, ya que estaba descargado el condensador.
 
-\begin{align*} 
- v_C(0)&=Ae^{\frac{-0}{RC}}+ I_sR\\
- 0&=A+ I_sR\\
- -I_sR&=A \\
+\begin{align*}
+    v_C(0) & =Ae^{\frac{-0}{RC}}+ I_sR \\
+    0      & =A+ I_sR                  \\
+    -I_sR  & =A                        \\
 \end{align*}
 
-Con lo que llegamos a que $v_C&=-I_sRe^{\frac{-t}{RC}}+ I_sR$, lo que implica que el condensador parte con voltaje 0 y se va cargando hasta llegar al voltaje $I_sR$
+Con lo que llegamos a que 
+\begin{equation*}
+    v_C=-I_sRe^{\frac{-t}{RC}}+ I_sR
+\end{equation*}
+
+Esto implica que el condensador parte con voltaje 0 y se va cargando hasta llegar al voltaje $I_sR$.
 
 \subsection{Descarga de un condensador}
 Al tener un circuito cerrado con un condensador cargado, sin otra fuente de voltaje, este empieza a funcionar como fuente. Supongamos que el circuito siguiente estuvo cerrado para $t<0$ por un tiempo que permitió que el condensador estuviera cargado con voltaje $V_0$:
 
 \begin{center}
-\begin{circuitikz}[american]
-\draw
-	  (0,0) to [I, l=$I_s$](0,3) 
-	  (0,3) to [ospst](2,3) to [R, l=R](2,0)
-	  (2,3) to (4,3) to [C, l=C,v=$v_C$](4,0) to (0,0)
-	  (2,0) node[ground](GND){};
-	  
-	 \draw (3,2.3) node[]{\color{blue}{$i_C$}}
-	  
-	  [very thick, blue, <-, >=triangle 45]  (3.2,2.4) arc (0:200:0.3) ;
-	 
-\end{circuitikz}
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to [I, l=$I_s$](0,3)
+        (0,3) to [ospst](2,3) to [R, l=R](2,0)
+        (2,3) to (4,3) to [C, l=C,v=$v_C$](4,0) to (0,0)
+        (2,0) node[ground](GND){};
+
+        \draw (3,2.3) node[]{\color{blue}{$i_C$}}
+
+        [very thick, blue, <-, >=triangle 45]  (3.2,2.4) arc (0:200:0.3) ;
+
+    \end{circuitikz}
 \end{center}
 
 Al momento de abrir el interruptor en $t=0$, el condensador empieza a descargar su voltaje en R, al estar en circuito cerrado. Notamos que la dirección de la corriente estará regida por la polaridad de C, por lo tanto, la corriente en R va a fluir desde la tierra al nodo con voltaje $v_C$. Esto último implica que el voltaje en R es negativo. Aplicamos la LKC en el nodo superior, en que la corriente de la resistencia es igual a la del condensador:
@@ -2505,15 +2510,15 @@ Con esto obtenemos que $v_C(t)=V_0e^\frac{-t}{RC}$, lo que implica que el voltaj
 
 \subsection{Fuente de corriente e inductor en serie}
 \begin{center}
-    
-\begin{circuitikz}[american]
-\draw
-	  (0,3) to [I, l={$I_s$}, invert](0,0)
-	  (0,3) to [spst](2,3) to [R, l={$R$},](4,3)
-	  to [L, l={$L$},](4,0) to (0,0)
-	  ;
 
-\end{circuitikz}
+    \begin{circuitikz}[american]
+        \draw
+        (0,3) to [I, l={$I_s$}, invert](0,0)
+        (0,3) to [spst](2,3) to [R, l={$R$},](4,3)
+        to [L, l={$L$},](4,0) to (0,0)
+        ;
+
+    \end{circuitikz}
 
 \end{center}
 
@@ -2521,176 +2526,56 @@ Notemos que al cerrar el interruptor, la corriente que pasa por todos los compon
 
 
 \begin{problemset}
-    
 
-\item Obtenga la resistencia equivalente para cada uno de los siguientes circuitos
 
-\begin{enumerate}
-        
-        \item 
-    \begin{circuitikz}[american]
-        \draw (0,3) to [R=$6\Omega$, *-*] (3,3);
-        \draw (3,3) to [R=$9\Omega$, *-*] (3,0);
-        \draw (6,3) to [R=$4\Omega$, *-*] (6,0);
-        \draw (0,0) to [R=$7\Omega$, *-*] (3,0); 
-        \draw (3,3) to (6,3);
-        \draw (0,3) to [V=$2V$] (0,0);
-        \draw (3,0) to [short] (6, 0);
-    \end{circuitikz}
+    \item Obtenga la resistencia equivalente para cada uno de los siguientes circuitos
+
+    \begin{enumerate}
+
+        \item
+              \begin{circuitikz}[american]
+                  \draw (0,3) to [R=$6\Omega$, *-*] (3,3);
+                  \draw (3,3) to [R=$9\Omega$, *-*] (3,0);
+                  \draw (6,3) to [R=$4\Omega$, *-*] (6,0);
+                  \draw (0,0) to [R=$7\Omega$, *-*] (3,0);
+                  \draw (3,3) to (6,3);
+                  \draw (0,3) to [V=$2V$] (0,0);
+                  \draw (3,0) to [short] (6, 0);
+              \end{circuitikz}
 
         \item \begin{circuitikz}[american]
-        \draw (0,3) to [R=$2\Omega$, *-*] (3,3);
-        \draw (3,3) to [R=$2\Omega$, *-*] (3,0);
-        \draw (6,3) to [R=$3\Omega$, *-*] (6,0);
-        \draw (0,0) to [R=$1\Omega$, *-*] (3,0); 
-        \draw (3,3) to [R=$3\Omega$, *-*] (6,3);
-        \draw (0,3) to [V=$2V$] (0,0);
-        \draw (3,0) to [short] (6, 0);
-    \end{circuitikz}
+                  \draw (0,3) to [R=$2\Omega$, *-*] (3,3);
+                  \draw (3,3) to [R=$2\Omega$, *-*] (3,0);
+                  \draw (6,3) to [R=$3\Omega$, *-*] (6,0);
+                  \draw (0,0) to [R=$1\Omega$, *-*] (3,0);
+                  \draw (3,3) to [R=$3\Omega$, *-*] (6,3);
+                  \draw (0,3) to [V=$2V$] (0,0);
+                  \draw (3,0) to [short] (6, 0);
+              \end{circuitikz}
 
 
-        \item 
-    \begin{circuitikz}[american]
-        \draw (0,3) to [R=$2\Omega$, *-*] (3,3);
-        \draw (3,3) to [R=$2\Omega$, *-*] (3,0);
-        \draw (6,3) to [R=$4\Omega$, *-*] (6,0);
-        \draw (0,0) to [R=$1\Omega$, *-*] (3,0); 
-        \draw (3,3) to [R=$3\Omega$, *-*] (6,3);
-        \draw (6,3) to [R=$4\Omega$, *-*] (9,3);
-        \draw (9,3) to [R=$5\Omega$, *-*] (9,0);
-        \draw (6,0) to [R=$3\Omega$, *-*] (9,0);
-        \draw (0,3) to [V=$2V$] (0,0);
-        \draw (3,0) to [short] (6, 0);
-    \end{circuitikz}
+        \item
+              \begin{circuitikz}[american]
+                  \draw (0,3) to [R=$2\Omega$, *-*] (3,3);
+                  \draw (3,3) to [R=$2\Omega$, *-*] (3,0);
+                  \draw (6,3) to [R=$4\Omega$, *-*] (6,0);
+                  \draw (0,0) to [R=$1\Omega$, *-*] (3,0);
+                  \draw (3,3) to [R=$3\Omega$, *-*] (6,3);
+                  \draw (6,3) to [R=$4\Omega$, *-*] (9,3);
+                  \draw (9,3) to [R=$5\Omega$, *-*] (9,0);
+                  \draw (6,0) to [R=$3\Omega$, *-*] (9,0);
+                  \draw (0,3) to [V=$2V$] (0,0);
+                  \draw (3,0) to [short] (6, 0);
+              \end{circuitikz}
 
 
-\end{enumerate}
-
-
-        \item Obtenga la corriente, voltaje y potencia para cada resistencia.
-            
-            \begin{circuitikz}[american]
-                \draw (3,3) to [R=$R_2$] (3,0); 
-                \draw (0,3) to [R=$R_1$] (3,3);
-                \draw (0,3) to [V=$V$] (0,0);
-                \draw (0,0) to [short] (6,0);
-                \draw (3,3) to [short] (6,3);
-                \draw (6,3) to [R=$R_3$] (6,0);
-            \end{circuitikz}
-            
- 
-
-
- %% Inicio Pablo Sánchez %%
-
- \item Determine $v_1$ y $v_2$ en el circuito que aparece a continuación. También calcule $i_1$ e $i_2$.
-             
-            \begin{circuitikz}[american]
-            \draw
-	            (0,0) to [V, l=\huge{$15V$}, invert] (0,3)
-	            (0,3) to [short,f=$I_1$](0,5)
-                (0,5) to [R,l=\huge{$12\Omega$}](3,5) to (3,3)
-                (3,3) to [R,l=\huge{$10\Omega$}](3,0)
-                (0,0) to (6,0)
-                (0,3) to [R,l=\huge{$6\Omega$}](3,3) to (6,3) 
-                (6,3) to [R,l=\huge{$40\Omega$}](6,0) 
-                (1.5,4.8) node[below] {+  $v_1$  -}
-                (5.8,2) node[left] {+}
-                (5.8,1.5) node[left] {$v_2$}
-                (5.8,1) node[left] {-};
-                
-            \end{circuitikz}
-            
-            
-        \item Determine el valor de $i_o$ y $v_o$ en el siguiente circuito 
-              
-             \begin{circuitikz}[american]
-            	\draw 
-                	(0,0) to  [V, l=\huge{$12V$}, invert] (0,3)
-                	(0,3) to [short,f=\huge{$I$}] (2,3)
-                	(0,3) to [R,l=\huge{$4\Omega$}](5,3)
-                	(5,3) to [R,l=\huge{$6\Omega$}](5,0)
-                	(5,3) to [short,f=\huge{$I_0$}] (7.5,3)
-                	(7.5,3) to [R,l=\huge{$3\Omega$}] (7.5,0)
-                	(5,3) node[above] {\huge{a}}
-                	(5,0) node[below] {\huge{b}}
-                	(7.3,2) node[left] {+}
-                    (7.3,1.5) node[left] {$v_2$}
-                    (7.3,1) node[left] {-}
-                	(7.5,0) to (0,0);
-            \end{circuitikz}
-             
- %% Fin Pablito %%
- 
-\item Su compañero de trabajo estuvo armando un circuito, pero olvidó decirle los valores de las fuentes de voltaje. Usted midió los voltajes en algunos nodos y corrientes en algunas resistencias y los anotó en el siguiente esquemático
-\begin{center}
-    
-
-\begin{circuitikz}[american]
-\draw
-	%(8,7) to
-	(10,3) to (0,3) 
-	node[anchor=left] {$-3V$}
-	to [V, l=$V_1$, invert, *-] (0,5) 
-	to [R,l={$R_1$}, -*] (0,7) node[anchor=left] {$3V$}
-	
-	(1,7)  to (1,9) to  [V, l=$V_2$] (4,9)  to (4,7) 
-   	(0,7) to [R, l=$R_2$,](4,7) to (5,7)
-	(5,3) to [R,l=$R_3$, -*](5,5) node[anchor=left] {$4V$}
-	
-	to [R,l=$R_4$](5,7) node[ground,rotate=180]{}
-    (5,7)  to [R, l=$R_5$](9,7) to (10,7)
-    
-    (10,3) to [I,l=$I_\textrm{s}$](10,7);
-
-\end{circuitikz}
-\end{center}
-Considere que todas las resistencias son de 100\ohm y que el módulo de las corriente en $R_1$ es 0,002A y en $R_5$ es 0,5A.\\
-Determine los valores de $V_1$ y $V_2$ y el valor y dirección de las corrientes en $R_1$, $R_2$ y $R_3$.
-
-% Benjamín Vallejos inicio &
-
-   \item Un dimmer o un regulador de luz es un aparato eléctrico o electrónico que permite regular el nivel de luz de uno o varios puntos de luz. El que se encarga de regular la luz es un componente llamado potenciómetro que, mediante una perilla, puede variar la resistencia $R_p$. En el siguiente caso, representaremos la luz como un componente resistivo que brilla más al recibir más corriente
-    
-    Se mostrará un circuito en serie con un punto de luz.
-    
-    \begin{circuitikz}[american]
-        \draw 
-         (0,0) to  [V, l=\huge{$V$}, invert] (0,3)
-         (0,3) to [american potentiometer,l=\huge{$R_p$}](5,3)                	
-         (5,3) to [R,l=\huge{$R$}](5,0)           	
-         (5,0) to (0,0)
-         {(3,1.2) node {\huge{\color{blue}{$I$}}}};
-	    \draw[very thick, blue, <-, >=triangle 45] (3.5,0.6) arc (-60:240:1);
-    \end{circuitikz}
-
-     
-    \begin{enumerate}
-        \item Encuentra una expresión para I en función de $R_p$. 
-        \item Considera $V=12V$, $R_{luz}=500\ohm$ y que $R_p$ puede tomar valores entre 0 y 10k\ohm. Si la luz se enciende para corrientes mayores a 10mA ¿en qué rango de $R_p$ podremos ver la luz encendida?
     \end{enumerate}
 
 
-\item Hace unos años, usted estuvo armando el siguiente circuito y comenzó a salir humo de las resistencias \begin{center}
-\begin{circuitikz}[american]
-\draw
-	  (0,3) to [V, l=5V](0,0) 
-	  (0,3) to (-1.5,3) to [R, l={$1k\ohm$}, left](-1.5,0) to (0,0)
-	  (1.5,3) to [R, l={$100\ohm$},](1.5,0)
-	  (0,3) to (2,3) to [R, l={50\ohm},](4,3)
-	  
-	  to [R, l={$R_2$},](4,0) to (0,0)
-	  ;
+    \item Obtenga la corriente, voltaje y potencia para cada resistencia.
 
-\end{circuitikz}
-\end{center}
-
-Ayer, le comentó a su compañera de curso esta situación, quien le dijo que las resistencias no son ideales y que las que estaba usando soportan hasta 0.25W de potencia. Determine qué valores puede tomar R2 para no tener este tipo de problemas con el circuito.
-
-\item Usted debe implementar el siguiente circuito de la forma que le salga más económica. Considere $V=10V$, $R1=10\Omega$, $R2=50\Omega$,$R3=50\Omega$,
-\begin{center}
     \begin{circuitikz}[american]
-        \draw (3,3) to [R=$R_2$] (3,0); 
+        \draw (3,3) to [R=$R_2$] (3,0);
         \draw (0,3) to [R=$R_1$] (3,3);
         \draw (0,3) to [V=$V$] (0,0);
         \draw (0,0) to [short] (6,0);
@@ -2698,95 +2583,215 @@ Ayer, le comentó a su compañera de curso esta situación, quien le dijo que la
         \draw (6,3) to [R=$R_3$] (6,0);
     \end{circuitikz}
 
-\end{center}
-    
-Puede elegir entre los siguientes modelos de resistencias: 
 
-\begin{table}[!h]
-\centering
-\begin{tabular}{lll}
-Modelo & Potencia máxima & Costo \\
-RA     & 1W              & \$3   \\
-RB     & 0.5W           & \$2  \\
-RC     & 0.25W           & \$1  \\
-\end{tabular}
-\end{table}
-Determine el modelo de resistencia a utilizar para cada caso.
 
-\item Se desea armar el siguiente circuito  utilizando una
-batería de 9V que entrega como máximo 200 mA. Elija el máximo valor para R.
 
-\begin{center}        
+    %% Inicio Pablo Sánchez %%
+
+    \item Determine $v_1$ y $v_2$ en el circuito que aparece a continuación. También calcule $i_1$ e $i_2$.
+
     \begin{circuitikz}[american]
-  %\draw[help lines] (0,0) grid (6,3);
-  \draw (0,0) to[V=$V_1$,invert] (0,3)
-   to (3,3)
-   to[R=$1k$] (6,3);
-   \draw (6,0) to (6,3);
-   \draw (0,0) to[short] (6,0);
-   \draw (3,0) to[R=$R$] (3,3);
-   
+        \draw
+        (0,0) to [V, l=\huge{$15V$}, invert] (0,3)
+        (0,3) to [short,f=$I_1$](0,5)
+        (0,5) to [R,l=\huge{$12\Omega$}](3,5) to (3,3)
+        (3,3) to [R,l=\huge{$10\Omega$}](3,0)
+        (0,0) to (6,0)
+        (0,3) to [R,l=\huge{$6\Omega$}](3,3) to (6,3)
+        (6,3) to [R,l=\huge{$40\Omega$}](6,0)
+        (1.5,4.8) node[below] {+  $v_1$  -}
+        (5.8,2) node[left] {+}
+        (5.8,1.5) node[left] {$v_2$}
+        (5.8,1) node[left] {-};
+
     \end{circuitikz}
+
+
+    \item Determine el valor de $i_o$ y $v_o$ en el siguiente circuito
+
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to  [V, l=\huge{$12V$}, invert] (0,3)
+        (0,3) to [short,f=\huge{$I$}] (2,3)
+        (0,3) to [R,l=\huge{$4\Omega$}](5,3)
+        (5,3) to [R,l=\huge{$6\Omega$}](5,0)
+        (5,3) to [short,f=\huge{$I_0$}] (7.5,3)
+        (7.5,3) to [R,l=\huge{$3\Omega$}] (7.5,0)
+        (5,3) node[above] {\huge{a}}
+        (5,0) node[below] {\huge{b}}
+        (7.3,2) node[left] {+}
+        (7.3,1.5) node[left] {$v_2$}
+        (7.3,1) node[left] {-}
+        (7.5,0) to (0,0);
+    \end{circuitikz}
+
+    %% Fin Pablito %%
+
+    \item Su compañero de trabajo estuvo armando un circuito, pero olvidó decirle los valores de las fuentes de voltaje. Usted midió los voltajes en algunos nodos y corrientes en algunas resistencias y los anotó en el siguiente esquemático
+    \begin{center}
+
+
+        \begin{circuitikz}[american]
+            \draw
+            %(8,7) to
+            (10,3) to (0,3)
+            node[anchor=left] {$-3V$}
+            to [V, l=$V_1$, invert, *-] (0,5)
+            to [R,l={$R_1$}, -*] (0,7) node[anchor=left] {$3V$}
+
+            (1,7)  to (1,9) to  [V, l=$V_2$] (4,9)  to (4,7)
+            (0,7) to [R, l=$R_2$,](4,7) to (5,7)
+            (5,3) to [R,l=$R_3$, -*](5,5) node[anchor=left] {$4V$}
+
+            to [R,l=$R_4$](5,7) node[ground,rotate=180]{}
+            (5,7)  to [R, l=$R_5$](9,7) to (10,7)
+
+            (10,3) to [I,l=$I_\textrm{s}$](10,7);
+
+        \end{circuitikz}
     \end{center}
-\item Para medir el voltaje por un sensor resistivo de presión, usted utiliza un circuito divisor de voltaje.
-La fuente de alimentación entrega 5V y hasta 20mA. Según investigó, el valor de la resistencia del sensor sigue la fórmula:
-\begin{equation*}
-    R(P)=10M-P^2
-\end{equation*}
-Para P entre 0kg y 5kg.
-\begin{enumerate}
-    \item Determine cómo armar el circuito de tal forma que al aumentar la presión aumente el voltaje medido.
-    \item Para el circuito anterior, obtenga una fórmula que relacione el voltaje con la presión.
-\end{enumerate}
+    Considere que todas las resistencias son de 100\ohm y que el módulo de las corriente en $R_1$ es 0,002A y en $R_5$ es 0,5A.\\
+    Determine los valores de $V_1$ y $V_2$ y el valor y dirección de las corrientes en $R_1$, $R_2$ y $R_3$.
+
+    % Benjamín Vallejos inicio &
+
+    \item Un dimmer o un regulador de luz es un aparato eléctrico o electrónico que permite regular el nivel de luz de uno o varios puntos de luz. El que se encarga de regular la luz es un componente llamado potenciómetro que, mediante una perilla, puede variar la resistencia $R_p$. En el siguiente caso, representaremos la luz como un componente resistivo que brilla más al recibir más corriente
+
+    Se mostrará un circuito en serie con un punto de luz.
+
+    \begin{circuitikz}[american]
+        \draw
+        (0,0) to  [V, l=\huge{$V$}, invert] (0,3)
+        (0,3) to [american potentiometer,l=\huge{$R_p$}](5,3)
+        (5,3) to [R,l=\huge{$R$}](5,0)
+        (5,0) to (0,0)
+        {(3,1.2) node {\huge{\color{blue}{$I$}}}};
+        \draw[very thick, blue, <-, >=triangle 45] (3.5,0.6) arc (-60:240:1);
+    \end{circuitikz}
 
 
-\item Se arma el circuito 1.a y se pide determinar cuánto tiempo durará una batería de 3.3V y 3Wh.
-
-\item La resistencia equivalente de su celular es cerca de 1k$\Omega$. Su batería es de 3.3V y 2000mAh. Estime cuánto dura la batería.
-
-\item Libro Foundamentals of Analog and Electronics Circuits capítulo 2
-\begin{enumerate}
-    \item Ejercicios 2.3 a y d
-    \item Ejercicios 2.4 
-    \item Ejercicios 2.6
-    \item Problema 2.1
-    \item Problema 2.4
-    \item Problema 2.8
-    \item Problema 2.10
-    
-\end{enumerate}
+    \begin{enumerate}
+        \item Encuentra una expresión para I en función de $R_p$.
+        \item Considera $V=12V$, $R_{luz}=500\ohm$ y que $R_p$ puede tomar valores entre 0 y 10k\ohm. Si la luz se enciende para corrientes mayores a 10mA ¿en qué rango de $R_p$ podremos ver la luz encendida?
+    \end{enumerate}
 
 
-\item Libro Foundamentals of Analog and Electronics Circuits Capítulo 3
-\begin{enumerate}
-    \item Ejercicio 3.1
-    \item Ejercicio 3.2
-    \item Ejercicio 3.3
-    \item Ejercicio 3.4
-    \item Ejercicio 3.17
-    \item Ejercicio 3.18
-    \item Ejercicio 3.20
-     \item Problema 3.3
-     \item Problem 3.8
-     \item Problem 3.14
-     \item Problem 3.15
-\end{enumerate}
+    \item Hace unos años, usted estuvo armando el siguiente circuito y comenzó a salir humo de las resistencias \begin{center}
+        \begin{circuitikz}[american]
+            \draw
+            (0,3) to [V, l=5V](0,0)
+            (0,3) to (-1.5,3) to [R, l={$1k\ohm$}, left](-1.5,0) to (0,0)
+            (1.5,3) to [R, l={$100\ohm$},](1.5,0)
+            (0,3) to (2,3) to [R, l={50\ohm},](4,3)
 
-\item Libro Foundamentals of Analog and Electronics Circuits Capítulo 10
-\begin{enumerate}
-    \item Ejercicio 10.2
-    \item Ejercicio 10.3
-    \item Ejercicio 10.4
-    \item Ejercicio 10.13
-    \item Ejercicio 10.14
-    \item Ejercicio 10.18
-     \item Problema 10.16
-     \item Problema 10.13
-     \item Problema 10.24
-     \item Problema 10.26
-     \item Problema 10.27
-     
-\end{enumerate}
+            to [R, l={$R_2$},](4,0) to (0,0)
+            ;
+
+        \end{circuitikz}
+    \end{center}
+
+    Ayer, le comentó a su compañera de curso esta situación, quien le dijo que las resistencias no son ideales y que las que estaba usando soportan hasta 0.25W de potencia. Determine qué valores puede tomar R2 para no tener este tipo de problemas con el circuito.
+
+    \item Usted debe implementar el siguiente circuito de la forma que le salga más económica. Considere $V=10V$, $R1=10\Omega$, $R2=50\Omega$,$R3=50\Omega$,
+    \begin{center}
+        \begin{circuitikz}[american]
+            \draw (3,3) to [R=$R_2$] (3,0);
+            \draw (0,3) to [R=$R_1$] (3,3);
+            \draw (0,3) to [V=$V$] (0,0);
+            \draw (0,0) to [short] (6,0);
+            \draw (3,3) to [short] (6,3);
+            \draw (6,3) to [R=$R_3$] (6,0);
+        \end{circuitikz}
+
+    \end{center}
+
+    Puede elegir entre los siguientes modelos de resistencias:
+
+    \begin{table}
+        \centering
+        \begin{tabular}{lll}
+            Modelo & Potencia máxima & Costo \\
+            RA     & 1W              & \$3   \\
+            RB     & 0.5W            & \$2   \\
+            RC     & 0.25W           & \$1   \\
+        \end{tabular}
+    \end{table}
+    Determine el modelo de resistencia a utilizar para cada caso.
+
+    \item Se desea armar el siguiente circuito  utilizando una
+    batería de 9V que entrega como máximo 200 mA. Elija el máximo valor para R.
+
+    \begin{center}
+        \begin{circuitikz}[american]
+            %\draw[help lines] (0,0) grid (6,3);
+            \draw (0,0) to[V=$V_1$,invert] (0,3)
+            to (3,3)
+            to[R=$1k$] (6,3);
+            \draw (6,0) to (6,3);
+            \draw (0,0) to[short] (6,0);
+            \draw (3,0) to[R=$R$] (3,3);
+
+        \end{circuitikz}
+    \end{center}
+    \item Para medir el voltaje por un sensor resistivo de presión, usted utiliza un circuito divisor de voltaje.
+    La fuente de alimentación entrega 5V y hasta 20mA. Según investigó, el valor de la resistencia del sensor sigue la fórmula:
+    \begin{equation*}
+        R(P)=10M-P^2
+    \end{equation*}
+    Para P entre 0kg y 5kg.
+    \begin{enumerate}
+        \item Determine cómo armar el circuito de tal forma que al aumentar la presión aumente el voltaje medido.
+        \item Para el circuito anterior, obtenga una fórmula que relacione el voltaje con la presión.
+    \end{enumerate}
+
+
+    \item Se arma el circuito 1.a y se pide determinar cuánto tiempo durará una batería de 3.3V y 3Wh.
+
+    \item La resistencia equivalente de su celular es cerca de 1k$\Omega$. Su batería es de 3.3V y 2000mAh. Estime cuánto dura la batería.
+
+    \item Libro Foundamentals of Analog and Electronics Circuits capítulo 2
+    \begin{enumerate}
+        \item Ejercicios 2.3 a y d
+        \item Ejercicios 2.4
+        \item Ejercicios 2.6
+        \item Problema 2.1
+        \item Problema 2.4
+        \item Problema 2.8
+        \item Problema 2.10
+
+    \end{enumerate}
+
+
+    \item Libro Foundamentals of Analog and Electronics Circuits Capítulo 3
+    \begin{enumerate}
+        \item Ejercicio 3.1
+        \item Ejercicio 3.2
+        \item Ejercicio 3.3
+        \item Ejercicio 3.4
+        \item Ejercicio 3.17
+        \item Ejercicio 3.18
+        \item Ejercicio 3.20
+        \item Problema 3.3
+        \item Problem 3.8
+        \item Problem 3.14
+        \item Problem 3.15
+    \end{enumerate}
+
+    \item Libro Foundamentals of Analog and Electronics Circuits Capítulo 10
+    \begin{enumerate}
+        \item Ejercicio 10.2
+        \item Ejercicio 10.3
+        \item Ejercicio 10.4
+        \item Ejercicio 10.13
+        \item Ejercicio 10.14
+        \item Ejercicio 10.18
+        \item Problema 10.16
+        \item Problema 10.13
+        \item Problema 10.24
+        \item Problema 10.26
+        \item Problema 10.27
+
+    \end{enumerate}
 
 
 \end{problemset}

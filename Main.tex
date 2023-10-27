@@ -19,9 +19,9 @@
 
 \maketitle
 
-%\frontmatter
+\frontmatter
 \tableofcontents
-%\mainmatter
+\mainmatter
 
 
 %\input{00InformacionGeneral}
@@ -246,77 +246,77 @@ Para aplicar el método debemos definir qué modelo del diodo usaremos:
 \subsubsection{Análisis de diodo con modelo ideal}
 \begin{enumerate}
     \item Reemplazaremos el diodo con los dos posibles estados para este modelo y realizamos el análisis de circuitos para cada caso.
-    \begin{itemize}
-    
-    
-        \item \textbf{Diodo OFF}
-              \begin{figure}[h!]
-                  \centering
-                  \begin{circuitikz}[american]
-                      \draw
-                      (5,3) to (0,3) to [V, l=$V$, invert] (0,7)
-                      (0,7) to [ R, l={$R$}] (5,7)
-                      (5,3) to [nos] (5,7);
-                  \end{circuitikz}
-                  \caption{Caso 2: Diodo en estado Off}
-                  \label{DiodoOFF}
-              \end{figure}
-              En este caso, el diodo se reemplaza por un circuito abierto, como muestra la figura \ref{DiodoOFF}.
-    
-              Entonces, para la resistencia tendremos
-              \begin{align*}
-                  V_R=0\\
-                  I_R=0
-              \end{align*}
-              Y para el diodo:
-              \begin{align*}
-                  V_D=V\\
-                  I_D=0
-              \end{align*}
-    
-    
-    
-        \item \textbf{Diodo ON}
-              \begin{figure}[htb!]
-                  \centering
-                  \begin{circuitikz}[american]
-                      \draw
-                      (5,3) to (0,3) to [V, l=$V$, invert] (0,7)
-                      (0,7) to [ R, l={$R$}](5,7)
-                      (5,3) to (5,7);
-                  \end{circuitikz}
-                  \caption{Caso 1: Diodo en estado ON con modelo ideal}
-                  \label{diodoONIdeal}
-              \end{figure}
-              En este caso se reemplaza el diodo por un cable, como muestra la figura \ref{diodoONIdeal}. Entonces, para la resistencia tendremos
-              \begin{align*}
-                  V_R=V\\
-                  I_R=V/R
-              \end{align*}
-              Y para el diodo:
-              \begin{align*}
-                  V_D=0\\
-                  I_D=V/R
-              \end{align*}
-    
-    \end{itemize}
+          \begin{itemize}
+
+
+              \item \textbf{Diodo OFF}
+                    \begin{figure}[h!]
+                        \centering
+                        \begin{circuitikz}[american]
+                            \draw
+                            (5,3) to (0,3) to [V, l=$V$, invert] (0,7)
+                            (0,7) to [ R, l={$R$}] (5,7)
+                            (5,3) to [nos] (5,7);
+                        \end{circuitikz}
+                        \caption{Caso 2: Diodo en estado Off}
+                        \label{DiodoOFF}
+                    \end{figure}
+                    En este caso, el diodo se reemplaza por un circuito abierto, como muestra la figura \ref{DiodoOFF}.
+
+                    Entonces, para la resistencia tendremos
+                    \begin{align*}
+                        V_R=0 \\
+                        I_R=0
+                    \end{align*}
+                    Y para el diodo:
+                    \begin{align*}
+                        V_D=V \\
+                        I_D=0
+                    \end{align*}
+
+
+
+              \item \textbf{Diodo ON}
+                    \begin{figure}[htb!]
+                        \centering
+                        \begin{circuitikz}[american]
+                            \draw
+                            (5,3) to (0,3) to [V, l=$V$, invert] (0,7)
+                            (0,7) to [ R, l={$R$}](5,7)
+                            (5,3) to (5,7);
+                        \end{circuitikz}
+                        \caption{Caso 1: Diodo en estado ON con modelo ideal}
+                        \label{diodoONIdeal}
+                    \end{figure}
+                    En este caso se reemplaza el diodo por un cable, como muestra la figura \ref{diodoONIdeal}. Entonces, para la resistencia tendremos
+                    \begin{align*}
+                        V_R=V \\
+                        I_R=V/R
+                    \end{align*}
+                    Y para el diodo:
+                    \begin{align*}
+                        V_D=0 \\
+                        I_D=V/R
+                    \end{align*}
+
+          \end{itemize}
 
 
     \item Luego, analizamos las contradicciones. Por como se comporta el diodo, sabemos que se espera que para valores de voltaje mayores al voltaje de conducción Vf, la corriente sea alta. Luego, consideramos esto para el análisis.
-    \begin{itemize}
-        \item Si $V<V_f$\\
-        Sabemos que, para voltajes bajos, el diodo no conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D=V/R$ (Diodo ON).
-        \item Si $V>V_f$\\
-        Sabemos que, para voltajes altos, el diodo conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D=0$ (Diodo OFF).
-    \end{itemize}
+          \begin{itemize}
+              \item Si $V<V_f$\\
+                    Sabemos que, para voltajes bajos, el diodo no conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D=V/R$ (Diodo ON).
+              \item Si $V>V_f$\\
+                    Sabemos que, para voltajes altos, el diodo conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D=0$ (Diodo OFF).
+          \end{itemize}
 
     \item Finalmente, notamos que sólo un modelo es posible para cada caso analizado, por lo que
-    \begin{itemize}
-        \item Si $V<V_f$\\
-        El diodo no conduce (Diodo OFF). Con esto $ID=0$.
-        \item Si $V>V_f$\\
-        El diodo conduce (Diodo ON). Con esto $ID=V/R$.
-    \end{itemize}
+          \begin{itemize}
+              \item Si $V<V_f$\\
+                    El diodo no conduce (Diodo OFF). Con esto $ID=0$.
+              \item Si $V>V_f$\\
+                    El diodo conduce (Diodo ON). Con esto $ID=V/R$.
+          \end{itemize}
 \end{enumerate}
 
 
@@ -324,71 +324,71 @@ Para aplicar el método debemos definir qué modelo del diodo usaremos:
 
 \subsubsection{Análisis de diodo con fuente}
 \begin{enumerate}
-    \item 
+    \item
 
-Siguiendo con el ejemplo trabajado anteriormente, reemplazaremos el diodo con los dos posibles estados para este modelo.
-\begin{itemize}
+          Siguiendo con el ejemplo trabajado anteriormente, reemplazaremos el diodo con los dos posibles estados para este modelo.
+          \begin{itemize}
 
-    \item \textbf{Diodo OFF}
-          Se conserva el análisis anterior. Por lo tanto, para la resistencia tendremos
-          \begin{align*}
-              V_R=V\\
-              I_R=V/R
-          \end{align*}
-          Y para el diodo:
-          \begin{align*}
-              V_D=0\\
-              I_D=V/R
-          \end{align*}
-
-
-    \item \textbf{Diodo ON}
-    \begin{figure}[htb!]
-        \centering
-        \begin{circuitikz}[american]
-            \draw
-            (5,3) to (0,3) to [V, l=$V$, invert] (0,7)
-            (0,7) to [ R, l={$R$}](5,7)
-            (5,3) to [V, l=$V_f$, invert] (5,7);
-        \end{circuitikz}
-        \caption{Caso 1: Diodo en estado ON}
-        \label{diodoONFuente}
-    \end{figure}
-          En este caso se reemplaza por una fuente del voltaje de conducción (forward), como se observa en la figura \ref{diodoONFuente}. En este caso, usaremos 0,7 [V]:
-          
-
-          Luego, tendremos que para la resistencia:
-
-          \begin{align*}
-              V_R = V - V_f \\
-              I_R = (V - V_f)/R
-          \end{align*}
-
-          Y para el diodo
-
-          \begin{align*}
-            V_D=V_f\\
-            I_D= (V - V_f)/R
-        \end{align*}
-          \\
+              \item \textbf{Diodo OFF}
+                    Se conserva el análisis anterior. Por lo tanto, para la resistencia tendremos
+                    \begin{align*}
+                        V_R=V \\
+                        I_R=V/R
+                    \end{align*}
+                    Y para el diodo:
+                    \begin{align*}
+                        V_D=0 \\
+                        I_D=V/R
+                    \end{align*}
 
 
-\end{itemize}
-\item Luego, analizamos las contradicciones. Por como se comporta el diodo, sabemos que se espera que para valores de voltaje mayores al voltaje de conducción Vf, la corriente sea alta. Luego, consideramos esto para el análisis.
-\begin{itemize}
-    \item Si $V<V_f$\\
-    Sabemos que, para voltajes menores a $V_f$, el diodo no conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D= (V - V_f)/R$ (Diodo ON).
-    \item Si $V>V_f$\\
-    Sabemos que, para voltajes mayores a $V_f$, el diodo conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D=0$ (Diodo OFF).
-\end{itemize}
+              \item \textbf{Diodo ON}
+                    \begin{figure}[htb!]
+                        \centering
+                        \begin{circuitikz}[american]
+                            \draw
+                            (5,3) to (0,3) to [V, l=$V$, invert] (0,7)
+                            (0,7) to [ R, l={$R$}](5,7)
+                            (5,3) to [V, l=$V_f$, invert] (5,7);
+                        \end{circuitikz}
+                        \caption{Caso 1: Diodo en estado ON}
+                        \label{diodoONFuente}
+                    \end{figure}
+                    En este caso se reemplaza por una fuente del voltaje de conducción (forward), como se observa en la figura \ref{diodoONFuente}. En este caso, usaremos 0,7 [V]:
 
-\item Finalmente, notamos que sólo un modelo es posible para cada caso analizado, por lo que
-\begin{itemize}
-    \item Si $V<V_f$\\
-    El diodo no conduce (Diodo OFF). Con esto $ID=0$.
-    \item Si $V>V_f$\\
-    El diodo conduce (Diodo ON). Con esto $ I_D= (V - V_f)/R$.
-\end{itemize}
+
+                    Luego, tendremos que para la resistencia:
+
+                    \begin{align*}
+                        V_R = V - V_f \\
+                        I_R = (V - V_f)/R
+                    \end{align*}
+
+                    Y para el diodo
+
+                    \begin{align*}
+                        V_D=V_f \\
+                        I_D= (V - V_f)/R
+                    \end{align*}
+                    \\
+
+
+          \end{itemize}
+    \item Luego, analizamos las contradicciones. Por como se comporta el diodo, sabemos que se espera que para valores de voltaje mayores al voltaje de conducción Vf, la corriente sea alta. Luego, consideramos esto para el análisis.
+          \begin{itemize}
+              \item Si $V<V_f$\\
+                    Sabemos que, para voltajes menores a $V_f$, el diodo no conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D= (V - V_f)/R$ (Diodo ON).
+              \item Si $V>V_f$\\
+                    Sabemos que, para voltajes mayores a $V_f$, el diodo conduce. Por lo tanto, se descarta la opción de que la corriente sea $I_D=0$ (Diodo OFF).
+          \end{itemize}
+
+    \item Finalmente, notamos que sólo un modelo es posible para cada caso analizado, por lo que
+          \begin{itemize}
+              \item Si $V<V_f$\\
+                    El diodo no conduce (Diodo OFF). Con esto $ID=0$.
+              \item Si $V>V_f$\\
+                    El diodo conduce (Diodo ON). Con esto $ I_D= (V - V_f)/R$.
+          \end{itemize}
 \end{enumerate}
 
 
@@ -541,7 +541,7 @@ Siguiendo con el ejemplo trabajado anteriormente, reemplazaremos el diodo con lo
 
 \section{Transistores}
 \begin{remark}
-    Los transistores son dispositivos electrónicos que controlan y amplifican el flujo de corriente eléctrica en un circuito    
+    Los transistores son dispositivos electrónicos que controlan y amplifican el flujo de corriente eléctrica en un circuito
 \end{remark}
 
 \subsection{El MOSFET}
@@ -637,9 +637,9 @@ Si el MOSFET se encuentra en estado OFF, al igual que en el modelo anterior, est
         \draw (0,3) to[short,o-] (0,2) ;
         \draw (0,1) to[short,-o] (0,0) ;
         \draw (-1.5,1.5) to[short,o-] (-0.5,1.5);
-        \node at (-2 , 1.5){\big{G}};
-        \node at (0,3.5){\big{D}};
-        \node at (0,-0.5){\big{S}};
+        \node at (-2 , 1.5) {\big{G}};
+        \node at (0,3.5) {\big{D}};
+        \node at (0,-0.5) {\big{S}};
         \draw (0,2.5) to [short, -, i=$I_{DS}$](0,2.3);
         \draw (-1,1.5) to [short, -, i=$I_{G}$](-0.8,1.5);
     \end{circuitikz}
@@ -648,87 +648,104 @@ Si el MOSFET se encuentra en estado OFF, al igual que en el modelo anterior, est
 \vspace{5mm}
 
 
- \iffalse
+\iffalse
 
-% Gabriel Zapata, Sebastian Ossess, Ignacio Jobse
-\subsubsection{Análisis inversor con MOSFET y rangos digitales}\\
-\begin{center}
-    \begin{figure}
-        \label{Vf}
-        \includegraphics[width=0.5\textwidth]{image/mosfet_circuito.PNG}
-        \caption{Circuito inverso con transistor MOSFET con fuente de voltaje con pulsos de 1 segundo de intervalos de 2 segundos y tensión 5v en Vg y Vcc fijo 5V.}
-        \label{fig:CM}
-    \end{figure}
-\end{center}
-\begin{center}
-    \begin{figure}
-        \label{Vf}
-        \includegraphics[width=0.5\textwidth]{image/mosfet_gráfico.PNG}
-        \caption{Gráfico inverso con transistor MOSFET con fuente de voltaje con pulsos de 1 segundo de intervalos de 2 segundos y tensión 5v en Vg y Vcc fijo 5V.}
-        \label{fig:GM}
-    \end{figure}
-\end{center}
-\begin{center}
-    \textbf{Disciplina Estática}\\
-\end{center}
-{La función de transferencia  de un transistor MOSFET en funcionamiento deja zonas inciertas para los valores binarios. En las cuales, se debe redefinir los valores de tensión para cuando esta  en un  estado u otro. Este proceso se conoce como disciplina estatica, que define los valores VIL Y VIH como umbrales de entrada (voltaje de entrada 0 y voltaje de entrada alto respectivamente). Análogamente se define VOL y VOH como límites  de salida (voltaje de salida 0 y voltaje de salida 1 respectivamente).}
-
-\underline{Ejemplo}\\
-{Supongamos que algunos de los sistemas de disco se adhieren a una disciplina estática con los siguientes umbrales de tensión:}\\
-
-\begin{center}
-    {VOH = 4 [V], VOL = 1 [V], VIH = 3,5 [V] y VIL = 1,5 [V].}
-\end{center}\\
-
-{Para operar bajo esta disciplina estática, sabemos que nuestros
-inversores deben operar de la siguiente manera:}\\
-
-\begin{itemize}
-    \item Cuando la salida de un 1 lógico, el voltaje de sus salidas
-          producen debe ser al menos VOH = 4 [V]. Dado que nuestros inversores producen
-          una salida de 5 [V] para un 1 lógico, que se cumpla esta condición.
-    \item Cuando se emite un 0 lógico, el voltaje de sus salidas producen
-          debe ser no mayor que VOL = 1 [V]. Dado que nuestros inversores producen
-          una salida de 0-V para un 0 lógico, que se cumpla esta condición
-          fácilmente.
-    \item En sus entradas los inversores deben reconocer tensiones superiores
-          a VIH = 3,5 [V] como un 1 lógico. Ya que nuestros inversores reconocen
-          tensiones superiores a 1 [V] como un 1 lógico, que se cumpla esta
-          condición.
-    \item Por último, en sus entradas, los inversores deben reconocer
-          tensiones de menos de VIL = 1,5 [V] como un 0 lógico si son para
-          satisfacer disciplina estática de Disco. Desafortunadamente, nuestros
-          inversores pueden reconocer tensiones sólo por debajo de 1 [V] como
-          un 0, y por lo tanto no satisfacer esta condición.
-\end{itemize}\\
+    % Gabriel Zapata, Sebastian Ossess, Ignacio Jobse
 
 
-{Por lo tanto, nuestros inversores no se pueden utilizar en los sistemas
-de disco.}
+    \subsection{Modelo tipo SR}
 
-{Cuando se utiliza el modelo de S para el MOSFET, los umbrales de entrada
-y salida de voltaje para el NAND y otros circuitos digitales vienen a ser
-idénticos a los del inversor. Por lo tanto, los resultados de análisis
-estático para estos circuitos son idénticos a aquellos para
-el inversor. Por ejemplo, como el inversor, el circuito NAND satisface una
-disciplina estática con los siguientes umbrales de tensión:
-VOH = 4,5 [V], VOL = 0,5 [V], VIH = 4 [V], y VIL = 0,9 [V]. Del mismo modo, el NAND
-no es capaz de satisfacer la disciplina estática con estos umbrales
-de tensión: VOH = 4 [V], VOL = 1 [V], VIH = 3,5 [V] y VIL = 1,5 [V].}
-\begin{table}[ht]
-    \begin{center}
-        \caption{Tabla de voltajes para cada diodo}
-        \label{table1}
-        \begin{tabular}{ccc}
-            \hline
-            {Estado del MOSFET} & {$V_{g}$[V]} & {$Voltaje_{out}$[V]} \\
-            \hline
-            Abierta             & 0            & 5                    \\
-            cerrado             & 5            & 0.9                  \\
-            \hline
+    Operación MOSFET
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            Zona de operación     & Condición                & Característica                \\\hline
+            Corte                 & $V_{GS}<V_{TH}$          & $I_G=0$                       \\
+            (switch abierto)      &                          & $I_{DS}=0$                    \\\hline
+            Triodo                & $V_{GS}>V_{TH}$          & $I_G=0$                       \\
+            (switch cerrado)      &                          & $V_{DS}=R_{ON}*I_{DS}\sim0V $ \\ \hline
+            Saturación            & $V_{GS}>V_{TH}$          & $I_{DS}= constante$           \\
+            (fuente de corriente) & $V_{DS}>V_{GS} - V_{TH}$ &                               \\
         \end{tabular}
+    \end{table}
+    \subsubsection{Análisis inversor con MOSFET y rangos digitales}\\
+    \begin{center}
+        \begin{figure}
+            \label{Vf}
+            \includegraphics[width=0.5\textwidth]{image/mosfet_circuito.PNG}
+            \caption{Circuito inverso con transistor MOSFET con fuente de voltaje con pulsos de 1 segundo de intervalos de 2 segundos y tensión 5v en Vg y Vcc fijo 5V.}
+            \label{fig:CM}
+        \end{figure}
     \end{center}
-\end{table}
+    \begin{center}
+        \begin{figure}
+            \label{Vf}
+            \includegraphics[width=0.5\textwidth]{image/mosfet_gráfico.PNG}
+            \caption{Gráfico inverso con transistor MOSFET con fuente de voltaje con pulsos de 1 segundo de intervalos de 2 segundos y tensión 5v en Vg y Vcc fijo 5V.}
+            \label{fig:GM}
+        \end{figure}
+    \end{center}
+    \begin{center}
+        \textbf{Disciplina Estática}\\
+    \end{center}
+    {La función de transferencia  de un transistor MOSFET en funcionamiento deja zonas inciertas para los valores binarios. En las cuales, se debe redefinir los valores de tensión para cuando esta  en un  estado u otro. Este proceso se conoce como disciplina estatica, que define los valores VIL Y VIH como umbrales de entrada (voltaje de entrada 0 y voltaje de entrada alto respectivamente). Análogamente se define VOL y VOH como límites  de salida (voltaje de salida 0 y voltaje de salida 1 respectivamente).}
+
+    \underline{Ejemplo}\\
+    {Supongamos que algunos de los sistemas de disco se adhieren a una disciplina estática con los siguientes umbrales de tensión:}\\
+
+    \begin{center}
+        {VOH = 4 [V], VOL = 1 [V], VIH = 3,5 [V] y VIL = 1,5 [V].}
+    \end{center}\\
+
+    {Para operar bajo esta disciplina estática, sabemos que nuestros
+    inversores deben operar de la siguiente manera:}\\
+
+    \begin{itemize}
+        \item Cuando la salida de un 1 lógico, el voltaje de sus salidas
+              producen debe ser al menos VOH = 4 [V]. Dado que nuestros inversores producen
+              una salida de 5 [V] para un 1 lógico, que se cumpla esta condición.
+        \item Cuando se emite un 0 lógico, el voltaje de sus salidas producen
+              debe ser no mayor que VOL = 1 [V]. Dado que nuestros inversores producen
+              una salida de 0-V para un 0 lógico, que se cumpla esta condición
+              fácilmente.
+        \item En sus entradas los inversores deben reconocer tensiones superiores
+              a VIH = 3,5 [V] como un 1 lógico. Ya que nuestros inversores reconocen
+              tensiones superiores a 1 [V] como un 1 lógico, que se cumpla esta
+              condición.
+        \item Por último, en sus entradas, los inversores deben reconocer
+              tensiones de menos de VIL = 1,5 [V] como un 0 lógico si son para
+              satisfacer disciplina estática de Disco. Desafortunadamente, nuestros
+              inversores pueden reconocer tensiones sólo por debajo de 1 [V] como
+              un 0, y por lo tanto no satisfacer esta condición.
+    \end{itemize}\\
+
+
+    {Por lo tanto, nuestros inversores no se pueden utilizar en los sistemas
+    de disco.}
+
+    {Cuando se utiliza el modelo de S para el MOSFET, los umbrales de entrada
+    y salida de voltaje para el NAND y otros circuitos digitales vienen a ser
+    idénticos a los del inversor. Por lo tanto, los resultados de análisis
+    estático para estos circuitos son idénticos a aquellos para
+    el inversor. Por ejemplo, como el inversor, el circuito NAND satisface una
+    disciplina estática con los siguientes umbrales de tensión:
+    VOH = 4,5 [V], VOL = 0,5 [V], VIH = 4 [V], y VIL = 0,9 [V]. Del mismo modo, el NAND
+    no es capaz de satisfacer la disciplina estática con estos umbrales
+    de tensión: VOH = 4 [V], VOL = 1 [V], VIH = 3,5 [V] y VIL = 1,5 [V].}
+    \begin{table}[ht]
+        \begin{center}
+            \caption{Tabla de voltajes para cada diodo}
+            \label{table1}
+            \begin{tabular}{ccc}
+                \hline
+                {Estado del MOSFET} & {$V_{g}$[V]} & {$Voltaje_{out}$[V]} \\
+                \hline
+                Abierta             & 0            & 5                    \\
+                cerrado             & 5            & 0.9                  \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
 
 
 \fi
@@ -903,7 +920,258 @@ Para establecer si el transistor se encuentra en saturación, debemos realizar l
 
 \end{example}
 
+
+
+
+\newpage
+% Inicio José Acosta - Nicolas Vergara - Francisco Cardenas %
+\begin{problemset}
+    \item Para un $V_f$ de 0.6V, calcule $V_R$ e $I_R$ para el siguiente circuito:
+    \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=0.8,american]
+            \draw
+            (1,3) to (0,3) to [V, l={$10 V$}, invert]
+            (0,7) to [D, l={$V_D$},](4,7) to (5,7)
+            (5,3) to [R,l={$5 k\Omega$}](5,7)
+            (0,3) to (5,3);
+        \end{tikzpicture}
+    \end{figure}
+
+    \item Calcule los valores de corriente y voltaje del siguiente circuito.
+    \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=0.8,american]
+            \draw
+            (1,3) to (0,3) to [V, l={$10 V$}, invert]
+            (0,7) to [D, l={$V_{D_1}$}](2.5,7) to [D, l={$V_{D_2}$}] (5,7)
+            (5,3) to [R,l={$5 k\Omega$}](5,7)
+            (0,3) to (5,3);
+        \end{tikzpicture}
+    \end{figure}
+
+    \item Dado el siguiente circuito, calcular $V_R$ e $I_R$:
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}[scale=0.8,american]
+            \draw
+            (0,3) to (0,3) to [R,l={$500\Omega$}](0,8.5)
+            (1,9) to [D, l={$D1$},](4,9)
+            (1,7.5) to [D, l={$D2$}, invert](4,7.5)
+            (1,9) to (1,7.5)
+            (4,9) to (4,7.5)
+            (4,8.5) to (5,8.5)
+            (1,8.5) to (0,8.5)
+            (5,3) to [V, l={$8 V$},](5,8.5)
+            (0,3) to (5,3);
+        \end{tikzpicture}
+    \end{figure}
+
+
+    \item
+    Calcular $I_1$, $I_2$ e $I_{D2}$
+
+    %\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=0.8,american]
+        \draw
+        (1,3) to (0,3) to [V, l={$5 V$}, invert]
+        (0,7) to [D, l={$V_{D1}$},](4,7) to (5,7)
+        (5,3) to [D, l={$V_{D2}$},invert](5,7)
+        (0,3) to [R,l={$R_2=5,6 k\Omega$}](5,3)
+        (5,3) to (10,3)
+        (5,7) to (10,7)
+        (10,3) to [R,l={$R_1=3,3 k\Omega$}](10,6) to (10,7);
+    \end{tikzpicture}
+    %\end{figure}
+
+    \item  Calcular $I_1$, $I_{D1}$ e $I_{D2}$
+    \item
+    \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=0.8,american]
+            \draw
+            (1,3) to (0,3) to [V, l={$5 V$}, invert]
+            (0,7) to  [R,l={$R_1=0,33 k\Omega$}](4,7) to (5,7)
+            (5,3) to [D, l={$V_{D1}$},invert](5,7)
+            (0,3) to (5,3)
+            (5,3) to (10,3)
+            (5,7) to (10,7)
+            (10,4) to [D, l={$V_{D2}$},invert](10,6) to (10,7)
+            (10,3) to (10,4);
+        \end{tikzpicture}
+    \end{figure}
+
+    \item En una empresa de circuitos integrados, venden compuertas NOR con la siguiente implementación
+    \begin{center}
+        \resizebox{0.2\textwidth}{!}{
+            \begin{circuitikz}[american]
+                \draw
+                (0,0) node[nmos] (mos) {}
+                (-2,0) node[nmos] (mos2) {}
+                (mos.gate) node[anchor=east] {$In2$}
+                (mos.drain) to ++(0,0.5) to node[anchor=south]{$Out$}++(1,0)
+                (mos.drain) ++(0,0.5) to  [R, l=$50\Omega$]++(0,2)  ++(-0.5,0) --  node[anchor=south] {5V} ++(1,0)
+                (mos.source)  to (mos2.source)
+                (mos.drain)  to (mos2.drain)
+                (mos2.gate) node[anchor=east] {$In1$}
+                (mos.source) node[ground]{}
+                ;
+            \end{circuitikz}}
+    \end{center}
+
+    Actualmente, se encuentran evaluando sus parámetros de diseño para una alimentación de 5V, utilizando el modelo SR. Están usando transistores con una resistencia de encendido entre los terminales D y S de $5\Omega$ y $V_{TH}$ de 1.6V.
+
+    \begin{enumerate}
+
+        \item Determine el voltaje de salida para los valores lógicos ideales. Dibuje los circuitos equivalentes correspondientes.
+        \item Grafique el voltaje de salida en función de In1 en el rango de 0 a 5V. Realice un gráfico para In2=False y otro para In2=True.
+        \item Determine si la compuerta cumple con los siguientes parámetros de diseño. Justifique:
+              \begin{enumerate}
+                  \item VIL= 0V, VIH = 5V, VOL= 0V, VOH= 5V
+                  \item VIL= 1.5V, VIH = 4V, VOL= 1V, VOH= 4.5V
+                  \item VIL= 2V, VIH = 4V, VOL= 1V, VOH= 4.5V
+                  \item VIL= 1.5V, VIH = 4V, VOL= 0.4V, VOH= 4.5V
+              \end{enumerate}
+    \end{enumerate}
+
+
+
+
+    \item Se desea construir un negador con un BJT 2n2222. Decida cuál de las siguientes implementaciones puede usar y determine el valor de  las resistencias de forma que la corriente por el colector sea de 0.5A y $V_S=0.5V$. Revise el datasheet correspondiente.
+
+
+    \begin{figure}[!h]
+        \centering
+
+        \begin{subfigure}[b]{0.25\textwidth}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \begin{circuitikz}[american]
+                    \draw
+                    (0,0) node[npn] (bjt) {}
+                    (bjt.B) to [R,l=$R_{IN}$]++(-2,0) node[anchor=east] {$V_{In}$}
+                    (bjt.C)  to [R,l=$R_L$] ++(0,2)  ++(-0.5,0) --  node[anchor=south] {$V_s$} ++(1,0)
+                    (bjt.E)  to   node[ground]{} ++(0,-0.2)
+                    (bjt.C) to ++(1,0) node[anchor=south] {$V_{Out}$}
+                    %(bjt.base) node[anchor=south] {B}
+                    %(bjt.collector) node[anchor=east] {C}
+                    %(bjt.emitter) node[anchor=east] {E}
+                    ;
+                \end{circuitikz}}
+            \caption{Opción A}
+            \label{fig:five over x}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.25\textwidth}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \begin{circuitikz}[american]
+                    \draw
+                    (0,0) node[npn] (bjt) {}
+                    (bjt.B) to [R,l=$R_{IN}$]++(-2,0) node[anchor=east] {$V_{In}$}
+                    (bjt.C) to ++(0,0.5)  ++(-0.5,0) --  node[anchor=south] {$V_s$} ++(1,0)
+                    (bjt.E) to [R,l=$R_L$] ++(0,-2) to node[ground]{} ++(0,-0.2)
+
+                    (bjt.E) to ++(1,0) node[anchor=south] {$V_{Out}$}
+
+                    % (bjt.base) node[anchor=south] {B}
+                    % (bjt.collector) node[anchor=east] {C}
+                    % (bjt.emitter) node[anchor=east] {E}
+                    ;
+                \end{circuitikz}}
+            \caption{Opción B}
+            \label{fig:five over x}
+        \end{subfigure}
+        %\caption{Opciones negador con BJT}
+        \label{fig:three graphs}
+    \end{figure}
+
+
+
+   \item El circuito de la figura \ref{fig:switchBJTnpn} se utiliza para hacer andar el motor de una licuadora de mano, que gira si se presiona el botón.
+
+    \begin{figure}[!h]
+             \centering
+             \resizebox{0.4\textwidth}{!}{
+             \begin{circuitikz}[american]
+             \ctikzset{diodes/scale=0.6}
+            \draw
+             (0,0) node[npn] (bjt) {}
+             (bjt.B) to [R, l=$R_B$]++(-2,0) to [push button,-o, invert]++(-2,0) node[left=1mm] {\SI{5}{\volt}}
+             (bjt.B) ++(-2,0) to [R, l=$R_G$]++(0,-2) to   node[ground]{}++(0,-0.2)
+             (bjt.C)  to [Telmech=M] ++(0,4)  ++(-0.5,0) --  node[anchor=south] {12V} ++(1,0) 
+             %(bjt.C)++(0,1)  to ++(1,0) to[D ]++(0,2) to ++(-1,0)
+             (bjt.E)  to   node[ground]{} ++(0,-0.2)
+             
+              (bjt.base) node[anchor=south] {B}
+              (bjt.collector) node[anchor=east] {C}
+              (bjt.emitter) node[anchor=east] {E}
+              ;
+            \end{circuitikz}
+            }
+            \caption{Circuito switch con transistor BJT npn para control de motor}
+            \label{fig:switchBJTnpn}
+             \end{figure}
+    
+    }{(\rule{1cm}{0.4pt}/25ptos)}{}
+    
+    
+             
+     \begin{enumerate}
+            \item El circuito se implementa con un transistor modelo 2N2222 y utiliza un motor de baja corriente que consume hasta 150mA. Analice si usar $100\Omega$ o $500\Omega$ para $R_B$, de forma de estar en la condición de trabajo deseada. 
+         \item  Quienes han comprado la licuadora, han dicho que se cansan mucho al estar presionando el botón tanto rato, por lo que le han encargado modificar el circuito por uno que use los mismos componentes pero se quede prendida a menos que se pulse el botón. Dibuje cómo haría la modificación.
+         \item Otra mejora en la que están trabajando contempla el uso de un motor que hace más torque. Considere que este sería de 3A y 60V. Identifique cuáles son las características que debe cumplir el transistor a utilizar con dicho motor.  
+         
+     \end{enumerate}
+
+
+    \item Capítulo 1 Electrónica Digital
+    \begin{enumerate}
+        \item Ejercicio 1.2
+        \item Ejercicio 1.3 Además, determine los valores de la disciplina estática(VIL, VIH, VOL, VOH) según los límites señalados en el enunciado.
+    \end{enumerate}
+
+    \item Capítulo 4 Foundations of Analog and Digital Electronic Circuits
+    \begin{enumerate}
+        \item Problem 4.2
+        \item Problem 4.6
+    \end{enumerate}
+
+
+    \item Capítulo 5 Foundations of Analog and Digital Electronic Circuits
+    \begin{enumerate}
+        \item Exercise 5.8
+        \item Exercise 5.10
+        \item Exercise 5.8
+        \item Problem 5.2
+        \item Problem 5.12
+        \item Problem 5.13
+    \end{enumerate}
+
+    \item Capítulo 6 Foundations of Analog and Digital Electronic Circuits
+    \begin{enumerate}
+        \item Exercise 6.4
+        \item Exercise 6.6
+        \item Problem 6.2
+        \item Problem 6.3
+        \item Problem 6.8
+    \end{enumerate}
+
+
+
+    \item Capítulo 2 Electrónica Digital
+    \begin{enumerate}
+        \item Ejercicio 2.3.1 (Resuelto)
+        \item Ejercicio 2.1
+        \item Ejercicio 2.2
+        \item Ejercicio 2.5
+    \end{enumerate}
+
+
+\end{problemset}
+
 \end{document}
+
 \subsection{Disciplina estática}
 
 La disciplina estática es una metodología para definir parámetros para los valores de voltaje tanto de componentes de entrada como de salida. Para el uso de compuertas lógicas, es importante el uso de la disciplina estática,  puesto que los componentes usados para la medición y creación de circuitos no son ideales, se deben definir rangos de permitividad para que los valores de las compuertas lógicas puedan tener un valor lógico aceptable. Se deben tener en cuenta 4 rangos: 2 de entrada y 2 de salida:
@@ -945,8 +1213,6 @@ En el gráfico de voltaje, se observa que cualquier voltaje que esté en el rang
     \end{figure}
 
 \fi
-
-\end{document}
 \subsection{Compuertas lógicas}
 
 Son dispositivos que son capaces de realizar operaciones lógicas, pero de una manera simple, es decir, que a partir de dos booleanos o mas (a excepción de NOT, que se vera mas adelante), se devolverá en uno solo, dependiendo de sus propiedades que se les de.
@@ -1023,244 +1289,7 @@ Ahora bien, existen diversas compuertas logicas de las cuales se explicaran las 
 \end{itemize}
 
 
-\newpage
-% Inicio José Acosta - Nicolas Vergara - Francisco Cardenas %
-\begin{problemset}
-    \item Ejercicios propuestos con \textbf{Diodos}
-    {\renewcommand{\problemname}{Ejercicio}
-        \renewenvironment{problem}[1][]{
-            \refstepcounter{prob}
-            \vspace{\baselineskip}
-            \par\noindent\textbf{\color{structurecolor}{\problemname} \theprob #1 }\rmfamily}{
-            \par\ignorespacesafterend}
-        \renewenvironment{solution}{\par\noindent\textbf{\color{structurecolor}\solutionname} \citshape}{\par}
 
-        Considerar $V_D$ (diferencia de tensión en los extremos del diodo) como 0,6 V
-        \begin{problem}\label{eq:p1}
-        Calcular $V_R$ e $I_R$ para el siguiente circuito,
-        \begin{figure}[ht]
-            \centering
-            \begin{tikzpicture}[scale=0.8,american]
-                \draw
-                (1,3) to (0,3) to [V, l={$10 V$}, invert]
-                (0,7) to [D, l={$V_D$},](4,7) to (5,7)
-                (5,3) to [R,l={$5 k\Omega$}](5,7)
-                (0,3) to (5,3);
-            \end{tikzpicture}
-        \end{figure}
-        \end{problem}
-        \begin{solution}
-            Puesto que $10V > V_D$, el diodo se considera con una caida de tensión igual a $V_D$. Luego, para calcular $V_R$ se igualan todos los voltajes a cero tal que:
-            \[-10V+V_D+V_R=0\]
-            De este modo se tiene que $V_R = 9.4V$.\\
-            Para obtener $I_R$ se puede utilizar la siguiente formula:
-            \[ I_R = (10V - V_D)/R \]
-            Obteniendo que $I_R = 1.88 [mA]$.
-        \end{solution}
-        \begin{problem}
-        Calcular los valores de corriente y voltaje del siguiente circuito.
-        \begin{figure}[ht]
-            \centering
-            \begin{tikzpicture}[scale=0.8,american]
-                \draw
-                (1,3) to (0,3) to [V, l={$10 V$}, invert]
-                (0,7) to [D, l={$V_{D_1}$}](2.5,7) to [D, l={$V_{D_2}$}] (5,7)
-                (5,3) to [R,l={$5 k\Omega$}](5,7)
-                (0,3) to (5,3);
-            \end{tikzpicture}
-        \end{figure}
-        \end{problem}
-        \begin{solution}
-            Por KVL,
-            \begin{align*}
-                0   & = -10[V] + V_{D_1} + V_{D_2} + V_R \\
-                \intertext{considerando que ambos diodos tiene un voltaje $V_D$,}
-                V_R & = 10[V] - 1.2[V]                   \\
-                    & = 8.8\ [V]
-            \end{align*}
-            Luego, por ley de ohm,
-            \begin{align*}
-                I_R & = \frac{8.8[V]}{5[k\Omega]} = 1.76\ [mA]
-            \end{align*}
-            Cabe destacar que, al momento de colocar diodos en serie cada uno tiene una caida de voltaje y es posible que ,llegados a cierto punto, el voltaje no sea suficiente para que otro diodo conectado conduzca la corriente.
-        \end{solution}
-        \begin{problem}
-        Dado el siguiente circuito, calcular $V_R$ e $I_R$:
-        \begin{figure}[ht]
-            \centering
-            \begin{tikzpicture}[scale=0.8,american]
-                \draw
-                (0,3) to (0,3) to [R,l={$7 k\Omega$}](0,8.5)
-                (1,9) to [D, l={$V_D$},](4,9)
-                (1,7.5) to [D, l={$V_D$}, invert](4,7.5)
-                (1,9) to (1,7.5)
-                (4,9) to (4,7.5)
-                (4,8.5) to (5,8.5)
-                (1,8.5) to (0,8.5)
-                (5,3) to [V, l={$8 V$},](5,8.5)
-                (0,3) to (5,3);
-            \end{tikzpicture}
-        \end{figure}
-        \end{problem}
-        \begin{solution}
-            Este ejercicio es muy similar al ejercicio \ref{eq:p1}, a diferencia de la presencia de un diodo en en sentido contrario a la corriente (el diodo de abajo). Cuando esto ocurre, se dice que el diodo esta en reverse bias y se considera como un circuito abierto, siempre cuando no se sobrepase el voltaje de ruptura. Por tanto, solo queda el otro diodo en serie al resto del circuito.\\
-            Así, siguiendo el mismo procedimiento que en el ejercicio anterior, para obtener $V_R$ se igualan los voltajes a 0:
-            \[-8V+V_D+V_R=0\]
-            \[V_R=7.4V\]
-            Para obtener $I_R$ se puede utilizar la siguiente formula:
-            \[ I_R = (8V - V_D)/R \]
-            Se tiene que $I_R=1.06[mA]$.
-        \end{solution}
-        \begin{problem}
-        Calcular $I_1$, $I_2$ e $I_{D2}$
-        \begin{figure}[ht]
-            \centering
-            \begin{tikzpicture}[scale=0.8,american]
-                \draw
-                (1,3) to (0,3) to [V, l={$5 V$}, invert]
-                (0,7) to [D, l={$V_{D1}$},](4,7) to (5,7)
-                (5,3) to [D, l={$V_{D2}$},invert](5,7)
-                (0,3) to [R,l={$R_2=5,6 k\Omega$}](5,3)
-                (5,3) to (10,3)
-                (5,7) to (10,7)
-                (10,3) to [R,l={$R_1=3,3 k\Omega$}](10,6) to (10,7);
-            \end{tikzpicture}
-        \end{figure}
-        \end{problem}
-        \begin{solution}
-            Notar que el voltaje en cada trazo del circuito es constante, por lo que se cumple lo siguiente,
-
-
-            \begin{equation*}
-                {I_1} = \frac{V_{D2}}{R_1} = \frac{0,7V}{3,3K \Omega}= 0,2121 mA
-            \end{equation*}
-
-            Luego, el voltaje de $R_2$ se puede expresar como la caida de voltaje $V_2 = 5V - V_{D1} - V_{D2} = 3.6V$ (los diodos de Silicio, implican un voltaje de $0.7V$).\\
-            Finalmente podemos determinar $I_{D2}$, de la siguiente forma:
-            \begin{equation*}
-                {I_{D2}} = {I_2} - {I_1} = \frac{V_2}{R_2} - I_1 = 0,6428 mA - 0,2121 mA = 0,4307 mA.
-            \end{equation*}
-        \end{solution}
-        \begin{problem}
-        Calcular $I_1$, $I_{D1}$ e $I_{D2}$
-        \begin{figure}[ht]
-            \centering
-            \begin{tikzpicture}[scale=0.8,american]
-                \draw
-                (1,3) to (0,3) to [V, l={$5 V$}, invert]
-                (0,7) to  [R,l={$R_1=0,33 k\Omega$}](4,7) to (5,7)
-                (5,3) to [D, l={$V_{D1}$},invert](5,7)
-                (0,3) to (5,3)
-                (5,3) to (10,3)
-                (5,7) to (10,7)
-                (10,4) to [D, l={$V_{D2}$},invert](10,6) to (10,7)
-                (10,3) to (10,4);
-            \end{tikzpicture}
-        \end{figure}
-        \end{problem}
-        \begin{solution}
-            Notar que $D_1$ y $D_2$ son de Silicio, por ende, es su voltaje es de $0,7V$. Luego, se determinar $I_1$ por
-
-            \begin{equation*}
-                {I_1} = \frac{V_{R1}}{R} = \frac{10V - 0,7V}{0,33 k \Omega} = 28,18mA.
-            \end{equation*}
-
-            Finalmente, al estar en paralelo y asumiendo que ambos son idénticos, $I_{D1} = I_{D2}$ obteniendo,
-
-            \begin{equation*}
-                {I_{D1}} = {I_{D2}} = \frac{I_1}{2} = \frac{28,18 mA}{2} = 14,09 mA.
-            \end{equation*}
-        \end{solution}
-    }
-    % Fin José Acosta - Nicolas Vergara - Francisco Cardenas %
-
-
-    %%%%%% INICIO  DIEGO DE LA SOTTA M y GIOVANNI CAMILO G %%%%%%
-    \\ \\
-    Ejercicios propuestos con MOSFET\\
-
-    Como bien aprendimos MOSFET significa transistor de efecto de campo metal-óxido semiconductor. En palabras simples es un transistor y este regula las salidas de voltaje a partir de tensiones de entradas. Ante esto veremos ejercicios con MOSFET, es decir, con transistores.\\ \\
-    Ejercicio1: \\{Diseñe circuito de la siguiente figura obteniendo Id de 0,8[mA]. Encontrar R y voltaje cd para Vd. Obtenga transistor con Vt = 2[v], MnCox = 40[µA], L = 25[µm] y w = 250[µm] con λ = 0.}\\
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.35]{image/1.png}
-        \caption{Resolución ejercicio propuesto 1 parte 1/2}
-        \label{fig:EjProp1.1}
-    \end{figure}
-    {Primero asiganmos las variables pertinentes del circuito, para luego comprobar si esto pertenece a un estado de corte, óhmico o de saturación. Al resolver obtenemos que (Vd - Vs) es mayor que (Vg- Vs- Vt) , por lo que, el circuito está en estado de saturación. Al tener este estado podemos ocupar la fórmula de Id. Al reemplazar los valores iniciales obtenemos un resultado de Vgs1=4[v] y Vgs2=0[v], y debido a que solo Vgs1 es mayor a Vt este es el valor del transistor. Luego Vgs=Vg debido a que Vs=0 por estar conectado a tierra teniendo así Vg = 4[v].}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.35]{image/2.png}
-        \caption{Resolución ejercicio propuesto 1 parte 2/2}
-        \label{fig:EjProp1.2}
-    \end{figure}
-    {Para finalizar el ejercicio ocupamos divisor de voltaje para obtener una fórmula para poder calcular la resistencia, obteniendo un valor de 7,5[kΩ] en la resistencia}\\ \\
-
-    Ejercicio2: \\ {Calcular Vgs, Vds y Id, si tenemos R1 = R2 = 6[kΩ], R3 = 3[kΩ], V1 = 12[v], V2 = 3[v], k = 0,7[mA/v²] y Vt = 2,5[v]}\\
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.4]{image/3.png}
-        \caption{Resolución ejercicio propuesto 2 parte 1/2}
-        \label{fig:EjProp2.1}
-    \end{figure}
-    {En este ejercicio ocuparemos el método de mallas de Kirchhoff para poder resolverlo. Para calcular el voltaje en la resistencia 2(Vr2) usamos un divisor de corriente, luego sacamos el valor de Vgs(3[v]). Al ser Vgs > Vt (3[v] > 2,5[v]) el circuito está en un estado de saturación y ocuparemos la fórmula que se muestra al final de la parte 1/2 para calcular Id.}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.35]{image/4.png}
-        \caption{Resolución ejercicio propuesto 2 parte 2/2}
-        \label{fig:EjProp2.2}
-    \end{figure}
-    {Para Vds usamos la ley de malla de Kirchhoff y aplicamos los resultados obtenidos anteriormente para así obtener un valor de 8,409375[v] en Vds. Luego de haber calculado todo lo pedido faltaría comprobar el estado de saturación. Para esto necesitaremos cumplir con: \\ \\
-    (1) Vgs > Vt \\
-    (2) Vds > Vgs - Vt\\ \\
-    y al comprobar estas dos inecuaciones podemos decir con certeza que el circuito se encuentra en estado de saturación.}
-
-    %%%%%% FIN  DIEGO DE LA SOTTA y GIOVANNI CAMILO G %%%%%%
-
-    \item Capítulo 1 Electrónica Digital
-    \begin{enumerate}
-        \item Ejercicio 1.2
-        \item Ejercicio 1.3 Además, determine los valores de la disciplina estática(VIL, VIH, VOL, VOH) según los límites señalados en el enunciado.
-    \end{enumerate}
-
-    \item Capítulo 4 Foundations of Analog and Digital Electronic Circuits
-    \begin{enumerate}
-        \item Problem 4.2
-        \item Problem 4.6
-    \end{enumerate}
-
-
-    \item Capítulo 5 Foundations of Analog and Digital Electronic Circuits
-    \begin{enumerate}
-        \item Exercise 5.8
-        \item Exercise 5.10
-        \item Exercise 5.8
-        \item Problem 5.2
-        \item Problem 5.12
-        \item Problem 5.13
-    \end{enumerate}
-
-    \item Capítulo 6 Foundations of Analog and Digital Electronic Circuits
-    \begin{enumerate}
-        \item Exercise 6.4
-        \item Exercise 6.6
-        \item Problem 6.2
-        \item Problem 6.3
-        \item Problem 6.8
-    \end{enumerate}
-
-
-
-    \item Capítulo 2 Electrónica Digital
-    \begin{enumerate}
-        \item Ejercicio 2.3.1 (Resuelto)
-        \item Ejercicio 2.1
-        \item Ejercicio 2.2
-        \item Ejercicio 2.5
-    \end{enumerate}
-
-
-\end{problemset}
 \appendix
 \input{0AApendices1}
 
@@ -1442,7 +1471,6 @@ Parte de este documento fue realizado con el aporte de Cristóbal Nilo, Matías 
 
 
 
-\end{document}
 
 
 
